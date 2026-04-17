@@ -44,6 +44,6 @@
 (clojure.core/defn plus-seconds {:arglists (quote (["java.time.Duration" "long"]))} (^java.time.Duration [^java.time.Duration this15004 ^long long15005] (.plusSeconds this15004 long15005)))
 (clojure.core/defn get {:arglists (quote (["java.time.Duration" "java.time.temporal.TemporalUnit"]))} (^long [^java.time.Duration this15006 ^java.time.temporal.ChronoUnit java-time-temporal-TemporalUnit15007] (.get this15006 java-time-temporal-TemporalUnit15007)))
 (clojure.core/defn equals {:arglists (quote (["java.time.Duration" "java.lang.Object"]))} (^java.lang.Boolean [^java.time.Duration this15008 ^java.lang.Object java-lang-Object15009] (.equals this15008 java-lang-Object15009)))
-(clojure.core/defn of-seconds {:arglists (quote (["long" "long"] ["long"]))} (^java.time.Duration [^long long15010 ^long long15011] (java.time.Duration/ofSeconds long15010 long15011)) (^java.time.Duration [^long long15012] (java.time.Duration/ofSeconds long15012)))
+(clojure.core/defn of-seconds {:arglists (quote (["long"] ["long" "long"]))} (^java.time.Duration [^long long15010] (java.time.Duration/ofSeconds long15010)) (^java.time.Duration [^long long15011 ^long long15012] (java.time.Duration/ofSeconds long15011 long15012)))
 (clojure.core/defn minus-days {:arglists (quote (["java.time.Duration" "long"]))} (^java.time.Duration [^java.time.Duration this15013 ^long long15014] (.minusDays this15013 long15014)))
 (clojure.core/defn to-days {:arglists (quote (["java.time.Duration"]))} (^long [^java.time.Duration this15015] (.toDays this15015)))

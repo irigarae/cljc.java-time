@@ -44,6 +44,6 @@
 (clojure.core/defn plus-seconds {:arglists (quote (["java.time.Duration" "long"]))} (^js/JSJoda.Duration [^js/JSJoda.Duration this15084 ^long long15085] (.plusSeconds this15084 long15085)))
 (clojure.core/defn get {:arglists (quote (["java.time.Duration" "java.time.temporal.TemporalUnit"]))} (^long [^js/JSJoda.Duration this15086 ^js/JSJoda.TemporalUnit java-time-temporal-TemporalUnit15087] (.get this15086 java-time-temporal-TemporalUnit15087)))
 (clojure.core/defn equals {:arglists (quote (["java.time.Duration" "java.lang.Object"]))} (^boolean [^js/JSJoda.Duration this15088 ^java.lang.Object java-lang-Object15089] (.equals this15088 java-lang-Object15089)))
-(clojure.core/defn of-seconds {:arglists (quote (["long" "long"] ["long"]))} (^js/JSJoda.Duration [^long long15090 ^long long15091] (js-invoke java.time.Duration "ofSeconds" long15090 long15091)) (^js/JSJoda.Duration [^long long15092] (js-invoke java.time.Duration "ofSeconds" long15092)))
+(clojure.core/defn of-seconds {:arglists (quote (["long"] ["long" "long"]))} (^js/JSJoda.Duration [^long long15090] (js-invoke java.time.Duration "ofSeconds" long15090)) (^js/JSJoda.Duration [^long long15091 ^long long15092] (js-invoke java.time.Duration "ofSeconds" long15091 long15092)))
 (clojure.core/defn minus-days {:arglists (quote (["java.time.Duration" "long"]))} (^js/JSJoda.Duration [^js/JSJoda.Duration this15093 ^long long15094] (.minusDays this15093 long15094)))
 (clojure.core/defn to-days {:arglists (quote (["java.time.Duration"]))} (^long [^js/JSJoda.Duration this15095] (.toDays this15095)))

@@ -1,8 +1,6 @@
 (ns defwrapper
   "based on gist by @plexus"
-  (:require [clojure.string :as string]
-            [medley.core :as m]
-            [figwheel.main.logging :as log])
+  (:require [clojure.string :as string])
   (:import (java.time.format DateTimeFormatter)
            (java.time Instant)
            (java.lang.reflect Modifier Method)))

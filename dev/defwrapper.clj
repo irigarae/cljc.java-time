@@ -215,6 +215,13 @@
   (let [arities (into (sorted-map) (group-by parameter-count methods))
         static? (method-static? (first methods))]
     `(~(symbol 'defn) ~fname
+      ~@(when (= 1 (count methods))
+          (some->> (first methods)
+                   (method-fqn)
+                   (get metadata/java-time-metadata)
+                   (:doc)
+                   (string/trim)
+                   (vector)))
        {:arglists '~(map (comp (partial into (if static? [] [(.getName klazz)]))
                            #(map (fn [x] (.getName x)) %)
                            parameter-types)

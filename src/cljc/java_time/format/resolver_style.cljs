@@ -1,13 +1,53 @@
-(ns cljc.java-time.format.resolver-style (:refer-clojure :exclude [abs get range format min max next name resolve short]) (:require [cljc.java-time.extn.calendar-awareness] [goog.object] [java.time.format :refer [ResolverStyle]]))
+(ns cljc.java-time.format.resolver-style
+  (:refer-clojure :exclude
+                  [abs get range format min max next name resolve short])
+  (:require [cljc.java-time.extn.calendar-awareness]
+            [goog.object]
+            [java.time.format :refer [ResolverStyle]]))
+
 (def smart (goog.object/get java.time.format.ResolverStyle "SMART"))
+
 (def strict (goog.object/get java.time.format.ResolverStyle "STRICT"))
+
 (def lenient (goog.object/get java.time.format.ResolverStyle "LENIENT"))
-(defn values {:arglists (quote ([]))} (^"java.lang.Class" [] (js-invoke java.time.format.ResolverStyle "values")))
-(defn value-of {:arglists (quote (["java.lang.String"] ["java.lang.Class" "java.lang.String"]))} (^js/JSJoda.ResolverStyle [^java.lang.String name] (js-invoke java.time.format.ResolverStyle "valueOf" name)) (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name] (js-invoke java.time.format.ResolverStyle "valueOf" enum-type name)))
-(defn ordinal {:arglists (quote (["java.time.format.ResolverStyle"]))} (^int [^js/JSJoda.ResolverStyle this] (.ordinal this)))
-(defn to-string {:arglists (quote (["java.time.format.ResolverStyle"]))} (^java.lang.String [^js/JSJoda.ResolverStyle this] (.toString this)))
-(defn name {:arglists (quote (["java.time.format.ResolverStyle"]))} (^java.lang.String [^js/JSJoda.ResolverStyle this] (.name this)))
-(defn get-declaring-class {:arglists (quote (["java.time.format.ResolverStyle"]))} (^java.lang.Class [^js/JSJoda.ResolverStyle this] (.declaringClass this)))
-(defn hash-code {:arglists (quote (["java.time.format.ResolverStyle"]))} (^int [^js/JSJoda.ResolverStyle this] (.hashCode this)))
-(defn compare-to {:arglists (quote (["java.time.format.ResolverStyle" "java.lang.Enum"]))} (^int [^js/JSJoda.ResolverStyle this ^java.lang.Enum o] (.compareTo this o)))
-(defn equals {:arglists (quote (["java.time.format.ResolverStyle" "java.lang.Object"]))} (^boolean [^js/JSJoda.ResolverStyle this ^java.lang.Object other] (.equals this other)))
+
+(defn values
+  {:arglists (quote ([]))}
+  (^"java.lang.Class" [] (js-invoke java.time.format.ResolverStyle "values")))
+
+(defn value-of
+  {:arglists (quote (["java.lang.String"]
+                     ["java.lang.Class" "java.lang.String"]))}
+  (^js/JSJoda.ResolverStyle [^java.lang.String name]
+   (js-invoke java.time.format.ResolverStyle "valueOf" name))
+  (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
+   (js-invoke java.time.format.ResolverStyle "valueOf" enum-type name)))
+
+(defn ordinal
+  {:arglists (quote (["java.time.format.ResolverStyle"]))}
+  (^int [^js/JSJoda.ResolverStyle this] (.ordinal this)))
+
+(defn to-string
+  {:arglists (quote (["java.time.format.ResolverStyle"]))}
+  (^java.lang.String [^js/JSJoda.ResolverStyle this] (.toString this)))
+
+(defn name
+  {:arglists (quote (["java.time.format.ResolverStyle"]))}
+  (^java.lang.String [^js/JSJoda.ResolverStyle this] (.name this)))
+
+(defn get-declaring-class
+  {:arglists (quote (["java.time.format.ResolverStyle"]))}
+  (^java.lang.Class [^js/JSJoda.ResolverStyle this] (.declaringClass this)))
+
+(defn hash-code
+  {:arglists (quote (["java.time.format.ResolverStyle"]))}
+  (^int [^js/JSJoda.ResolverStyle this] (.hashCode this)))
+
+(defn compare-to
+  {:arglists (quote (["java.time.format.ResolverStyle" "java.lang.Enum"]))}
+  (^int [^js/JSJoda.ResolverStyle this ^java.lang.Enum o] (.compareTo this o)))
+
+(defn equals
+  {:arglists (quote (["java.time.format.ResolverStyle" "java.lang.Object"]))}
+  (^boolean [^js/JSJoda.ResolverStyle this ^java.lang.Object other]
+   (.equals this other)))

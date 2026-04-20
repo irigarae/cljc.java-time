@@ -1,5 +1,30 @@
-(ns cljc.java-time.temporal.temporal-amount (:refer-clojure :exclude [abs get range format min max next name resolve short]) (:require [cljc.java-time.extn.calendar-awareness] [goog.object] [java.time.temporal :refer [TemporalAmount]]))
-(defn add-to {:arglists (quote (["java.time.temporal.TemporalAmount" "java.time.temporal.Temporal"]))} (^js/JSJoda.Temporal [^js/JSJoda.TemporalAmount this ^js/JSJoda.Temporal temporal] (.addTo this temporal)))
-(defn get {:arglists (quote (["java.time.temporal.TemporalAmount" "java.time.temporal.TemporalUnit"]))} (^long [^js/JSJoda.TemporalAmount this ^js/JSJoda.TemporalUnit unit] (.get this unit)))
-(defn get-units {:arglists (quote (["java.time.temporal.TemporalAmount"]))} (^java.util.List [^js/JSJoda.TemporalAmount this] (.units this)))
-(defn subtract-from {:arglists (quote (["java.time.temporal.TemporalAmount" "java.time.temporal.Temporal"]))} (^js/JSJoda.Temporal [^js/JSJoda.TemporalAmount this ^js/JSJoda.Temporal temporal] (.subtractFrom this temporal)))
+(ns cljc.java-time.temporal.temporal-amount
+  (:refer-clojure :exclude
+                  [abs get range format min max next name resolve short])
+  (:require [cljc.java-time.extn.calendar-awareness]
+            [goog.object]
+            [java.time.temporal :refer [TemporalAmount]]))
+
+(defn add-to
+  {:arglists (quote (["java.time.temporal.TemporalAmount"
+                      "java.time.temporal.Temporal"]))}
+  (^js/JSJoda.Temporal
+   [^js/JSJoda.TemporalAmount this ^js/JSJoda.Temporal temporal]
+   (.addTo this temporal)))
+
+(defn get
+  {:arglists (quote (["java.time.temporal.TemporalAmount"
+                      "java.time.temporal.TemporalUnit"]))}
+  (^long [^js/JSJoda.TemporalAmount this ^js/JSJoda.TemporalUnit unit]
+   (.get this unit)))
+
+(defn get-units
+  {:arglists (quote (["java.time.temporal.TemporalAmount"]))}
+  (^java.util.List [^js/JSJoda.TemporalAmount this] (.units this)))
+
+(defn subtract-from
+  {:arglists (quote (["java.time.temporal.TemporalAmount"
+                      "java.time.temporal.Temporal"]))}
+  (^js/JSJoda.Temporal
+   [^js/JSJoda.TemporalAmount this ^js/JSJoda.Temporal temporal]
+   (.subtractFrom this temporal)))

@@ -6,10 +6,12 @@
             [java.time :refer [YearMonth]]))
 
 (defn length-of-year
+  "Returns the length of the year.\n <p>\n This returns the length of the year in days, either 365 or 366.\n\n @return 366 if the year is leap, 365 otherwise"
   {:arglists (quote (["java.time.YearMonth"]))}
   (^int [^js/JSJoda.YearMonth this] (.lengthOfYear this)))
 
 (defn range
+  "Gets the range of valid values for the specified field.\n <p>\n The range object expresses the minimum and maximum valid values for a field.\n This year-month is used to enhance the accuracy of the returned range.\n If it is not possible to return the range, because the field is not supported\n or for some other reason, an exception is thrown.\n <p>\n If the field is a {@link ChronoField} then the query is implemented here.\n The {@link #isSupported(TemporalField) supported fields} will return\n appropriate range instances.\n All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.\n <p>\n If the field is not a {@code ChronoField}, then the result of this method\n is obtained by invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)}\n passing {@code this} as the argument.\n Whether the range can be obtained is determined by the field.\n\n @param field  the field to query the range for, not null\n @return the range of valid values for the field, not null\n @throws DateTimeException if the range for the field cannot be obtained\n @throws UnsupportedTemporalTypeException if the field is not supported"
   {:arglists (quote (["java.time.YearMonth"
                       "java.time.temporal.TemporalField"]))}
   (^js/JSJoda.ValueRange
@@ -17,6 +19,7 @@
    (.range this field)))
 
 (defn is-valid-day
+  "Checks if the day-of-month is valid for this year-month.\n <p>\n This method checks whether this year and month and the input day form\n a valid date.\n\n @param dayOfMonth  the day-of-month to validate, from 1 to 31, invalid value returns false\n @return true if the day is valid for this year-month"
   {:arglists (quote (["java.time.YearMonth" "int"]))}
   (^boolean [^js/JSJoda.YearMonth this ^int day-of-month]
    (.isValidDay this day-of-month)))
@@ -27,16 +30,19 @@
    (js-invoke java.time.YearMonth "of" arg0 arg1)))
 
 (defn with-month
+  "Returns a copy of this {@code YearMonth} with the month-of-year altered.\n <p>\n This instance is immutable and unaffected by this method call.\n\n @param month  the month-of-year to set in the returned year-month, from 1 (January) to 12 (December)\n @return a {@code YearMonth} based on this year-month with the requested month, not null\n @throws DateTimeException if the month-of-year value is invalid"
   {:arglists (quote (["java.time.YearMonth" "int"]))}
   (^js/JSJoda.YearMonth [^js/JSJoda.YearMonth this ^int month]
    (.withMonth this month)))
 
 (defn at-day
+  "Combines this year-month with a day-of-month to create a {@code LocalDate}.\n <p>\n This returns a {@code LocalDate} formed from this year-month and the specified day-of-month.\n <p>\n The day-of-month value must be valid for the year-month.\n <p>\n This method can be used as part of a chain to produce a date:\n <pre>\n  LocalDate date = year.atMonth(month).atDay(day);\n </pre>\n\n @param dayOfMonth  the day-of-month to use, from 1 to 31\n @return the date formed from this year-month and the specified day, not null\n @throws DateTimeException if the day is invalid for the year-month\n @see #isValidDay(int)"
   {:arglists (quote (["java.time.YearMonth" "int"]))}
   (^js/JSJoda.LocalDate [^js/JSJoda.YearMonth this ^int day-of-month]
    (.atDay this day-of-month)))
 
 (defn get-year
+  "Gets the year field.\n <p>\n This method returns the primitive {@code int} value for the year.\n <p>\n The year returned by this method is proleptic as per {@code get(YEAR)}.\n\n @return the year, from MIN_YEAR to MAX_YEAR"
   {:arglists (quote (["java.time.YearMonth"]))}
   (^int [^js/JSJoda.YearMonth this] (.year this)))
 
@@ -52,30 +58,36 @@
    (.plus this amount-to-add unit)))
 
 (defn is-leap-year
+  "Checks if the year is a leap year, according to the ISO proleptic\n calendar system rules.\n <p>\n This method applies the current rules for leap years across the whole time-line.\n In general, a year is a leap year if it is divisible by four without\n remainder. However, years divisible by 100, are not leap years, with\n the exception of years divisible by 400 which are.\n <p>\n For example, 1904 is a leap year it is divisible by 4.\n 1900 was not a leap year as it is divisible by 100, however 2000 was a\n leap year as it is divisible by 400.\n <p>\n The calculation is proleptic - applying the same rules into the far future and far past.\n This is historically inaccurate, but is correct for the ISO-8601 standard.\n\n @return true if the year is leap, false otherwise"
   {:arglists (quote (["java.time.YearMonth"]))}
   (^boolean [^js/JSJoda.YearMonth this] (.isLeapYear this)))
 
 (defn query
+  "Queries this year-month using the specified query.\n <p>\n This queries this year-month using the specified query strategy object.\n The {@code TemporalQuery} object defines the logic to be used to\n obtain the result. Read the documentation of the query to understand\n what the result of this method will be.\n <p>\n The result of this method is obtained by invoking the\n {@link TemporalQuery#queryFrom(TemporalAccessor)} method on the\n specified query passing {@code this} as the argument.\n\n @param <R> the type of the result\n @param query  the query to invoke, not null\n @return the query result, null may be returned (defined by the query)\n @throws DateTimeException if unable to query (defined by the query)\n @throws ArithmeticException if numeric overflow occurs (defined by the query)"
   {:arglists (quote (["java.time.YearMonth"
                       "java.time.temporal.TemporalQuery"]))}
   (^java.lang.Object [^js/JSJoda.YearMonth this ^js/JSJoda.TemporalQuery query]
    (.query this query)))
 
 (defn to-string
+  "Outputs this year-month as a {@code String}, such as {@code 2007-12}.\n <p>\n The output will be in the format {@code uuuu-MM}:\n\n @return a string representation of this year-month, not null"
   {:arglists (quote (["java.time.YearMonth"]))}
   (^java.lang.String [^js/JSJoda.YearMonth this] (.toString this)))
 
 (defn plus-months
+  "Returns a copy of this {@code YearMonth} with the specified number of months added.\n <p>\n This instance is immutable and unaffected by this method call.\n\n @param monthsToAdd  the months to add, may be negative\n @return a {@code YearMonth} based on this year-month with the months added, not null\n @throws DateTimeException if the result exceeds the supported range"
   {:arglists (quote (["java.time.YearMonth" "long"]))}
   (^js/JSJoda.YearMonth [^js/JSJoda.YearMonth this ^long months-to-add]
    (.plusMonths this months-to-add)))
 
 (defn is-before
+  "Checks if this year-month is before the specified year-month.\n\n @param other  the other year-month to compare to, not null\n @return true if this point is before the specified year-month"
   {:arglists (quote (["java.time.YearMonth" "java.time.YearMonth"]))}
   (^boolean [^js/JSJoda.YearMonth this ^js/JSJoda.YearMonth other]
    (.isBefore this other)))
 
 (defn minus-months
+  "Returns a copy of this {@code YearMonth} with the specified number of months subtracted.\n <p>\n This instance is immutable and unaffected by this method call.\n\n @param monthsToSubtract  the months to subtract, may be negative\n @return a {@code YearMonth} based on this year-month with the months subtracted, not null\n @throws DateTimeException if the result exceeds the supported range"
   {:arglists (quote (["java.time.YearMonth" "long"]))}
   (^js/JSJoda.YearMonth [^js/JSJoda.YearMonth this ^long months-to-subtract]
    (.minusMonths this months-to-subtract)))
@@ -93,25 +105,30 @@
    (.minus this amount-to-subtract unit)))
 
 (defn get-long
+  "Gets the value of the specified field from this year-month as a {@code long}.\n <p>\n This queries this year-month for the value of the specified field.\n If it is not possible to return the value, because the field is not supported\n or for some other reason, an exception is thrown.\n <p>\n If the field is a {@link ChronoField} then the query is implemented here.\n The {@link #isSupported(TemporalField) supported fields} will return valid\n values based on this year-month.\n All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.\n <p>\n If the field is not a {@code ChronoField}, then the result of this method\n is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}\n passing {@code this} as the argument. Whether the value can be obtained,\n and what the value represents, is determined by the field.\n\n @param field  the field to get, not null\n @return the value for the field\n @throws DateTimeException if a value for the field cannot be obtained\n @throws UnsupportedTemporalTypeException if the field is not supported\n @throws ArithmeticException if numeric overflow occurs"
   {:arglists (quote (["java.time.YearMonth"
                       "java.time.temporal.TemporalField"]))}
   (^long [^js/JSJoda.YearMonth this ^js/JSJoda.TemporalField field]
    (.getLong this field)))
 
 (defn with-year
+  "Returns a copy of this {@code YearMonth} with the year altered.\n <p>\n This instance is immutable and unaffected by this method call.\n\n @param year  the year to set in the returned year-month, from MIN_YEAR to MAX_YEAR\n @return a {@code YearMonth} based on this year-month with the requested year, not null\n @throws DateTimeException if the year value is invalid"
   {:arglists (quote (["java.time.YearMonth" "int"]))}
   (^js/JSJoda.YearMonth [^js/JSJoda.YearMonth this ^int year]
    (.withYear this year)))
 
 (defn at-end-of-month
+  "Returns a {@code LocalDate} at the end of the month.\n <p>\n This returns a {@code LocalDate} based on this year-month.\n The day-of-month is set to the last valid day of the month, taking\n into account leap years.\n <p>\n This method can be used as part of a chain to produce a date:\n <pre>\n  LocalDate date = year.atMonth(month).atEndOfMonth();\n </pre>\n\n @return the last valid date of this year-month, not null"
   {:arglists (quote (["java.time.YearMonth"]))}
   (^js/JSJoda.LocalDate [^js/JSJoda.YearMonth this] (.atEndOfMonth this)))
 
 (defn length-of-month
+  "Returns the length of the month, taking account of the year.\n <p>\n This returns the length of the month in days.\n For example, a date in January would return 31.\n\n @return the length of the month in days, from 28 to 31"
   {:arglists (quote (["java.time.YearMonth"]))}
   (^int [^js/JSJoda.YearMonth this] (.lengthOfMonth this)))
 
 (defn until
+  "Calculates the amount of time until another year-month in terms of the specified unit.\n <p>\n This calculates the amount of time between two {@code YearMonth}\n objects in terms of a single {@code TemporalUnit}.\n The start and end points are {@code this} and the specified year-month.\n The result will be negative if the end is before the start.\n The {@code Temporal} passed to this method is converted to a\n {@code YearMonth} using {@link #from(TemporalAccessor)}.\n For example, the amount in years between two year-months can be calculated\n using {@code startYearMonth.until(endYearMonth, YEARS)}.\n <p>\n The calculation returns a whole number, representing the number of\n complete units between the two year-months.\n For example, the amount in decades between 2012-06 and 2032-05\n will only be one decade as it is one month short of two decades.\n <p>\n There are two equivalent ways of using this method.\n The first is to invoke this method.\n The second is to use {@link TemporalUnit#between(Temporal, Temporal)}:\n <pre>\n   // these two lines are equivalent\n   amount = start.until(end, MONTHS);\n   amount = MONTHS.between(start, end);\n </pre>\n The choice should be made based on which makes the code more readable.\n <p>\n The calculation is implemented in this method for {@link ChronoUnit}.\n The units {@code MONTHS}, {@code YEARS}, {@code DECADES},\n {@code CENTURIES}, {@code MILLENNIA} and {@code ERAS} are supported.\n Other {@code ChronoUnit} values will throw an exception.\n <p>\n If the unit is not a {@code ChronoUnit}, then the result of this method\n is obtained by invoking {@code TemporalUnit.between(Temporal, Temporal)}\n passing {@code this} as the first argument and the converted input temporal\n as the second argument.\n <p>\n This instance is immutable and unaffected by this method call.\n\n @param endExclusive  the end date, exclusive, which is converted to a {@code YearMonth}, not null\n @param unit  the unit to measure the amount in, not null\n @return the amount of time between this year-month and the end year-month\n @throws DateTimeException if the amount cannot be calculated, or the end\n  temporal cannot be converted to a {@code YearMonth}\n @throws UnsupportedTemporalTypeException if the unit is not supported\n @throws ArithmeticException if numeric overflow occurs"
   {:arglists (quote (["java.time.YearMonth" "java.time.temporal.Temporal"
                       "java.time.temporal.TemporalUnit"]))}
   (^long
@@ -120,11 +137,13 @@
    (.until this end-exclusive unit)))
 
 (defn from
+  "Obtains an instance of {@code YearMonth} from a temporal object.\n <p>\n This obtains a year-month based on the specified temporal.\n A {@code TemporalAccessor} represents an arbitrary set of date and time information,\n which this factory converts to an instance of {@code YearMonth}.\n <p>\n The conversion extracts the {@link ChronoField#YEAR YEAR} and\n {@link ChronoField#MONTH_OF_YEAR MONTH_OF_YEAR} fields.\n The extraction is only permitted if the temporal object has an ISO\n chronology, or can be converted to a {@code LocalDate}.\n <p>\n This method matches the signature of the functional interface {@link TemporalQuery}\n allowing it to be used as a query via method reference, {@code YearMonth::from}.\n\n @param temporal  the temporal object to convert, not null\n @return the year-month, not null\n @throws DateTimeException if unable to convert to a {@code YearMonth}"
   {:arglists (quote (["java.time.temporal.TemporalAccessor"]))}
   (^js/JSJoda.YearMonth [^js/JSJoda.TemporalAccessor temporal]
    (js-invoke java.time.YearMonth "from" temporal)))
 
 (defn is-after
+  "Checks if this year-month is after the specified year-month.\n\n @param other  the other year-month to compare to, not null\n @return true if this is after the specified year-month"
   {:arglists (quote (["java.time.YearMonth" "java.time.YearMonth"]))}
   (^boolean [^js/JSJoda.YearMonth this ^js/JSJoda.YearMonth other]
    (.isAfter this other)))
@@ -136,6 +155,7 @@
   (^boolean [this arg0] (.isSupported ^js/JSJoda.YearMonth this arg0)))
 
 (defn minus-years
+  "Returns a copy of this {@code YearMonth} with the specified number of years subtracted.\n <p>\n This instance is immutable and unaffected by this method call.\n\n @param yearsToSubtract  the years to subtract, may be negative\n @return a {@code YearMonth} based on this year-month with the years subtracted, not null\n @throws DateTimeException if the result exceeds the supported range"
   {:arglists (quote (["java.time.YearMonth" "long"]))}
   (^js/JSJoda.YearMonth [^js/JSJoda.YearMonth this ^long years-to-subtract]
    (.minusYears this years-to-subtract)))
@@ -151,10 +171,12 @@
    (js-invoke java.time.YearMonth "parse" text formatter)))
 
 (defn hash-code
+  "A hash code for this year-month.\n\n @return a suitable hash code"
   {:arglists (quote (["java.time.YearMonth"]))}
   (^int [^js/JSJoda.YearMonth this] (.hashCode this)))
 
 (defn adjust-into
+  "Adjusts the specified temporal object to have this year-month.\n <p>\n This returns a temporal object of the same observable type as the input\n with the year and month changed to be the same as this.\n <p>\n The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)}\n passing {@link ChronoField#PROLEPTIC_MONTH} as the field.\n If the specified temporal object does not use the ISO calendar system then\n a {@code DateTimeException} is thrown.\n <p>\n In most cases, it is clearer to reverse the calling pattern by using\n {@link Temporal#with(TemporalAdjuster)}:\n <pre>\n   // these two lines are equivalent, but the second approach is recommended\n   temporal = thisYearMonth.adjustInto(temporal);\n   temporal = temporal.with(thisYearMonth);\n </pre>\n <p>\n This instance is immutable and unaffected by this method call.\n\n @param temporal  the target object to be adjusted, not null\n @return the adjusted object, not null\n @throws DateTimeException if unable to make the adjustment\n @throws ArithmeticException if numeric overflow occurs"
   {:arglists (quote (["java.time.YearMonth" "java.time.temporal.Temporal"]))}
   (^js/JSJoda.Temporal [^js/JSJoda.YearMonth this ^js/JSJoda.Temporal temporal]
    (.adjustInto this temporal)))
@@ -177,30 +199,36 @@
   (^js/JSJoda.YearMonth [arg0] (js-invoke java.time.YearMonth "now" arg0)))
 
 (defn get-month-value
+  "Gets the month-of-year field from 1 to 12.\n <p>\n This method returns the month as an {@code int} from 1 to 12.\n Application code is frequently clearer if the enum {@link Month}\n is used by calling {@link #getMonth()}.\n\n @return the month-of-year, from 1 to 12\n @see #getMonth()"
   {:arglists (quote (["java.time.YearMonth"]))}
   (^int [^js/JSJoda.YearMonth this] (.monthValue this)))
 
 (defn compare-to
+  "Compares this year-month to another year-month.\n <p>\n The comparison is based first on the value of the year, then on the value of the month.\n It is \"consistent with equals\", as defined by {@link Comparable}.\n\n @param other  the other year-month to compare to, not null\n @return the comparator value, negative if less, positive if greater"
   {:arglists (quote (["java.time.YearMonth" "java.time.YearMonth"]))}
   (^int [^js/JSJoda.YearMonth this ^js/JSJoda.YearMonth other]
    (.compareTo this other)))
 
 (defn get-month
+  "Gets the month-of-year field using the {@code Month} enum.\n <p>\n This method returns the enum {@link Month} for the month.\n This avoids confusion as to what {@code int} values mean.\n If you need access to the primitive {@code int} value then the enum\n provides the {@link Month#getValue() int value}.\n\n @return the month-of-year, not null\n @see #getMonthValue()"
   {:arglists (quote (["java.time.YearMonth"]))}
   (^js/JSJoda.Month [^js/JSJoda.YearMonth this] (.month this)))
 
 (defn get
+  "Gets the value of the specified field from this year-month as an {@code int}.\n <p>\n This queries this year-month for the value of the specified field.\n The returned value will always be within the valid range of values for the field.\n If it is not possible to return the value, because the field is not supported\n or for some other reason, an exception is thrown.\n <p>\n If the field is a {@link ChronoField} then the query is implemented here.\n The {@link #isSupported(TemporalField) supported fields} will return valid\n values based on this year-month, except {@code PROLEPTIC_MONTH} which is too\n large to fit in an {@code int} and throw a {@code DateTimeException}.\n All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.\n <p>\n If the field is not a {@code ChronoField}, then the result of this method\n is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}\n passing {@code this} as the argument. Whether the value can be obtained,\n and what the value represents, is determined by the field.\n\n @param field  the field to get, not null\n @return the value for the field\n @throws DateTimeException if a value for the field cannot be obtained or\n         the value is outside the range of valid values for the field\n @throws UnsupportedTemporalTypeException if the field is not supported or\n         the range of values exceeds an {@code int}\n @throws ArithmeticException if numeric overflow occurs"
   {:arglists (quote (["java.time.YearMonth"
                       "java.time.temporal.TemporalField"]))}
   (^int [^js/JSJoda.YearMonth this ^js/JSJoda.TemporalField field]
    (.get this field)))
 
 (defn equals
+  "Checks if this year-month is equal to another year-month.\n <p>\n The comparison is based on the time-line position of the year-months.\n\n @param obj  the object to check, null returns false\n @return true if this is equal to the other year-month"
   {:arglists (quote (["java.time.YearMonth" "java.lang.Object"]))}
   (^boolean [^js/JSJoda.YearMonth this ^java.lang.Object obj]
    (.equals this obj)))
 
 (defn format
+  "Formats this year-month using the specified formatter.\n <p>\n This year-month will be passed to the formatter to produce a string.\n\n @param formatter  the formatter to use, not null\n @return the formatted year-month string, not null\n @throws DateTimeException if an error occurs during printing"
   {:arglists (quote (["java.time.YearMonth"
                       "java.time.format.DateTimeFormatter"]))}
   (^java.lang.String
@@ -208,6 +236,7 @@
    (.format this formatter)))
 
 (defn plus-years
+  "Returns a copy of this {@code YearMonth} with the specified number of years added.\n <p>\n This instance is immutable and unaffected by this method call.\n\n @param yearsToAdd  the years to add, may be negative\n @return a {@code YearMonth} based on this year-month with the years added, not null\n @throws DateTimeException if the result exceeds the supported range"
   {:arglists (quote (["java.time.YearMonth" "long"]))}
   (^js/JSJoda.YearMonth [^js/JSJoda.YearMonth this ^long years-to-add]
    (.plusYears this years-to-add)))

@@ -158,7 +158,8 @@
                 ~@(mapcat
                   (fn [^Method method]
                     (let [param-names (->> (method-fqn method)
-                                           (get metadata/param-names)
+                                           (get metadata/java-time-metadata)
+                                           (:params)
                                            (mapv (comp symbol camel->kebab)))]
                       (assert (= (count arg-vec) (count param-names)) (method-fqn method))
                       `[(and ~@(map (fn [sym ^Class klz]
@@ -192,7 +193,8 @@
         par (parameter-types method)
         static? (method-static? method)
         param-names (->> (method-fqn method)
-                         (get metadata/param-names)
+                         (get metadata/java-time-metadata)
+                         (:params)
                          (mapv (comp symbol camel->kebab)))
         _ (assert (= (count par) (count param-names)) (method-fqn method))
         arg-vec (into (if static? [] [(tagged 'this klazz ext)])

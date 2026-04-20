@@ -8,7 +8,7 @@
   (:require [clojure.java.io :as io]
             [clojure.string :as str])
   (:import (com.sun.source.tree ClassTree CompilationUnitTree MethodTree Tree$Kind VariableTree)
-           (com.sun.source.util JavacTask TreePathScanner Trees)
+           (com.sun.source.util DocTrees JavacTask TreePathScanner Trees)
            (java.io File PrintWriter StringWriter)
            (java.net URI)
            (java.util.zip ZipEntry ZipFile)
@@ -44,9 +44,9 @@
       "java.time.temporal.TemporalField.adjustInto(java.time.temporal.Temporal,long)"
       fqn)))
 
-(defn get-method-params
+(defn get-method-metadata
   "Parse Java source via JavacTask + TreePathScanner and return map of
-  method/constructor name → vector of parameter-names."
+  method/constructor name → javadoc + vector of parameter-names."
   [^String code]
   (let [compiler (ToolProvider/getSystemJavaCompiler)]
     (with-open [fm (.getStandardFileManager compiler nil nil nil)]
@@ -59,13 +59,15 @@
             ^CompilationUnitTree unit (first (.parse task))
             _ (.analyze task)
             trees (Trees/instance task)
+            doc-trees (DocTrees/instance task)
             ^TreePathScanner scanner (proxy [TreePathScanner] []
                                        (visitMethod [^MethodTree node ctx]
                                          (let [{:keys [result package cname]} ctx
                                                path (.getCurrentPath ^TreePathScanner this)
                                                fqn (method-fqn package cname (str (.getElement trees path)))
+                                               doc (.getDocComment doc-trees path)
                                                params (mapv #(str (.getName ^VariableTree %)) (.getParameters node))]
-                                           (swap! result assoc fqn params))))
+                                           (swap! result assoc fqn {:doc doc, :params params}))))
             result (atom {})]
         (doseq [^ClassTree td (.getTypeDecls unit)
                 :when (instance? ClassTree td)
@@ -76,14 +78,14 @@
                                :cname cname})
           (when (= Tree$Kind/ENUM (.getKind td))
             (swap! result assoc
-                   (method-fqn package cname "values()") []
-                   (method-fqn package cname "valueOf(java.lang.String)") ["name"])))
+                   (method-fqn package cname "values()") {:doc nil, :params []}
+                   (method-fqn package cname "valueOf(java.lang.String)") {:doc nil, :params ["name"]})))
         (into (sorted-map) @result)))))
 
-(defn get-java-time-params
-  "Return a single map of fully qualified method signature → parameter-names
+(defn get-java-time-metadata
+  "Return a single map of fully qualified method signature → javadoc + parameter-names
   for all methods/constructors across the java.time package."
-  ([] (get-java-time-params (io/file (System/getProperty "java.home") "lib" "src.zip")))
+  ([] (get-java-time-metadata (io/file (System/getProperty "java.home") "lib" "src.zip")))
   ([^File f]
    (with-open [zf (ZipFile. f)]
      (->> (enumeration-seq (.entries zf))
@@ -94,9 +96,9 @@
                                (or (str/starts-with? n "java/time/")
                                    ;; some methods inherited from Enum, e.g., Month
                                    (= "java/lang/Enum.java" n)))
-                      (get-method-params (slurp (.getInputStream zf e)))))))
+                      (get-method-metadata (slurp (.getInputStream zf e)))))))
           (mapcat seq)
           (into (sorted-map))))))
 
-(def param-names
-  (get-java-time-params (io/file (System/getProperty "java.home") ".." "src.zip")))
+(def java-time-metadata
+  (get-java-time-metadata (io/file (System/getProperty "java.home") ".." "src.zip")))

@@ -111,7 +111,10 @@
     (with-open [w (io/writer f)]
       (binding [*out* w]
         (gen-for-class c sub-p ext)))
-    (zprint/zprint-file f file-name f {:parse {:interpose "\n\n"}})))
+    (zprint/zprint-file f file-name f {:parse {:interpose "\n\n"}})
+    (spit f (-> (slurp f)
+                (string/replace df/newline-placeholder "\n")
+                (string/replace #"\h*<p>" "")))))
 
 (defn generate-library-code! []
   ;todo - chrono and zone packages. needs cljs.java-time also

@@ -9,6 +9,10 @@
 (set! *warn-on-reflection* true)
 (set! *print-meta* true)
 
+(defonce newline-placeholder
+  ;; Workaround to print newlines as a real newline in a file.
+  (str (random-uuid)))
+
 (defn class-methods [^Class class]
   (seq (.getMethods class)))
 
@@ -221,6 +225,7 @@
                    (get metadata/java-time-metadata)
                    (:doc)
                    (string/trim)
+                   (#(string/escape % {\newline newline-placeholder}))
                    (vector)))
        {:arglists '~(map (comp (partial into (if static? [] [(.getName klazz)]))
                            #(map (fn [x] (.getName x)) %)

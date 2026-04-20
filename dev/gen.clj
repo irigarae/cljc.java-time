@@ -5,7 +5,8 @@
             [defwrapper :as df]
             [clojure.string :as string]
             [camel-snake-kebab.core :as csk]
-            [clojure.java.io :as io])
+            [clojure.java.io :as io]
+            [zprint.core :as zprint])
   (:import [java.time Period
                       LocalDate
                       LocalTime
@@ -104,11 +105,13 @@
     (println)))
 
 (defn get-and-write [c ext sub-p]
-  (let [f (str "./src/cljc/java_time/" (when sub-p (str sub-p "/")) (csk/->snake_case (.getSimpleName c)) "." (name ext))
-        _ (io/make-parents f)
-        w (io/writer f)]
-    (binding [*out* w]
-      (gen-for-class c sub-p ext))))
+  (let [file-name (str (csk/->snake_case (.getSimpleName c)) "." (name ext))
+        f (str "./src/cljc/java_time/" (when sub-p (str sub-p "/")) file-name)]
+    (io/make-parents f)
+    (with-open [w (io/writer f)]
+      (binding [*out* w]
+        (gen-for-class c sub-p ext)))
+    (zprint/zprint-file f file-name f {:parse {:interpose "\n\n"}})))
 
 (defn generate-library-code! []
   ;todo - chrono and zone packages. needs cljs.java-time also

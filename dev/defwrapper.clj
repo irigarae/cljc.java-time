@@ -214,7 +214,7 @@
 (defn method-wrapper-form [fname klazz methods ext helpful?]
   (let [arities (into (sorted-map) (group-by parameter-count methods))
         static? (method-static? (first methods))]
-    `(defn ~fname
+    `(~(symbol 'defn) ~fname
        {:arglists '~(map (comp (partial into (if static? [] [(.getName klazz)]))
                            #(map (fn [x] (.getName x)) %)
                            parameter-types)

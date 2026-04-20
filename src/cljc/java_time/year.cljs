@@ -7,7 +7,7 @@
 (defn plus {:arglists (quote (["java.time.Year" "java.time.temporal.TemporalAmount"] ["java.time.Year" "long" "java.time.temporal.TemporalUnit"]))} (^js/JSJoda.Year [^js/JSJoda.Year this ^js/JSJoda.TemporalAmount amount-to-add] (.plus this amount-to-add)) (^js/JSJoda.Year [^js/JSJoda.Year this ^long amount-to-add ^js/JSJoda.TemporalUnit unit] (.plus this amount-to-add unit)))
 (defn is-valid-month-day {:arglists (quote (["java.time.Year" "java.time.MonthDay"]))} (^boolean [^js/JSJoda.Year this ^js/JSJoda.MonthDay month-day] (.isValidMonthDay this month-day)))
 (defn query {:arglists (quote (["java.time.Year" "java.time.temporal.TemporalQuery"]))} (^java.lang.Object [^js/JSJoda.Year this ^js/JSJoda.TemporalQuery query] (.query this query)))
-^{:line 88, :column 16} (defn is-leap {:arglists ^{:line 88, :column 41} (quote ^{:line 88, :column 48} (["long"]))} ^{:line 89, :column 18} (^java.lang.Boolean [^long year] ^{:line 89, :column 51} (. java.time.Year isLeap year)))
+(defn is-leap {:arglists (quote (["long"]))} (^java.lang.Boolean [^long year] (. java.time.Year isLeap year)))
 (defn to-string {:arglists (quote (["java.time.Year"]))} (^java.lang.String [^js/JSJoda.Year this] (.toString this)))
 (defn is-before {:arglists (quote (["java.time.Year" "java.time.Year"]))} (^boolean [^js/JSJoda.Year this ^js/JSJoda.Year other] (.isBefore this other)))
 (defn minus {:arglists (quote (["java.time.Year" "java.time.temporal.TemporalAmount"] ["java.time.Year" "long" "java.time.temporal.TemporalUnit"]))} (^js/JSJoda.Year [^js/JSJoda.Year this ^js/JSJoda.TemporalAmount amount-to-subtract] (.minus this amount-to-subtract)) (^js/JSJoda.Year [^js/JSJoda.Year this ^long amount-to-subtract ^js/JSJoda.TemporalUnit unit] (.minus this amount-to-subtract unit)))

@@ -7,86 +7,156 @@
 (def standard java.time.format.DecimalStyle/STANDARD)
 
 (defn with-decimal-separator
-  "Returns a copy of the info with a new character that represents the decimal point.\n <p>\n The character used to represent a decimal point may vary by culture.\n This method specifies the character to use.\n\n @param decimalSeparator  the character for the decimal point\n @return  a copy with a new character that represents the decimal point, not null"
+  "Returns a copy of the info with a new character that represents the decimal point.
+
+ The character used to represent a decimal point may vary by culture.
+ This method specifies the character to use.
+
+ @param decimalSeparator  the character for the decimal point
+ @return  a copy with a new character that represents the decimal point, not null"
   {:arglists (quote (["java.time.format.DecimalStyle" "char"]))}
   (^java.time.format.DecimalStyle
    [^java.time.format.DecimalStyle this ^java.lang.Character decimal-separator]
    (.withDecimalSeparator this decimal-separator)))
 
 (defn of
-  "Obtains the DecimalStyle for the specified locale.\n <p>\n This method provides access to locale sensitive decimal style symbols.\n\n @param locale  the locale, not null\n @return the decimal style, not null"
+  "Obtains the DecimalStyle for the specified locale.
+
+ This method provides access to locale sensitive decimal style symbols.
+
+ @param locale  the locale, not null
+ @return the decimal style, not null"
   {:arglists (quote (["java.util.Locale"]))}
   (^java.time.format.DecimalStyle [^java.util.Locale locale]
    (java.time.format.DecimalStyle/of locale)))
 
 (defn with-positive-sign
-  "Returns a copy of the info with a new character that represents the positive sign.\n <p>\n The character used to represent a positive number may vary by culture.\n This method specifies the character to use.\n\n @param positiveSign  the character for the positive sign\n @return  a copy with a new character that represents the positive sign, not null"
+  "Returns a copy of the info with a new character that represents the positive sign.
+
+ The character used to represent a positive number may vary by culture.
+ This method specifies the character to use.
+
+ @param positiveSign  the character for the positive sign
+ @return  a copy with a new character that represents the positive sign, not null"
   {:arglists (quote (["java.time.format.DecimalStyle" "char"]))}
   (^java.time.format.DecimalStyle
    [^java.time.format.DecimalStyle this ^java.lang.Character positive-sign]
    (.withPositiveSign this positive-sign)))
 
 (defn get-decimal-separator
-  "Gets the character that represents the decimal point.\n <p>\n The character used to represent a decimal point may vary by culture.\n This method specifies the character to use.\n\n @return the character for the decimal point"
+  "Gets the character that represents the decimal point.
+
+ The character used to represent a decimal point may vary by culture.
+ This method specifies the character to use.
+
+ @return the character for the decimal point"
   {:arglists (quote (["java.time.format.DecimalStyle"]))}
   (^java.lang.Character [^java.time.format.DecimalStyle this]
    (.getDecimalSeparator this)))
 
 (defn of-default-locale
-  "Obtains the DecimalStyle for the default\n {@link java.util.Locale.Category#FORMAT FORMAT} locale.\n <p>\n This method provides access to locale sensitive decimal style symbols.\n <p>\n This is equivalent to calling\n {@link #of(Locale)\n     of(Locale.getDefault(Locale.Category.FORMAT))}.\n\n @see java.util.Locale.Category#FORMAT\n @return the decimal style, not null"
+  "Obtains the DecimalStyle for the default
+ {@link java.util.Locale.Category#FORMAT FORMAT} locale.
+
+ This method provides access to locale sensitive decimal style symbols.
+
+ This is equivalent to calling
+ {@link #of(Locale)
+     of(Locale.getDefault(Locale.Category.FORMAT))}.
+
+ @see java.util.Locale.Category#FORMAT
+ @return the decimal style, not null"
   {:arglists (quote ([]))}
   (^java.time.format.DecimalStyle []
    (java.time.format.DecimalStyle/ofDefaultLocale)))
 
 (defn with-zero-digit
-  "Returns a copy of the info with a new character that represents zero.\n <p>\n The character used to represent digits may vary by culture.\n This method specifies the zero character to use, which implies the characters for one to nine.\n\n @param zeroDigit  the character for zero\n @return  a copy with a new character that represents zero, not null"
+  "Returns a copy of the info with a new character that represents zero.
+
+ The character used to represent digits may vary by culture.
+ This method specifies the zero character to use, which implies the characters for one to nine.
+
+ @param zeroDigit  the character for zero
+ @return  a copy with a new character that represents zero, not null"
   {:arglists (quote (["java.time.format.DecimalStyle" "char"]))}
   (^java.time.format.DecimalStyle
    [^java.time.format.DecimalStyle this ^java.lang.Character zero-digit]
    (.withZeroDigit this zero-digit)))
 
 (defn to-string
-  "Returns a string describing this DecimalStyle.\n\n @return a string description, not null"
+  "Returns a string describing this DecimalStyle.
+
+ @return a string description, not null"
   {:arglists (quote (["java.time.format.DecimalStyle"]))}
   (^java.lang.String [^java.time.format.DecimalStyle this] (.toString this)))
 
 (defn get-zero-digit
-  "Gets the character that represents zero.\n <p>\n The character used to represent digits may vary by culture.\n This method specifies the zero character to use, which implies the characters for one to nine.\n\n @return the character for zero"
+  "Gets the character that represents zero.
+
+ The character used to represent digits may vary by culture.
+ This method specifies the zero character to use, which implies the characters for one to nine.
+
+ @return the character for zero"
   {:arglists (quote (["java.time.format.DecimalStyle"]))}
   (^java.lang.Character [^java.time.format.DecimalStyle this]
    (.getZeroDigit this)))
 
 (defn with-negative-sign
-  "Returns a copy of the info with a new character that represents the negative sign.\n <p>\n The character used to represent a negative number may vary by culture.\n This method specifies the character to use.\n\n @param negativeSign  the character for the negative sign\n @return  a copy with a new character that represents the negative sign, not null"
+  "Returns a copy of the info with a new character that represents the negative sign.
+
+ The character used to represent a negative number may vary by culture.
+ This method specifies the character to use.
+
+ @param negativeSign  the character for the negative sign
+ @return  a copy with a new character that represents the negative sign, not null"
   {:arglists (quote (["java.time.format.DecimalStyle" "char"]))}
   (^java.time.format.DecimalStyle
    [^java.time.format.DecimalStyle this ^java.lang.Character negative-sign]
    (.withNegativeSign this negative-sign)))
 
 (defn get-available-locales
-  "Lists all the locales that are supported.\n <p>\n The locale 'en_US' will always be present.\n\n @return a Set of Locales for which localization is supported"
+  "Lists all the locales that are supported.
+
+ The locale 'en_US' will always be present.
+
+ @return a Set of Locales for which localization is supported"
   {:arglists (quote ([]))}
   (^java.util.Set [] (java.time.format.DecimalStyle/getAvailableLocales)))
 
 (defn get-positive-sign
-  "Gets the character that represents the positive sign.\n <p>\n The character used to represent a positive number may vary by culture.\n This method specifies the character to use.\n\n @return the character for the positive sign"
+  "Gets the character that represents the positive sign.
+
+ The character used to represent a positive number may vary by culture.
+ This method specifies the character to use.
+
+ @return the character for the positive sign"
   {:arglists (quote (["java.time.format.DecimalStyle"]))}
   (^java.lang.Character [^java.time.format.DecimalStyle this]
    (.getPositiveSign this)))
 
 (defn hash-code
-  "A hash code for this DecimalStyle.\n\n @return a suitable hash code"
+  "A hash code for this DecimalStyle.
+
+ @return a suitable hash code"
   {:arglists (quote (["java.time.format.DecimalStyle"]))}
   (^java.lang.Integer [^java.time.format.DecimalStyle this] (.hashCode this)))
 
 (defn get-negative-sign
-  "Gets the character that represents the negative sign.\n <p>\n The character used to represent a negative number may vary by culture.\n This method specifies the character to use.\n\n @return the character for the negative sign"
+  "Gets the character that represents the negative sign.
+
+ The character used to represent a negative number may vary by culture.
+ This method specifies the character to use.
+
+ @return the character for the negative sign"
   {:arglists (quote (["java.time.format.DecimalStyle"]))}
   (^java.lang.Character [^java.time.format.DecimalStyle this]
    (.getNegativeSign this)))
 
 (defn equals
-  "Checks if this DecimalStyle is equal to another DecimalStyle.\n\n @param obj  the object to check, null returns false\n @return true if this is equal to the other date"
+  "Checks if this DecimalStyle is equal to another DecimalStyle.
+
+ @param obj  the object to check, null returns false
+ @return true if this is equal to the other date"
   {:arglists (quote (["java.time.format.DecimalStyle" "java.lang.Object"]))}
   (^java.lang.Boolean
    [^java.time.format.DecimalStyle this ^java.lang.Object obj]

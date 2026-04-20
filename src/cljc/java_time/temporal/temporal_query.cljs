@@ -6,7 +6,42 @@
             [java.time.temporal :refer [TemporalQuery]]))
 
 (defn query-from
-  "Queries the specified temporal object.\n <p>\n This queries the specified temporal object to return an object using the logic\n encapsulated in the implementing class.\n Examples might be a query that checks if the date is the day before February 29th\n in a leap year, or calculates the number of days to your next birthday.\n <p>\n There are two equivalent ways of using this method.\n The first is to invoke this method directly.\n The second is to use {@link TemporalAccessor#query(TemporalQuery)}:\n <pre>\n   // these two lines are equivalent, but the second approach is recommended\n   temporal = thisQuery.queryFrom(temporal);\n   temporal = temporal.query(thisQuery);\n </pre>\n It is recommended to use the second approach, {@code query(TemporalQuery)},\n as it is a lot clearer to read in code.\n\n @implSpec\n The implementation must take the input object and query it.\n The implementation defines the logic of the query and is responsible for\n documenting that logic.\n It may use any method on {@code TemporalAccessor} to determine the result.\n The input object must not be altered.\n <p>\n The input temporal object may be in a calendar system other than ISO.\n Implementations may choose to document compatibility with other calendar systems,\n or reject non-ISO temporal objects by {@link TemporalQueries#chronology() querying the chronology}.\n <p>\n This method may be called from multiple threads in parallel.\n It must be thread-safe when invoked.\n\n @param temporal  the temporal object to query, not null\n @return the queried value, may return null to indicate not found\n @throws DateTimeException if unable to query\n @throws ArithmeticException if numeric overflow occurs"
+  "Queries the specified temporal object.
+
+ This queries the specified temporal object to return an object using the logic
+ encapsulated in the implementing class.
+ Examples might be a query that checks if the date is the day before February 29th
+ in a leap year, or calculates the number of days to your next birthday.
+
+ There are two equivalent ways of using this method.
+ The first is to invoke this method directly.
+ The second is to use {@link TemporalAccessor#query(TemporalQuery)}:
+ <pre>
+   // these two lines are equivalent, but the second approach is recommended
+   temporal = thisQuery.queryFrom(temporal);
+   temporal = temporal.query(thisQuery);
+ </pre>
+ It is recommended to use the second approach, {@code query(TemporalQuery)},
+ as it is a lot clearer to read in code.
+
+ @implSpec
+ The implementation must take the input object and query it.
+ The implementation defines the logic of the query and is responsible for
+ documenting that logic.
+ It may use any method on {@code TemporalAccessor} to determine the result.
+ The input object must not be altered.
+
+ The input temporal object may be in a calendar system other than ISO.
+ Implementations may choose to document compatibility with other calendar systems,
+ or reject non-ISO temporal objects by {@link TemporalQueries#chronology() querying the chronology}.
+
+ This method may be called from multiple threads in parallel.
+ It must be thread-safe when invoked.
+
+ @param temporal  the temporal object to query, not null
+ @return the queried value, may return null to indicate not found
+ @throws DateTimeException if unable to query
+ @throws ArithmeticException if numeric overflow occurs"
   {:arglists (quote (["java.time.temporal.TemporalQuery"
                       "java.time.temporal.TemporalAccessor"]))}
   (^java.lang.Object

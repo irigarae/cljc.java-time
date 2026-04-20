@@ -8,8 +8,7 @@
                        :extra-deps  {medley/medley                       {:mvn/version "0.8.4"}
                                      camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.0"}
                                      org.clojure/tools.namespace         {:mvn/version "0.2.11"}
-                                     org.clojure/clojure                 {:mvn/version "1.11.1"}
-                                     }}
+                                     org.clojure/clojure                 {:mvn/version "1.12.4"}}}
            :bb        {:extra-deps  {tubular/tubular {:mvn/version "1.3.0"}}
                        :extra-paths ["dev" "test"]}
            :test      {:extra-paths ["test"]

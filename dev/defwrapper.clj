@@ -126,13 +126,13 @@
   (let [tag (ensure-boxed-long-double tag)]
     (cond
       (= 'long tag)
-      `(long ~value)
+      `(~(symbol 'long) ~value)
 
       (= 'double tag)
-      `(double ~value)
+      `(~(symbol 'double) ~value)
 
       (= 'java.lang.Integer tag)
-      `(int ~value)
+      `(~(symbol 'int) ~value)
 
       :else
       (vary-meta value assoc :tag (.getName tag)))))
@@ -158,29 +158,29 @@
              `(~@method-call
                 ~@(when-not static? [(tagged this klazz ext)])
                 ~@arg-vec)
-             `(cond
-                ~@(mapcat
+             `(~(symbol 'cond)
+               ~@(mapcat
                   (fn [^Method method]
                     (let [param-names (->> (method-fqn method)
                                            (get metadata/java-time-metadata)
                                            (:params)
                                            (mapv (comp symbol camel->kebab)))]
                       (assert (= (count arg-vec) (count param-names)) (method-fqn method))
-                      `[(and ~@(map (fn [sym ^Class klz]
-                                      (if (.isArray klz)
-                                        `(= ~(.getComponentType klz)
-                                            (.getComponentType (class ~sym)))
-                                        `(instance? ~(ensure-boxed (class-name klz)) ~sym)))
-                                    arg-vec
-                                    (parameter-types method)))
-                        (let [~@(mapcat (fn [pn sym ^Class klz]
-                                          [pn (tagged-local sym klz)])
-                                        param-names
-                                        arg-vec
-                                        (parameter-types method))]
-                          (~@method-call
-                           ~@(when-not static? [(tagged this klazz ext)])
-                           ~@param-names))]))
+                      `[(~(symbol 'and) ~@(map (fn [sym ^Class klz]
+                                                 (if (.isArray klz)
+                                                   `(~(symbol '=) ~(.getComponentType klz)
+                                                     (.getComponentType (~(symbol 'class) ~sym)))
+                                                   `(~(symbol 'instance?) ~(ensure-boxed (class-name klz)) ~sym)))
+                                               arg-vec
+                                               (parameter-types method)))
+                        (~(symbol 'let) [~@(mapcat (fn [pn sym ^Class klz]
+                                                     [pn (tagged-local sym klz)])
+                                                   param-names
+                                                   arg-vec
+                                                   (parameter-types method))]
+                         (~@method-call
+                          ~@(when-not static? [(tagged this klazz ext)])
+                          ~@param-names))]))
                   methods)
                 :else (throw (IllegalArgumentException. "no corresponding java.time method with these args"))))
         bod (if helpful?

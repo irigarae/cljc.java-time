@@ -5,19 +5,34 @@
             [goog.object]
             [java.time.format :refer [TextStyle]]))
 
-(def short (goog.object/get java.time.format.TextStyle "SHORT"))
+(def short
+  "Short text, typically an abbreviation.
+ For example, day-of-week Monday might output \"Mon\"."
+  (goog.object/get java.time.format.TextStyle "SHORT"))
 
 (def full-standalone
+  "Full text for stand-alone use, typically the full description.
+ For example, day-of-week Monday might output \"Monday\"."
   (goog.object/get java.time.format.TextStyle "FULL_STANDALONE"))
 
-(def full (goog.object/get java.time.format.TextStyle "FULL"))
+(def full
+  "Full text, typically the full description.
+ For example, day-of-week Monday might output \"Monday\"."
+  (goog.object/get java.time.format.TextStyle "FULL"))
 
 (def short-standalone
+  "Short text for stand-alone use, typically an abbreviation.
+ For example, day-of-week Monday might output \"Mon\"."
   (goog.object/get java.time.format.TextStyle "SHORT_STANDALONE"))
 
-(def narrow (goog.object/get java.time.format.TextStyle "NARROW"))
+(def narrow
+  "Narrow text, typically a single letter.
+ For example, day-of-week Monday might output \"M\"."
+  (goog.object/get java.time.format.TextStyle "NARROW"))
 
 (def narrow-standalone
+  "Narrow text for stand-alone use, typically a single letter.
+ For example, day-of-week Monday might output \"M\"."
   (goog.object/get java.time.format.TextStyle "NARROW_STANDALONE"))
 
 (defn values

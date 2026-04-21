@@ -4,17 +4,35 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time.format TextStyle]))
 
-(def short java.time.format.TextStyle/SHORT)
+(def short
+  "Short text, typically an abbreviation.
+ For example, day-of-week Monday might output \"Mon\"."
+  java.time.format.TextStyle/SHORT)
 
-(def full-standalone java.time.format.TextStyle/FULL_STANDALONE)
+(def full-standalone
+  "Full text for stand-alone use, typically the full description.
+ For example, day-of-week Monday might output \"Monday\"."
+  java.time.format.TextStyle/FULL_STANDALONE)
 
-(def full java.time.format.TextStyle/FULL)
+(def full
+  "Full text, typically the full description.
+ For example, day-of-week Monday might output \"Monday\"."
+  java.time.format.TextStyle/FULL)
 
-(def short-standalone java.time.format.TextStyle/SHORT_STANDALONE)
+(def short-standalone
+  "Short text for stand-alone use, typically an abbreviation.
+ For example, day-of-week Monday might output \"Mon\"."
+  java.time.format.TextStyle/SHORT_STANDALONE)
 
-(def narrow java.time.format.TextStyle/NARROW)
+(def narrow
+  "Narrow text, typically a single letter.
+ For example, day-of-week Monday might output \"M\"."
+  java.time.format.TextStyle/NARROW)
 
-(def narrow-standalone java.time.format.TextStyle/NARROW_STANDALONE)
+(def narrow-standalone
+  "Narrow text for stand-alone use, typically a single letter.
+ For example, day-of-week Monday might output \"M\"."
+  java.time.format.TextStyle/NARROW_STANDALONE)
 
 (defn values
   {:arglists (quote ([]))}

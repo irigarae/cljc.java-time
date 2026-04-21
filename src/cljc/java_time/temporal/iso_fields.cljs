@@ -12,9 +12,11 @@
   (goog.object/get java.time.temporal.IsoFields "WEEK_OF_WEEK_BASED_YEAR"))
 
 (def quarter-years
+  "Unit that represents the concept of a quarter-year."
   (goog.object/get java.time.temporal.IsoFields "QUARTER_YEARS"))
 
 (def week-based-years
+  "Unit that represents the concept of a week-based-year."
   (goog.object/get java.time.temporal.IsoFields "WEEK_BASED_YEARS"))
 
 (def day-of-quarter

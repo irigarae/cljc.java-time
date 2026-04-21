@@ -5,9 +5,21 @@
             [goog.object]
             [java.time :refer [OffsetDateTime]]))
 
-(def min (goog.object/get java.time.OffsetDateTime "MIN"))
+(def min
+  "The minimum supported {@code OffsetDateTime}, '-999999999-01-01T00:00:00+18:00'.
+ This is the local date-time of midnight at the start of the minimum date
+ in the maximum offset (larger offsets are earlier on the time-line).
+ This combines {@link LocalDateTime#MIN} and {@link ZoneOffset#MAX}.
+ This could be used by an application as a \"far past\" date-time."
+  (goog.object/get java.time.OffsetDateTime "MIN"))
 
-(def max (goog.object/get java.time.OffsetDateTime "MAX"))
+(def max
+  "The maximum supported {@code OffsetDateTime}, '+999999999-12-31T23:59:59.999999999-18:00'.
+ This is the local date-time just before midnight at the end of the maximum date
+ in the minimum offset (larger negative offsets are later on the time-line).
+ This combines {@link LocalDateTime#MAX} and {@link ZoneOffset#MIN}.
+ This could be used by an application as a \"far future\" date-time."
+  (goog.object/get java.time.OffsetDateTime "MAX"))
 
 (defn minus-minutes
   "Returns a copy of this {@code OffsetDateTime} with the specified number of minutes subtracted.

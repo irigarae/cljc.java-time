@@ -5,11 +5,31 @@
             [goog.object]
             [java.time :refer [Instant]]))
 
-(def min (goog.object/get java.time.Instant "MIN"))
+(def min
+  "The minimum supported {@code Instant}, '-1000000000-01-01T00:00Z'.
+ This could be used by an application as a \"far past\" instant.
 
-(def epoch (goog.object/get java.time.Instant "EPOCH"))
+ This is one year earlier than the minimum {@code LocalDateTime}.
+ This provides sufficient values to handle the range of {@code ZoneOffset}
+ which affect the instant in addition to the local date-time.
+ The value is also chosen such that the value of the year fits in
+ an {@code int}."
+  (goog.object/get java.time.Instant "MIN"))
 
-(def max (goog.object/get java.time.Instant "MAX"))
+(def epoch
+  "Constant for the 1970-01-01T00:00:00Z epoch instant."
+  (goog.object/get java.time.Instant "EPOCH"))
+
+(def max
+  "The maximum supported {@code Instant}, '1000000000-12-31T23:59:59.999999999Z'.
+ This could be used by an application as a \"far future\" instant.
+
+ This is one year later than the maximum {@code LocalDateTime}.
+ This provides sufficient values to handle the range of {@code ZoneOffset}
+ which affect the instant in addition to the local date-time.
+ The value is also chosen such that the value of the year fits in
+ an {@code int}."
+  (goog.object/get java.time.Instant "MAX"))
 
 (defn truncated-to
   "Returns a copy of this {@code Instant} truncated to the specified unit.

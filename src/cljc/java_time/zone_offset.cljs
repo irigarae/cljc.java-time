@@ -5,11 +5,17 @@
             [goog.object]
             [java.time :refer [ZoneOffset]]))
 
-(def max (goog.object/get java.time.ZoneOffset "MAX"))
+(def max
+  "Constant for the maximum supported offset."
+  (goog.object/get java.time.ZoneOffset "MAX"))
 
-(def min (goog.object/get java.time.ZoneOffset "MIN"))
+(def min
+  "Constant for the maximum supported offset."
+  (goog.object/get java.time.ZoneOffset "MIN"))
 
-(def utc (goog.object/get java.time.ZoneOffset "UTC"))
+(def utc
+  "The time-zone offset for UTC, with an ID of 'Z'."
+  (goog.object/get java.time.ZoneOffset "UTC"))
 
 (defn get-available-zone-ids
   "Gets the set of available zone IDs.

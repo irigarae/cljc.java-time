@@ -5,7 +5,11 @@
             [goog.object]
             [java.time.format :refer [DecimalStyle]]))
 
-(def standard (goog.object/get java.time.format.DecimalStyle "STANDARD"))
+(def standard
+  "The standard set of non-localized decimal style symbols.
+
+ This uses standard ASCII characters for zero, positive, negative and a dot for the decimal point."
+  (goog.object/get java.time.format.DecimalStyle "STANDARD"))
 
 (defn with-decimal-separator
   "Returns a copy of the info with a new character that represents the decimal point.

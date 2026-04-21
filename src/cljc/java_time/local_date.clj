@@ -4,9 +4,15 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time LocalDate]))
 
-(def max java.time.LocalDate/MAX)
+(def max
+  "The maximum supported {@code LocalDate}, '+999999999-12-31'.
+ This could be used by an application as a \"far future\" date."
+  java.time.LocalDate/MAX)
 
-(def min java.time.LocalDate/MIN)
+(def min
+  "The minimum supported {@code LocalDate}, '-999999999-01-01'.
+ This could be used by an application as a \"far past\" date."
+  java.time.LocalDate/MIN)
 
 (defn minus-weeks
   "Returns a copy of this {@code LocalDate} with the specified number of weeks subtracted.

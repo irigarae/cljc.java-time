@@ -5,7 +5,9 @@
             [goog.object]
             [java.time :refer [Duration]]))
 
-(def zero (goog.object/get java.time.Duration "ZERO"))
+(def zero
+  "Constant for a duration of zero."
+  (goog.object/get java.time.Duration "ZERO"))
 
 (defn minus-minutes
   "Returns a copy of this duration with the specified duration in minutes subtracted.

@@ -4,36 +4,390 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time.format DateTimeFormatter]))
 
-(def iso-local-time java.time.format.DateTimeFormatter/ISO_LOCAL_TIME)
+(def iso-local-time
+  "The ISO time formatter that formats or parses a time without an
+ offset, such as '10:15' or '10:15:30'.
 
-(def iso-ordinal-date java.time.format.DateTimeFormatter/ISO_ORDINAL_DATE)
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended local time format.
+ The format consists of:
+ <ul>
+ <li>Two digits for the {@link ChronoField#HOUR_OF_DAY hour-of-day}.
+  This is pre-padded by zero to ensure two digits.
+ <li>A colon
+ <li>Two digits for the {@link ChronoField#MINUTE_OF_HOUR minute-of-hour}.
+  This is pre-padded by zero to ensure two digits.
+ <li>If the second-of-minute is not available then the format is complete.
+ <li>A colon
+ <li>Two digits for the {@link ChronoField#SECOND_OF_MINUTE second-of-minute}.
+  This is pre-padded by zero to ensure two digits.
+ <li>If the nano-of-second is zero or not available then the format is complete.
+ <li>A decimal point
+ <li>One to nine digits for the {@link ChronoField#NANO_OF_SECOND nano-of-second}.
+  As many digits will be output as required.
+ </ul>
 
-(def iso-offset-date java.time.format.DateTimeFormatter/ISO_OFFSET_DATE)
+ The returned formatter has no override chronology or zone.
+ It uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_LOCAL_TIME)
 
-(def iso-time java.time.format.DateTimeFormatter/ISO_TIME)
+(def iso-ordinal-date
+  "The ISO date formatter that formats or parses the ordinal date
+ without an offset, such as '2012-337'.
 
-(def iso-local-date-time java.time.format.DateTimeFormatter/ISO_LOCAL_DATE_TIME)
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended ordinal date format.
+ The format consists of:
+ <ul>
+ <li>Four digits or more for the {@link ChronoField#YEAR year}.
+ Years in the range 0000 to 9999 will be pre-padded by zero to ensure four digits.
+ Years outside that range will have a prefixed positive or negative symbol.
+ <li>A dash
+ <li>Three digits for the {@link ChronoField#DAY_OF_YEAR day-of-year}.
+  This is pre-padded by zero to ensure three digits.
+ <li>If the offset is not available to format or parse then the format is complete.
+ <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds then
+  they will be handled even though this is not part of the ISO-8601 standard.
+  Parsing is case insensitive.
+ </ul>
 
-(def iso-instant java.time.format.DateTimeFormatter/ISO_INSTANT)
+ As this formatter has an optional element, it may be necessary to parse using
+ {@link DateTimeFormatter#parseBest}.
 
-(def rfc-1123-date-time java.time.format.DateTimeFormatter/RFC_1123_DATE_TIME)
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_ORDINAL_DATE)
 
-(def iso-date java.time.format.DateTimeFormatter/ISO_DATE)
+(def iso-offset-date
+  "The ISO date formatter that formats or parses a date with an
+ offset, such as '2011-12-03+01:00'.
 
-(def iso-week-date java.time.format.DateTimeFormatter/ISO_WEEK_DATE)
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended offset date format.
+ The format consists of:
+ <ul>
+ <li>The {@link #ISO_LOCAL_DATE}
+ <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds then
+  they will be handled even though this is not part of the ISO-8601 standard.
+  Parsing is case insensitive.
+ </ul>
 
-(def iso-offset-time java.time.format.DateTimeFormatter/ISO_OFFSET_TIME)
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_OFFSET_DATE)
 
-(def iso-local-date java.time.format.DateTimeFormatter/ISO_LOCAL_DATE)
+(def iso-time
+  "The ISO time formatter that formats or parses a time, with the
+ offset if available, such as '10:15', '10:15:30' or '10:15:30+01:00'.
 
-(def iso-zoned-date-time java.time.format.DateTimeFormatter/ISO_ZONED_DATE_TIME)
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended offset time format.
+ The format consists of:
+ <ul>
+ <li>The {@link #ISO_LOCAL_TIME}
+ <li>If the offset is not available then the format is complete.
+ <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds then
+  they will be handled even though this is not part of the ISO-8601 standard.
+  Parsing is case insensitive.
+ </ul>
+
+ As this formatter has an optional element, it may be necessary to parse using
+ {@link DateTimeFormatter#parseBest}.
+
+ The returned formatter has no override chronology or zone.
+ It uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_TIME)
+
+(def iso-local-date-time
+  "The ISO date-time formatter that formats or parses a date-time without
+ an offset, such as '2011-12-03T10:15:30'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended offset date-time format.
+ The format consists of:
+ <ul>
+ <li>The {@link #ISO_LOCAL_DATE}
+ <li>The letter 'T'. Parsing is case insensitive.
+ <li>The {@link #ISO_LOCAL_TIME}
+ </ul>
+
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_LOCAL_DATE_TIME)
+
+(def iso-instant
+  "The ISO instant formatter that formats or parses an instant in UTC,
+ such as '2011-12-03T10:15:30Z'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 instant format.
+ When formatting, the second-of-minute is always output.
+ The nano-of-second outputs zero, three, six or nine digits digits as necessary.
+ When parsing, time to at least the seconds field is required.
+ Fractional seconds from zero to nine are parsed.
+ The localized decimal style is not used.
+
+ This is a special case formatter intended to allow a human readable form
+ of an {@link java.time.Instant}. The {@code Instant} class is designed to
+ only represent a point in time and internally stores a value in nanoseconds
+ from a fixed epoch of 1970-01-01Z. As such, an {@code Instant} cannot be
+ formatted as a date or time without providing some form of time-zone.
+ This formatter allows the {@code Instant} to be formatted, by providing
+ a suitable conversion using {@code ZoneOffset.UTC}.
+
+ The format consists of:
+ <ul>
+ <li>The {@link #ISO_OFFSET_DATE_TIME} where the instant is converted from
+  {@link ChronoField#INSTANT_SECONDS} and {@link ChronoField#NANO_OF_SECOND}
+  using the {@code UTC} offset. Parsing is case insensitive.
+ </ul>
+
+ The returned formatter has no override chronology or zone.
+ It uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_INSTANT)
+
+(def rfc-1123-date-time
+  "The RFC-1123 date-time formatter, such as 'Tue, 3 Jun 2008 11:05:30 GMT'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ most of the RFC-1123 format.
+ RFC-1123 updates RFC-822 changing the year from two digits to four.
+ This implementation requires a four digit year.
+ This implementation also does not handle North American or military zone
+ names, only 'GMT' and offset amounts.
+
+ The format consists of:
+ <ul>
+ <li>If the day-of-week is not available to format or parse then jump to day-of-month.
+ <li>Three letter {@link ChronoField#DAY_OF_WEEK day-of-week} in English.
+ <li>A comma
+ <li>A space
+ <li>One or two digits for the {@link ChronoField#DAY_OF_MONTH day-of-month}.
+ <li>A space
+ <li>Three letter {@link ChronoField#MONTH_OF_YEAR month-of-year} in English.
+ <li>A space
+ <li>Four digits for the {@link ChronoField#YEAR year}.
+  Only years in the range 0000 to 9999 are supported.
+ <li>A space
+ <li>Two digits for the {@link ChronoField#HOUR_OF_DAY hour-of-day}.
+  This is pre-padded by zero to ensure two digits.
+ <li>A colon
+ <li>Two digits for the {@link ChronoField#MINUTE_OF_HOUR minute-of-hour}.
+  This is pre-padded by zero to ensure two digits.
+ <li>If the second-of-minute is not available then jump to the next space.
+ <li>A colon
+ <li>Two digits for the {@link ChronoField#SECOND_OF_MINUTE second-of-minute}.
+  This is pre-padded by zero to ensure two digits.
+ <li>A space
+ <li>The {@link ZoneOffset#getId() offset ID} without colons or seconds.
+  An offset of zero uses \"GMT\". North American zone names and military zone names are not handled.
+ </ul>
+
+ Parsing is case insensitive.
+
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#SMART SMART} resolver style."
+  java.time.format.DateTimeFormatter/RFC_1123_DATE_TIME)
+
+(def iso-date
+  "The ISO date formatter that formats or parses a date with the
+ offset if available, such as '2011-12-03' or '2011-12-03+01:00'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended date format.
+ The format consists of:
+ <ul>
+ <li>The {@link #ISO_LOCAL_DATE}
+ <li>If the offset is not available then the format is complete.
+ <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds then
+  they will be handled even though this is not part of the ISO-8601 standard.
+  Parsing is case insensitive.
+ </ul>
+
+ As this formatter has an optional element, it may be necessary to parse using
+ {@link DateTimeFormatter#parseBest}.
+
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_DATE)
+
+(def iso-week-date
+  "The ISO date formatter that formats or parses the week-based date
+ without an offset, such as '2012-W48-6'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended week-based date format.
+ The format consists of:
+ <ul>
+ <li>Four digits or more for the {@link IsoFields#WEEK_BASED_YEAR week-based-year}.
+ Years in the range 0000 to 9999 will be pre-padded by zero to ensure four digits.
+ Years outside that range will have a prefixed positive or negative symbol.
+ <li>A dash
+ <li>The letter 'W'. Parsing is case insensitive.
+ <li>Two digits for the {@link IsoFields#WEEK_OF_WEEK_BASED_YEAR week-of-week-based-year}.
+  This is pre-padded by zero to ensure three digits.
+ <li>A dash
+ <li>One digit for the {@link ChronoField#DAY_OF_WEEK day-of-week}.
+  The value run from Monday (1) to Sunday (7).
+ <li>If the offset is not available to format or parse then the format is complete.
+ <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds then
+  they will be handled even though this is not part of the ISO-8601 standard.
+  Parsing is case insensitive.
+ </ul>
+
+ As this formatter has an optional element, it may be necessary to parse using
+ {@link DateTimeFormatter#parseBest}.
+
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_WEEK_DATE)
+
+(def iso-offset-time
+  "The ISO time formatter that formats or parses a time with an
+ offset, such as '10:15+01:00' or '10:15:30+01:00'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended offset time format.
+ The format consists of:
+ <ul>
+ <li>The {@link #ISO_LOCAL_TIME}
+ <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds then
+  they will be handled even though this is not part of the ISO-8601 standard.
+  Parsing is case insensitive.
+ </ul>
+
+ The returned formatter has no override chronology or zone.
+ It uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_OFFSET_TIME)
+
+(def iso-local-date
+  "The ISO date formatter that formats or parses a date without an
+ offset, such as '2011-12-03'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended local date format.
+ The format consists of:
+ <ul>
+ <li>Four digits or more for the {@link ChronoField#YEAR year}.
+ Years in the range 0000 to 9999 will be pre-padded by zero to ensure four digits.
+ Years outside that range will have a prefixed positive or negative symbol.
+ <li>A dash
+ <li>Two digits for the {@link ChronoField#MONTH_OF_YEAR month-of-year}.
+  This is pre-padded by zero to ensure two digits.
+ <li>A dash
+ <li>Two digits for the {@link ChronoField#DAY_OF_MONTH day-of-month}.
+  This is pre-padded by zero to ensure two digits.
+ </ul>
+
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_LOCAL_DATE)
+
+(def iso-zoned-date-time
+  "The ISO-like date-time formatter that formats or parses a date-time with
+ offset and zone, such as '2011-12-03T10:15:30+01:00[Europe/Paris]'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ a format that extends the ISO-8601 extended offset date-time format
+ to add the time-zone.
+ The section in square brackets is not part of the ISO-8601 standard.
+ The format consists of:
+ <ul>
+ <li>The {@link #ISO_OFFSET_DATE_TIME}
+ <li>If the zone ID is not available or is a {@code ZoneOffset} then the format is complete.
+ <li>An open square bracket '['.
+ <li>The {@link ZoneId#getId() zone ID}. This is not part of the ISO-8601 standard.
+  Parsing is case sensitive.
+ <li>A close square bracket ']'.
+ </ul>
+
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_ZONED_DATE_TIME)
 
 (def iso-offset-date-time
+  "The ISO date-time formatter that formats or parses a date-time with an
+ offset, such as '2011-12-03T10:15:30+01:00'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended offset date-time format.
+ The format consists of:
+ <ul>
+ <li>The {@link #ISO_LOCAL_DATE_TIME}
+ <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds then
+  they will be handled even though this is not part of the ISO-8601 standard.
+  Parsing is case insensitive.
+ </ul>
+
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
   java.time.format.DateTimeFormatter/ISO_OFFSET_DATE_TIME)
 
-(def iso-date-time java.time.format.DateTimeFormatter/ISO_DATE_TIME)
+(def iso-date-time
+  "The ISO-like date-time formatter that formats or parses a date-time with
+ the offset and zone if available, such as '2011-12-03T10:15:30',
+ '2011-12-03T10:15:30+01:00' or '2011-12-03T10:15:30+01:00[Europe/Paris]'.
 
-(def basic-iso-date java.time.format.DateTimeFormatter/BASIC_ISO_DATE)
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 extended local or offset date-time format, as well as the
+ extended non-ISO form specifying the time-zone.
+ The format consists of:
+ <ul>
+ <li>The {@link #ISO_LOCAL_DATE_TIME}
+ <li>If the offset is not available to format or parse then the format is complete.
+ <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds then
+  they will be handled even though this is not part of the ISO-8601 standard.
+ <li>If the zone ID is not available or is a {@code ZoneOffset} then the format is complete.
+ <li>An open square bracket '['.
+ <li>The {@link ZoneId#getId() zone ID}. This is not part of the ISO-8601 standard.
+  Parsing is case sensitive.
+ <li>A close square bracket ']'.
+ </ul>
+
+ As this formatter has an optional element, it may be necessary to parse using
+ {@link DateTimeFormatter#parseBest}.
+
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/ISO_DATE_TIME)
+
+(def basic-iso-date
+  "The ISO date formatter that formats or parses a date without an
+ offset, such as '20111203'.
+
+ This returns an immutable formatter capable of formatting and parsing
+ the ISO-8601 basic local date format.
+ The format consists of:
+ <ul>
+ <li>Four digits for the {@link ChronoField#YEAR year}.
+  Only years in the range 0000 to 9999 are supported.
+ <li>Two digits for the {@link ChronoField#MONTH_OF_YEAR month-of-year}.
+  This is pre-padded by zero to ensure two digits.
+ <li>Two digits for the {@link ChronoField#DAY_OF_MONTH day-of-month}.
+  This is pre-padded by zero to ensure two digits.
+ <li>If the offset is not available to format or parse then the format is complete.
+ <li>The {@link ZoneOffset#getId() offset ID} without colons. If the offset has
+  seconds then they will be handled even though this is not part of the ISO-8601 standard.
+  Parsing is case insensitive.
+ </ul>
+
+ As this formatter has an optional element, it may be necessary to parse using
+ {@link DateTimeFormatter#parseBest}.
+
+ The returned formatter has a chronology of ISO set to ensure dates in
+ other calendar systems are correctly converted.
+ It has no override zone and uses the {@link ResolverStyle#STRICT STRICT} resolver style."
+  java.time.format.DateTimeFormatter/BASIC_ISO_DATE)
 
 (defn of-pattern
   {:arglists (quote (["java.lang.String"]

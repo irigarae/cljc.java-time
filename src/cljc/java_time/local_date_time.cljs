@@ -5,9 +5,19 @@
             [goog.object]
             [java.time :refer [LocalDateTime]]))
 
-(def max (goog.object/get java.time.LocalDateTime "MAX"))
+(def max
+  "The maximum supported {@code LocalDateTime}, '+999999999-12-31T23:59:59.999999999'.
+ This is the local date-time just before midnight at the end of the maximum date.
+ This combines {@link LocalDate#MAX} and {@link LocalTime#MAX}.
+ This could be used by an application as a \"far future\" date-time."
+  (goog.object/get java.time.LocalDateTime "MAX"))
 
-(def min (goog.object/get java.time.LocalDateTime "MIN"))
+(def min
+  "The minimum supported {@code LocalDateTime}, '-999999999-01-01T00:00:00'.
+ This is the local date-time of midnight at the start of the minimum date.
+ This combines {@link LocalDate#MIN} and {@link LocalTime#MIN}.
+ This could be used by an application as a \"far past\" date-time."
+  (goog.object/get java.time.LocalDateTime "MIN"))
 
 (defn minus-minutes
   "Returns a copy of this {@code LocalDateTime} with the specified number of minutes subtracted.

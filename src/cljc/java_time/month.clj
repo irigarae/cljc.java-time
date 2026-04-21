@@ -4,29 +4,65 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time Month]))
 
-(def may java.time.Month/MAY)
+(def may
+  "The singleton instance for the month of May with 31 days.
+ This has the numeric value of {@code 5}."
+  java.time.Month/MAY)
 
-(def december java.time.Month/DECEMBER)
+(def december
+  "The singleton instance for the month of December with 31 days.
+ This has the numeric value of {@code 12}."
+  java.time.Month/DECEMBER)
 
-(def june java.time.Month/JUNE)
+(def june
+  "The singleton instance for the month of June with 30 days.
+ This has the numeric value of {@code 6}."
+  java.time.Month/JUNE)
 
-(def september java.time.Month/SEPTEMBER)
+(def september
+  "The singleton instance for the month of September with 30 days.
+ This has the numeric value of {@code 9}."
+  java.time.Month/SEPTEMBER)
 
-(def february java.time.Month/FEBRUARY)
+(def february
+  "The singleton instance for the month of February with 28 days, or 29 in a leap year.
+ This has the numeric value of {@code 2}."
+  java.time.Month/FEBRUARY)
 
-(def january java.time.Month/JANUARY)
+(def january
+  "The singleton instance for the month of January with 31 days.
+ This has the numeric value of {@code 1}."
+  java.time.Month/JANUARY)
 
-(def november java.time.Month/NOVEMBER)
+(def november
+  "The singleton instance for the month of November with 30 days.
+ This has the numeric value of {@code 11}."
+  java.time.Month/NOVEMBER)
 
-(def august java.time.Month/AUGUST)
+(def august
+  "The singleton instance for the month of August with 31 days.
+ This has the numeric value of {@code 8}."
+  java.time.Month/AUGUST)
 
-(def july java.time.Month/JULY)
+(def july
+  "The singleton instance for the month of July with 31 days.
+ This has the numeric value of {@code 7}."
+  java.time.Month/JULY)
 
-(def march java.time.Month/MARCH)
+(def march
+  "The singleton instance for the month of March with 31 days.
+ This has the numeric value of {@code 3}."
+  java.time.Month/MARCH)
 
-(def october java.time.Month/OCTOBER)
+(def october
+  "The singleton instance for the month of October with 31 days.
+ This has the numeric value of {@code 10}."
+  java.time.Month/OCTOBER)
 
-(def april java.time.Month/APRIL)
+(def april
+  "The singleton instance for the month of April with 30 days.
+ This has the numeric value of {@code 4}."
+  java.time.Month/APRIL)
 
 (defn range
   "Gets the range of valid values for the specified field.

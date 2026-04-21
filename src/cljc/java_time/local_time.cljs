@@ -5,13 +5,23 @@
             [goog.object]
             [java.time :refer [LocalTime]]))
 
-(def max (goog.object/get java.time.LocalTime "MAX"))
+(def max
+  "The maximum supported {@code LocalTime}, '23:59:59.999999999'.
+ This is the time just before midnight at the end of the day."
+  (goog.object/get java.time.LocalTime "MAX"))
 
-(def noon (goog.object/get java.time.LocalTime "NOON"))
+(def noon
+  "The time of noon in the middle of the day, '12:00'."
+  (goog.object/get java.time.LocalTime "NOON"))
 
-(def midnight (goog.object/get java.time.LocalTime "MIDNIGHT"))
+(def midnight
+  "The time of midnight at the start of the day, '00:00'."
+  (goog.object/get java.time.LocalTime "MIDNIGHT"))
 
-(def min (goog.object/get java.time.LocalTime "MIN"))
+(def min
+  "The minimum supported {@code LocalTime}, '00:00'.
+ This is the time of midnight at the start of the day."
+  (goog.object/get java.time.LocalTime "MIN"))
 
 (defn minus-minutes
   "Returns a copy of this {@code LocalTime} with the specified number of minutes subtracted.

@@ -6,86 +6,494 @@
             [java.time.temporal :refer [ChronoField]]))
 
 (def milli-of-second
+  "The milli-of-second.
+
+ This counts the millisecond within the second, from 0 to 999.
+ This field has the same meaning for all calendar systems.
+
+ This field is used to represent the milli-of-second handling any fraction of the second.
+ Implementations of {@code TemporalAccessor} should provide a value for this field if
+ they can return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or
+ {@link #INSTANT_SECONDS} filling unknown precision with zero.
+
+ When this field is used for setting a value, it should behave in the same way as
+ setting {@link #NANO_OF_SECOND} with the value multiplied by 1,000,000.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode.
+ The field is resolved in combination with {@code MICRO_OF_SECOND} to produce
+ {@code NANO_OF_SECOND}."
   (goog.object/get java.time.temporal.ChronoField "MILLI_OF_SECOND"))
 
-(def year-of-era (goog.object/get java.time.temporal.ChronoField "YEAR_OF_ERA"))
+(def year-of-era
+  "The year within the era.
+
+ This represents the concept of the year within the era.
+ This field is typically used with {@link #ERA}.
+
+ The standard mental model for a date is based on three concepts - year, month and day.
+ These map onto the {@code YEAR}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields.
+ Note that there is no reference to eras.
+ The full model for a date requires four concepts - era, year, month and day. These map onto
+ the {@code ERA}, {@code YEAR_OF_ERA}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields.
+ Whether this field or {@code YEAR} is used depends on which mental model is being used.
+ See {@link ChronoLocalDate} for more discussion on this topic.
+
+ In the default ISO calendar system, there are two eras defined, 'BCE' and 'CE'.
+ The era 'CE' is the one currently in use and year-of-era runs from 1 to the maximum value.
+ The era 'BCE' is the previous era, and the year-of-era runs backwards.
+
+ For example, subtracting a year each time yield the following:<br>
+ - year-proleptic 2  = 'CE' year-of-era 2<br>
+ - year-proleptic 1  = 'CE' year-of-era 1<br>
+ - year-proleptic 0  = 'BCE' year-of-era 1<br>
+ - year-proleptic -1 = 'BCE' year-of-era 2<br>
+
+ Note that the ISO-8601 standard does not actually define eras.
+ Note also that the ISO eras do not align with the well-known AD/BC eras due to the
+ change between the Julian and Gregorian calendar systems.
+
+ Non-ISO calendar systems should implement this field using the most recognized
+ year-of-era value for users of the calendar system.
+ Since most calendar systems have only two eras, the year-of-era numbering approach
+ will typically be the same as that used by the ISO calendar system.
+ The year-of-era value should typically always be positive, however this is not required."
+  (goog.object/get java.time.temporal.ChronoField "YEAR_OF_ERA"))
 
 (def clock-hour-of-day
+  "The clock-hour-of-day.
+
+ This counts the hour within the AM/PM, from 1 to 24.
+ This is the hour that would be observed on a 24-hour analog wall clock.
+ This field has the same meaning for all calendar systems.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated from 1 to 24 in strict mode and from
+ 0 to 24 in smart mode. In lenient mode the value is not validated.
+ The field is converted to an {@code HOUR_OF_DAY} with the same value,
+ unless the value is 24, in which case it is converted to 0."
   (goog.object/get java.time.temporal.ChronoField "CLOCK_HOUR_OF_DAY"))
 
-(def era (goog.object/get java.time.temporal.ChronoField "ERA"))
+(def era
+  "The era.
+
+ This represents the concept of the era, which is the largest division of the time-line.
+ This field is typically used with {@link #YEAR_OF_ERA}.
+
+ In the default ISO calendar system, there are two eras defined, 'BCE' and 'CE'.
+ The era 'CE' is the one currently in use and year-of-era runs from 1 to the maximum value.
+ The era 'BCE' is the previous era, and the year-of-era runs backwards.
+ See {@link #YEAR_OF_ERA} for a full example.
+
+ Non-ISO calendar systems should implement this field to define eras.
+ The value of the era that was active on 1970-01-01 (ISO) must be assigned the value 1.
+ Earlier eras must have sequentially smaller values.
+ Later eras must have sequentially larger values,"
+  (goog.object/get java.time.temporal.ChronoField "ERA"))
 
 (def instant-seconds
+  "The instant epoch-seconds.
+
+ This represents the concept of the sequential count of seconds where
+ 1970-01-01T00:00Z (ISO) is zero.
+ This field may be used with {@link #NANO_OF_SECOND} to represent the fraction of the second.
+
+ An {@link Instant} represents an instantaneous point on the time-line.
+ On their own, an instant has insufficient information to allow a local date-time to be obtained.
+ Only when paired with an offset or time-zone can the local date or time be calculated.
+
+ This field is strictly defined to have the same meaning in all calendar systems.
+ This is necessary to ensure interoperation between calendars."
   (goog.object/get java.time.temporal.ChronoField "INSTANT_SECONDS"))
 
-(def ampm-of-day (goog.object/get java.time.temporal.ChronoField "AMPM_OF_DAY"))
+(def ampm-of-day
+  "The am-pm-of-day.
+
+ This counts the AM/PM within the day, from 0 (AM) to 1 (PM).
+ This field has the same meaning for all calendar systems.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated from 0 to 1 in strict and smart mode.
+ In lenient mode the value is not validated. It is combined with
+ {@code HOUR_OF_AMPM} to form {@code HOUR_OF_DAY} by multiplying
+ the {AMPM_OF_DAY} value by 12."
+  (goog.object/get java.time.temporal.ChronoField "AMPM_OF_DAY"))
 
 (def offset-seconds
+  "The offset from UTC/Greenwich.
+
+ This represents the concept of the offset in seconds of local time from UTC/Greenwich.
+
+ A {@link ZoneOffset} represents the period of time that local time differs from UTC/Greenwich.
+ This is usually a fixed number of hours and minutes.
+ It is equivalent to the {@link ZoneOffset#getTotalSeconds() total amount} of the offset in seconds.
+ For example, during the winter Paris has an offset of {@code +01:00}, which is 3600 seconds.
+
+ This field is strictly defined to have the same meaning in all calendar systems.
+ This is necessary to ensure interoperation between calendars."
   (goog.object/get java.time.temporal.ChronoField "OFFSET_SECONDS"))
 
 (def nano-of-second
+  "The nano-of-second.
+
+ This counts the nanosecond within the second, from 0 to 999,999,999.
+ This field has the same meaning for all calendar systems.
+
+ This field is used to represent the nano-of-second handling any fraction of the second.
+ Implementations of {@code TemporalAccessor} should provide a value for this field if
+ they can return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or
+ {@link #INSTANT_SECONDS} filling unknown precision with zero.
+
+ When this field is used for setting a value, it should set as much precision as the
+ object stores, using integer division to remove excess precision.
+ For example, if the {@code TemporalAccessor} stores time to millisecond precision,
+ then the nano-of-second must be divided by 1,000,000 before replacing the milli-of-second.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode.
+ The field is resolved in combination with {@code MILLI_OF_SECOND} and {@code MICRO_OF_SECOND}."
   (goog.object/get java.time.temporal.ChronoField "NANO_OF_SECOND"))
 
-(def nano-of-day (goog.object/get java.time.temporal.ChronoField "NANO_OF_DAY"))
+(def nano-of-day
+  "The nano-of-day.
+
+ This counts the nanosecond within the day, from 0 to (24 * 60 * 60 * 1,000,000,000) - 1.
+ This field has the same meaning for all calendar systems.
+
+ This field is used to represent the nano-of-day handling any fraction of the second.
+ Implementations of {@code TemporalAccessor} should provide a value for this field if
+ they can return a value for {@link #SECOND_OF_DAY} filling unknown precision with zero.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode.
+ The value is split to form {@code NANO_OF_SECOND}, {@code SECOND_OF_MINUTE},
+ {@code MINUTE_OF_HOUR} and {@code HOUR_OF_DAY} fields."
+  (goog.object/get java.time.temporal.ChronoField "NANO_OF_DAY"))
 
 (def aligned-day-of-week-in-month
+  "The aligned day-of-week within a month.
+
+ This represents concept of the count of days within the period of a week
+ where the weeks are aligned to the start of the month.
+ This field is typically used with {@link #ALIGNED_WEEK_OF_MONTH}.
+
+ For example, in a calendar systems with a seven day week, the first aligned-week-of-month
+ starts on day-of-month 1, the second aligned-week starts on day-of-month 8, and so on.
+ Within each of these aligned-weeks, the days are numbered from 1 to 7 and returned
+ as the value of this field.
+ As such, day-of-month 1 to 7 will have aligned-day-of-week values from 1 to 7.
+ And day-of-month 8 to 14 will repeat this with aligned-day-of-week values from 1 to 7.
+
+ Calendar systems that do not have a seven day week should typically implement this
+ field in the same way, but using the alternate week length."
   (goog.object/get java.time.temporal.ChronoField
                    "ALIGNED_DAY_OF_WEEK_IN_MONTH"))
 
 (def month-of-year
+  "The month-of-year, such as March.
+
+ This represents the concept of the month within the year.
+ In the default ISO calendar system, this has values from January (1) to December (12).
+
+ Non-ISO calendar systems should implement this field using the most recognized
+ month-of-year values for users of the calendar system.
+ Normally, this is a count of months starting from 1."
   (goog.object/get java.time.temporal.ChronoField "MONTH_OF_YEAR"))
 
 (def hour-of-ampm
+  "The hour-of-am-pm.
+
+ This counts the hour within the AM/PM, from 0 to 11.
+ This is the hour that would be observed on a standard 12-hour digital clock.
+ This field has the same meaning for all calendar systems.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated from 0 to 11 in strict and smart mode.
+ In lenient mode the value is not validated. It is combined with
+ {@code AMPM_OF_DAY} to form {@code HOUR_OF_DAY} by multiplying
+ the {AMPM_OF_DAY} value by 12."
   (goog.object/get java.time.temporal.ChronoField "HOUR_OF_AMPM"))
 
-(def year (goog.object/get java.time.temporal.ChronoField "YEAR"))
+(def year
+  "The proleptic year, such as 2012.
+
+ This represents the concept of the year, counting sequentially and using negative numbers.
+ The proleptic year is not interpreted in terms of the era.
+ See {@link #YEAR_OF_ERA} for an example showing the mapping from proleptic year to year-of-era.
+
+ The standard mental model for a date is based on three concepts - year, month and day.
+ These map onto the {@code YEAR}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields.
+ Note that there is no reference to eras.
+ The full model for a date requires four concepts - era, year, month and day. These map onto
+ the {@code ERA}, {@code YEAR_OF_ERA}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields.
+ Whether this field or {@code YEAR_OF_ERA} is used depends on which mental model is being used.
+ See {@link ChronoLocalDate} for more discussion on this topic.
+
+ Non-ISO calendar systems should implement this field as follows.
+ If the calendar system has only two eras, before and after a fixed date, then the
+ proleptic-year value must be the same as the year-of-era value for the later era,
+ and increasingly negative for the earlier era.
+ If the calendar system has more than two eras, then the proleptic-year value may be
+ defined with any appropriate value, although defining it to be the same as ISO may be
+ the best option."
+  (goog.object/get java.time.temporal.ChronoField "YEAR"))
 
 (def micro-of-second
+  "The micro-of-second.
+
+ This counts the microsecond within the second, from 0 to 999,999.
+ This field has the same meaning for all calendar systems.
+
+ This field is used to represent the micro-of-second handling any fraction of the second.
+ Implementations of {@code TemporalAccessor} should provide a value for this field if
+ they can return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or
+ {@link #INSTANT_SECONDS} filling unknown precision with zero.
+
+ When this field is used for setting a value, it should behave in the same way as
+ setting {@link #NANO_OF_SECOND} with the value multiplied by 1,000.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode.
+ The field is resolved in combination with {@code MILLI_OF_SECOND} to produce
+ {@code NANO_OF_SECOND}."
   (goog.object/get java.time.temporal.ChronoField "MICRO_OF_SECOND"))
 
 (def aligned-week-of-year
+  "The aligned week within a year.
+
+ This represents concept of the count of weeks within the period of a year
+ where the weeks are aligned to the start of the year.
+ This field is typically used with {@link #ALIGNED_DAY_OF_WEEK_IN_YEAR}.
+
+ For example, in a calendar systems with a seven day week, the first aligned-week-of-year
+ starts on day-of-year 1, the second aligned-week starts on day-of-year 8, and so on.
+ Thus, day-of-year values 1 to 7 are in aligned-week 1, while day-of-year values
+ 8 to 14 are in aligned-week 2, and so on.
+
+ Calendar systems that do not have a seven day week should typically implement this
+ field in the same way, but using the alternate week length."
   (goog.object/get java.time.temporal.ChronoField "ALIGNED_WEEK_OF_YEAR"))
 
 (def proleptic-month
+  "The proleptic-month based, counting months sequentially from year 0.
+
+ This field is the sequential count of months where the first month
+ in proleptic-year zero has the value zero.
+ Later months have increasingly larger values.
+ Earlier months have increasingly small values.
+ There are no gaps or breaks in the sequence of months.
+ Note that this uses the <i>local</i> time-line, ignoring offset and time-zone.
+
+ In the default ISO calendar system, June 2012 would have the value
+ {@code (2012 * 12 + 6 - 1)}. This field is primarily for internal use.
+
+ Non-ISO calendar systems must implement this field as per the definition above.
+ It is just a simple zero-based count of elapsed months from the start of proleptic-year 0.
+ All calendar systems with a full proleptic-year definition will have a year zero.
+ If the calendar system has a minimum year that excludes year zero, then one must
+ be extrapolated in order for this method to be defined."
   (goog.object/get java.time.temporal.ChronoField "PROLEPTIC_MONTH"))
 
 (def day-of-month
+  "The day-of-month.
+
+ This represents the concept of the day within the month.
+ In the default ISO calendar system, this has values from 1 to 31 in most months.
+ April, June, September, November have days from 1 to 30, while February has days
+ from 1 to 28, or 29 in a leap year.
+
+ Non-ISO calendar systems should implement this field using the most recognized
+ day-of-month values for users of the calendar system.
+ Normally, this is a count of days from 1 to the length of the month."
   (goog.object/get java.time.temporal.ChronoField "DAY_OF_MONTH"))
 
 (def second-of-minute
+  "The second-of-minute.
+
+ This counts the second within the minute, from 0 to 59.
+ This field has the same meaning for all calendar systems.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode."
   (goog.object/get java.time.temporal.ChronoField "SECOND_OF_MINUTE"))
 
 (def second-of-day
+  "The second-of-day.
+
+ This counts the second within the day, from 0 to (24 * 60 * 60) - 1.
+ This field has the same meaning for all calendar systems.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode.
+ The value is split to form {@code SECOND_OF_MINUTE}, {@code MINUTE_OF_HOUR}
+ and {@code HOUR_OF_DAY} fields."
   (goog.object/get java.time.temporal.ChronoField "SECOND_OF_DAY"))
 
-(def epoch-day (goog.object/get java.time.temporal.ChronoField "EPOCH_DAY"))
+(def epoch-day
+  "The epoch-day, based on the Java epoch of 1970-01-01 (ISO).
 
-(def day-of-year (goog.object/get java.time.temporal.ChronoField "DAY_OF_YEAR"))
+ This field is the sequential count of days where 1970-01-01 (ISO) is zero.
+ Note that this uses the <i>local</i> time-line, ignoring offset and time-zone.
+
+ This field is strictly defined to have the same meaning in all calendar systems.
+ This is necessary to ensure interoperation between calendars."
+  (goog.object/get java.time.temporal.ChronoField "EPOCH_DAY"))
+
+(def day-of-year
+  "The day-of-year.
+
+ This represents the concept of the day within the year.
+ In the default ISO calendar system, this has values from 1 to 365 in standard
+ years and 1 to 366 in leap years.
+
+ Non-ISO calendar systems should implement this field using the most recognized
+ day-of-year values for users of the calendar system.
+ Normally, this is a count of days from 1 to the length of the year.
+
+ Note that a non-ISO calendar system may have year numbering system that changes
+ at a different point to the natural reset in the month numbering. An example
+ of this is the Japanese calendar system where a change of era, which resets
+ the year number to 1, can happen on any date. The era and year reset also cause
+ the day-of-year to be reset to 1, but not the month-of-year or day-of-month."
+  (goog.object/get java.time.temporal.ChronoField "DAY_OF_YEAR"))
 
 (def aligned-week-of-month
+  "The aligned week within a month.
+
+ This represents concept of the count of weeks within the period of a month
+ where the weeks are aligned to the start of the month.
+ This field is typically used with {@link #ALIGNED_DAY_OF_WEEK_IN_MONTH}.
+
+ For example, in a calendar systems with a seven day week, the first aligned-week-of-month
+ starts on day-of-month 1, the second aligned-week starts on day-of-month 8, and so on.
+ Thus, day-of-month values 1 to 7 are in aligned-week 1, while day-of-month values
+ 8 to 14 are in aligned-week 2, and so on.
+
+ Calendar systems that do not have a seven day week should typically implement this
+ field in the same way, but using the alternate week length."
   (goog.object/get java.time.temporal.ChronoField "ALIGNED_WEEK_OF_MONTH"))
 
-(def day-of-week (goog.object/get java.time.temporal.ChronoField "DAY_OF_WEEK"))
+(def day-of-week
+  "The day-of-week, such as Tuesday.
+
+ This represents the standard concept of the day of the week.
+ In the default ISO calendar system, this has values from Monday (1) to Sunday (7).
+ The {@link DayOfWeek} class can be used to interpret the result.
+
+ Most non-ISO calendar systems also define a seven day week that aligns with ISO.
+ Those calendar systems must also use the same numbering system, from Monday (1) to
+ Sunday (7), which allows {@code DayOfWeek} to be used.
+
+ Calendar systems that do not have a standard seven day week should implement this field
+ if they have a similar concept of named or numbered days within a period similar
+ to a week. It is recommended that the numbering starts from 1."
+  (goog.object/get java.time.temporal.ChronoField "DAY_OF_WEEK"))
 
 (def clock-hour-of-ampm
+  "The clock-hour-of-am-pm.
+
+ This counts the hour within the AM/PM, from 1 to 12.
+ This is the hour that would be observed on a standard 12-hour analog wall clock.
+ This field has the same meaning for all calendar systems.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated from 1 to 12 in strict mode and from
+ 0 to 12 in smart mode. In lenient mode the value is not validated.
+ The field is converted to an {@code HOUR_OF_AMPM} with the same value,
+ unless the value is 12, in which case it is converted to 0."
   (goog.object/get java.time.temporal.ChronoField "CLOCK_HOUR_OF_AMPM"))
 
 (def minute-of-day
+  "The minute-of-day.
+
+ This counts the minute within the day, from 0 to (24 * 60) - 1.
+ This field has the same meaning for all calendar systems.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode.
+ The value is split to form {@code MINUTE_OF_HOUR} and {@code HOUR_OF_DAY} fields."
   (goog.object/get java.time.temporal.ChronoField "MINUTE_OF_DAY"))
 
 (def aligned-day-of-week-in-year
+  "The aligned day-of-week within a year.
+
+ This represents concept of the count of days within the period of a week
+ where the weeks are aligned to the start of the year.
+ This field is typically used with {@link #ALIGNED_WEEK_OF_YEAR}.
+
+ For example, in a calendar systems with a seven day week, the first aligned-week-of-year
+ starts on day-of-year 1, the second aligned-week starts on day-of-year 8, and so on.
+ Within each of these aligned-weeks, the days are numbered from 1 to 7 and returned
+ as the value of this field.
+ As such, day-of-year 1 to 7 will have aligned-day-of-week values from 1 to 7.
+ And day-of-year 8 to 14 will repeat this with aligned-day-of-week values from 1 to 7.
+
+ Calendar systems that do not have a seven day week should typically implement this
+ field in the same way, but using the alternate week length."
   (goog.object/get java.time.temporal.ChronoField
                    "ALIGNED_DAY_OF_WEEK_IN_YEAR"))
 
 (def minute-of-hour
+  "The minute-of-hour.
+
+ This counts the minute within the hour, from 0 to 59.
+ This field has the same meaning for all calendar systems.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode."
   (goog.object/get java.time.temporal.ChronoField "MINUTE_OF_HOUR"))
 
-(def hour-of-day (goog.object/get java.time.temporal.ChronoField "HOUR_OF_DAY"))
+(def hour-of-day
+  "The hour-of-day.
+
+ This counts the hour within the day, from 0 to 23.
+ This is the hour that would be observed on a standard 24-hour digital clock.
+ This field has the same meaning for all calendar systems.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode.
+ The field is combined with {@code MINUTE_OF_HOUR}, {@code SECOND_OF_MINUTE} and
+ {@code NANO_OF_SECOND} to produce a {@code LocalTime}.
+ In lenient mode, any excess days are added to the parsed date, or
+ made available via {@link java.time.format.DateTimeFormatter#parsedExcessDays()}."
+  (goog.object/get java.time.temporal.ChronoField "HOUR_OF_DAY"))
 
 (def milli-of-day
+  "The milli-of-day.
+
+ This counts the millisecond within the day, from 0 to (24 * 60 * 60 * 1,000) - 1.
+ This field has the same meaning for all calendar systems.
+
+ This field is used to represent the milli-of-day handling any fraction of the second.
+ Implementations of {@code TemporalAccessor} should provide a value for this field if
+ they can return a value for {@link #SECOND_OF_DAY} filling unknown precision with zero.
+
+ When this field is used for setting a value, it should behave in the same way as
+ setting {@link #NANO_OF_DAY} with the value multiplied by 1,000,000.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode.
+ The value is split to form {@code MILLI_OF_SECOND}, {@code SECOND_OF_MINUTE},
+ {@code MINUTE_OF_HOUR} and {@code HOUR_OF_DAY} fields."
   (goog.object/get java.time.temporal.ChronoField "MILLI_OF_DAY"))
 
 (def micro-of-day
+  "The micro-of-day.
+
+ This counts the microsecond within the day, from 0 to (24 * 60 * 60 * 1,000,000) - 1.
+ This field has the same meaning for all calendar systems.
+
+ This field is used to represent the micro-of-day handling any fraction of the second.
+ Implementations of {@code TemporalAccessor} should provide a value for this field if
+ they can return a value for {@link #SECOND_OF_DAY} filling unknown precision with zero.
+
+ When this field is used for setting a value, it should behave in the same way as
+ setting {@link #NANO_OF_DAY} with the value multiplied by 1,000.
+
+ When parsing this field it behaves equivalent to the following:
+ The value is validated in strict and smart mode but not in lenient mode.
+ The value is split to form {@code MICRO_OF_SECOND}, {@code SECOND_OF_MINUTE},
+ {@code MINUTE_OF_HOUR} and {@code HOUR_OF_DAY} fields."
   (goog.object/get java.time.temporal.ChronoField "MICRO_OF_DAY"))
 
 (defn get-range-unit

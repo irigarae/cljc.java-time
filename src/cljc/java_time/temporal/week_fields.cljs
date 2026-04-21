@@ -6,11 +6,41 @@
             [java.time.temporal :refer [WeekFields]]))
 
 (def sunday-start
+  "The common definition of a week that starts on Sunday and the first week
+ has a minimum of 1 day.
+
+ Defined as starting on Sunday and with a minimum of 1 day in the month.
+ This week definition is in use in the US and other European countries."
   (goog.object/get java.time.temporal.WeekFields "SUNDAY_START"))
 
-(def iso (goog.object/get java.time.temporal.WeekFields "ISO"))
+(def iso
+  "The ISO-8601 definition, where a week starts on Monday and the first week
+ has a minimum of 4 days.
+
+ The ISO-8601 standard defines a calendar system based on weeks.
+ It uses the week-based-year and week-of-week-based-year concepts to split
+ up the passage of days instead of the standard year/month/day.
+
+ Note that the first week may start in the previous calendar year.
+ Note also that the first few days of a calendar year may be in the
+ week-based-year corresponding to the previous calendar year."
+  (goog.object/get java.time.temporal.WeekFields "ISO"))
 
 (def week-based-years
+  "The unit that represents week-based-years for the purpose of addition and subtraction.
+
+ This allows a number of week-based-years to be added to, or subtracted from, a date.
+ The unit is equal to either 52 or 53 weeks.
+ The estimated duration of a week-based-year is the same as that of a standard ISO
+ year at {@code 365.2425 Days}.
+
+ The rules for addition add the number of week-based-years to the existing value
+ for the week-based-year field retaining the week-of-week-based-year
+ and day-of-week, unless the week number it too large for the target year.
+ In that case, the week is set to the last week of the year
+ with the same day-of-week.
+
+ This unit is an immutable and thread-safe singleton."
   (goog.object/get java.time.temporal.WeekFields "WEEK_BASED_YEARS"))
 
 (defn day-of-week

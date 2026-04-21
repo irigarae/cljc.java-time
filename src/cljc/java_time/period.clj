@@ -4,7 +4,7 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time Period]))
 
-(def zero java.time.Period/ZERO)
+(def zero "A constant for a period of zero." java.time.Period/ZERO)
 
 (defn get-months
   "Gets the amount of months of this period.

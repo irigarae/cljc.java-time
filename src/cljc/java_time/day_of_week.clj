@@ -4,19 +4,40 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time DayOfWeek]))
 
-(def saturday java.time.DayOfWeek/SATURDAY)
+(def saturday
+  "The singleton instance for the day-of-week of Saturday.
+ This has the numeric value of {@code 6}."
+  java.time.DayOfWeek/SATURDAY)
 
-(def thursday java.time.DayOfWeek/THURSDAY)
+(def thursday
+  "The singleton instance for the day-of-week of Thursday.
+ This has the numeric value of {@code 4}."
+  java.time.DayOfWeek/THURSDAY)
 
-(def friday java.time.DayOfWeek/FRIDAY)
+(def friday
+  "The singleton instance for the day-of-week of Friday.
+ This has the numeric value of {@code 5}."
+  java.time.DayOfWeek/FRIDAY)
 
-(def wednesday java.time.DayOfWeek/WEDNESDAY)
+(def wednesday
+  "The singleton instance for the day-of-week of Wednesday.
+ This has the numeric value of {@code 3}."
+  java.time.DayOfWeek/WEDNESDAY)
 
-(def sunday java.time.DayOfWeek/SUNDAY)
+(def sunday
+  "The singleton instance for the day-of-week of Sunday.
+ This has the numeric value of {@code 7}."
+  java.time.DayOfWeek/SUNDAY)
 
-(def monday java.time.DayOfWeek/MONDAY)
+(def monday
+  "The singleton instance for the day-of-week of Monday.
+ This has the numeric value of {@code 1}."
+  java.time.DayOfWeek/MONDAY)
 
-(def tuesday java.time.DayOfWeek/TUESDAY)
+(def tuesday
+  "The singleton instance for the day-of-week of Tuesday.
+ This has the numeric value of {@code 2}."
+  java.time.DayOfWeek/TUESDAY)
 
 (defn range
   "Gets the range of valid values for the specified field.

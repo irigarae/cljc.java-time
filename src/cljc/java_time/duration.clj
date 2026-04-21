@@ -4,7 +4,7 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time Duration]))
 
-(def zero java.time.Duration/ZERO)
+(def zero "Constant for a duration of zero." java.time.Duration/ZERO)
 
 (defn minus-minutes
   "Returns a copy of this duration with the specified duration in minutes subtracted.

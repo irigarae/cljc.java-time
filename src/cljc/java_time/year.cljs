@@ -5,9 +5,13 @@
             [goog.object]
             [java.time :refer [Year]]))
 
-(def min-value (goog.object/get java.time.Year "MIN_VALUE"))
+(def min-value
+  "The minimum supported year, '-999,999,999'."
+  (goog.object/get java.time.Year "MIN_VALUE"))
 
-(def max-value (goog.object/get java.time.Year "MAX_VALUE"))
+(def max-value
+  "The maximum supported year, '+999,999,999'."
+  (goog.object/get java.time.Year "MAX_VALUE"))
 
 (defn range
   "Gets the range of valid values for the specified field.

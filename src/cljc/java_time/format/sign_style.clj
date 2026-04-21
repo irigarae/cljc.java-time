@@ -4,15 +4,43 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time.format SignStyle]))
 
-(def exceeds-pad java.time.format.SignStyle/EXCEEDS_PAD)
+(def exceeds-pad
+  "Style to always output the sign if the value exceeds the pad width.
+ A negative value will always output the '-' sign.
 
-(def normal java.time.format.SignStyle/NORMAL)
+ In strict parsing, the sign will be rejected unless the pad width is exceeded.
+ In lenient parsing, any sign will be accepted, with the absence
+ of a sign treated as a positive number."
+  java.time.format.SignStyle/EXCEEDS_PAD)
 
-(def always java.time.format.SignStyle/ALWAYS)
+(def normal
+  "Style to output the sign only if the value is negative.
 
-(def never java.time.format.SignStyle/NEVER)
+ In strict parsing, the negative sign will be accepted and the positive sign rejected.
+ In lenient parsing, any sign will be accepted."
+  java.time.format.SignStyle/NORMAL)
 
-(def not-negative java.time.format.SignStyle/NOT_NEGATIVE)
+(def always
+  "Style to always output the sign, where zero will output '+'.
+
+ In strict parsing, the absence of a sign will be rejected.
+ In lenient parsing, any sign will be accepted, with the absence
+ of a sign treated as a positive number."
+  java.time.format.SignStyle/ALWAYS)
+
+(def never
+  "Style to never output sign, only outputting the absolute value.
+
+ In strict parsing, any sign will be rejected.
+ In lenient parsing, any sign will be accepted unless the width is fixed."
+  java.time.format.SignStyle/NEVER)
+
+(def not-negative
+  "Style to block negative values, throwing an exception on printing.
+
+ In strict parsing, any sign will be rejected.
+ In lenient parsing, any sign will be accepted unless the width is fixed."
+  java.time.format.SignStyle/NOT_NEGATIVE)
 
 (defn values
   {:arglists (quote ([]))}

@@ -5,29 +5,65 @@
             [goog.object]
             [java.time :refer [Month]]))
 
-(def may (goog.object/get java.time.Month "MAY"))
+(def may
+  "The singleton instance for the month of May with 31 days.
+ This has the numeric value of {@code 5}."
+  (goog.object/get java.time.Month "MAY"))
 
-(def december (goog.object/get java.time.Month "DECEMBER"))
+(def december
+  "The singleton instance for the month of December with 31 days.
+ This has the numeric value of {@code 12}."
+  (goog.object/get java.time.Month "DECEMBER"))
 
-(def june (goog.object/get java.time.Month "JUNE"))
+(def june
+  "The singleton instance for the month of June with 30 days.
+ This has the numeric value of {@code 6}."
+  (goog.object/get java.time.Month "JUNE"))
 
-(def september (goog.object/get java.time.Month "SEPTEMBER"))
+(def september
+  "The singleton instance for the month of September with 30 days.
+ This has the numeric value of {@code 9}."
+  (goog.object/get java.time.Month "SEPTEMBER"))
 
-(def february (goog.object/get java.time.Month "FEBRUARY"))
+(def february
+  "The singleton instance for the month of February with 28 days, or 29 in a leap year.
+ This has the numeric value of {@code 2}."
+  (goog.object/get java.time.Month "FEBRUARY"))
 
-(def january (goog.object/get java.time.Month "JANUARY"))
+(def january
+  "The singleton instance for the month of January with 31 days.
+ This has the numeric value of {@code 1}."
+  (goog.object/get java.time.Month "JANUARY"))
 
-(def november (goog.object/get java.time.Month "NOVEMBER"))
+(def november
+  "The singleton instance for the month of November with 30 days.
+ This has the numeric value of {@code 11}."
+  (goog.object/get java.time.Month "NOVEMBER"))
 
-(def august (goog.object/get java.time.Month "AUGUST"))
+(def august
+  "The singleton instance for the month of August with 31 days.
+ This has the numeric value of {@code 8}."
+  (goog.object/get java.time.Month "AUGUST"))
 
-(def july (goog.object/get java.time.Month "JULY"))
+(def july
+  "The singleton instance for the month of July with 31 days.
+ This has the numeric value of {@code 7}."
+  (goog.object/get java.time.Month "JULY"))
 
-(def march (goog.object/get java.time.Month "MARCH"))
+(def march
+  "The singleton instance for the month of March with 31 days.
+ This has the numeric value of {@code 3}."
+  (goog.object/get java.time.Month "MARCH"))
 
-(def october (goog.object/get java.time.Month "OCTOBER"))
+(def october
+  "The singleton instance for the month of October with 31 days.
+ This has the numeric value of {@code 10}."
+  (goog.object/get java.time.Month "OCTOBER"))
 
-(def april (goog.object/get java.time.Month "APRIL"))
+(def april
+  "The singleton instance for the month of April with 30 days.
+ This has the numeric value of {@code 4}."
+  (goog.object/get java.time.Month "APRIL"))
 
 (defn range
   "Gets the range of valid values for the specified field.

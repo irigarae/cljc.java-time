@@ -5,19 +5,40 @@
             [goog.object]
             [java.time :refer [DayOfWeek]]))
 
-(def saturday (goog.object/get java.time.DayOfWeek "SATURDAY"))
+(def saturday
+  "The singleton instance for the day-of-week of Saturday.
+ This has the numeric value of {@code 6}."
+  (goog.object/get java.time.DayOfWeek "SATURDAY"))
 
-(def thursday (goog.object/get java.time.DayOfWeek "THURSDAY"))
+(def thursday
+  "The singleton instance for the day-of-week of Thursday.
+ This has the numeric value of {@code 4}."
+  (goog.object/get java.time.DayOfWeek "THURSDAY"))
 
-(def friday (goog.object/get java.time.DayOfWeek "FRIDAY"))
+(def friday
+  "The singleton instance for the day-of-week of Friday.
+ This has the numeric value of {@code 5}."
+  (goog.object/get java.time.DayOfWeek "FRIDAY"))
 
-(def wednesday (goog.object/get java.time.DayOfWeek "WEDNESDAY"))
+(def wednesday
+  "The singleton instance for the day-of-week of Wednesday.
+ This has the numeric value of {@code 3}."
+  (goog.object/get java.time.DayOfWeek "WEDNESDAY"))
 
-(def sunday (goog.object/get java.time.DayOfWeek "SUNDAY"))
+(def sunday
+  "The singleton instance for the day-of-week of Sunday.
+ This has the numeric value of {@code 7}."
+  (goog.object/get java.time.DayOfWeek "SUNDAY"))
 
-(def monday (goog.object/get java.time.DayOfWeek "MONDAY"))
+(def monday
+  "The singleton instance for the day-of-week of Monday.
+ This has the numeric value of {@code 1}."
+  (goog.object/get java.time.DayOfWeek "MONDAY"))
 
-(def tuesday (goog.object/get java.time.DayOfWeek "TUESDAY"))
+(def tuesday
+  "The singleton instance for the day-of-week of Tuesday.
+ This has the numeric value of {@code 2}."
+  (goog.object/get java.time.DayOfWeek "TUESDAY"))
 
 (defn range
   "Gets the range of valid values for the specified field.

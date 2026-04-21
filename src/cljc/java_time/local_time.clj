@@ -4,13 +4,23 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time LocalTime]))
 
-(def max java.time.LocalTime/MAX)
+(def max
+  "The maximum supported {@code LocalTime}, '23:59:59.999999999'.
+ This is the time just before midnight at the end of the day."
+  java.time.LocalTime/MAX)
 
-(def noon java.time.LocalTime/NOON)
+(def noon
+  "The time of noon in the middle of the day, '12:00'."
+  java.time.LocalTime/NOON)
 
-(def midnight java.time.LocalTime/MIDNIGHT)
+(def midnight
+  "The time of midnight at the start of the day, '00:00'."
+  java.time.LocalTime/MIDNIGHT)
 
-(def min java.time.LocalTime/MIN)
+(def min
+  "The minimum supported {@code LocalTime}, '00:00'.
+ This is the time of midnight at the start of the day."
+  java.time.LocalTime/MIN)
 
 (defn minus-minutes
   "Returns a copy of this {@code LocalTime} with the specified number of minutes subtracted.

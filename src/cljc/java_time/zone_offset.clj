@@ -4,11 +4,13 @@
   (:require [cljc.java-time.extn.calendar-awareness])
   (:import [java.time ZoneOffset]))
 
-(def max java.time.ZoneOffset/MAX)
+(def max "Constant for the maximum supported offset." java.time.ZoneOffset/MAX)
 
-(def min java.time.ZoneOffset/MIN)
+(def min "Constant for the maximum supported offset." java.time.ZoneOffset/MIN)
 
-(def utc java.time.ZoneOffset/UTC)
+(def utc
+  "The time-zone offset for UTC, with an ID of 'Z'."
+  java.time.ZoneOffset/UTC)
 
 (defn get-available-zone-ids
   "Gets the set of available zone IDs.

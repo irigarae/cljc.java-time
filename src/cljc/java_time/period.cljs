@@ -5,7 +5,9 @@
             [goog.object]
             [java.time :refer [Period]]))
 
-(def zero (goog.object/get java.time.Period "ZERO"))
+(def zero
+  "A constant for a period of zero."
+  (goog.object/get java.time.Period "ZERO"))
 
 (defn get-months
   "Gets the amount of months of this period.

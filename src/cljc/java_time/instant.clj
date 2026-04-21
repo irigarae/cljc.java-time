@@ -382,10 +382,10 @@
                      ["java.time.Instant" "java.time.temporal.TemporalUnit"]))}
   (^java.lang.Boolean [^java.time.Instant this arg0]
    (cond (instance? java.time.temporal.TemporalField arg0)
-           (let [field ^"java.time.temporal.TemporalField" arg0]
+           (let [^java.time.temporal.TemporalField field arg0]
              (.isSupported this field))
          (instance? java.time.temporal.ChronoUnit arg0)
-           (let [unit ^"java.time.temporal.ChronoUnit" arg0]
+           (let [^java.time.temporal.TemporalUnit unit arg0]
              (.isSupported this unit))
          :else (throw (java.lang.IllegalArgumentException.
                         "no corresponding java.time method with these args")))))

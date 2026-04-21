@@ -467,7 +467,8 @@
   {:arglists (quote (["java.time.LocalTime" "java.time.temporal.TemporalField"]
                      ["java.time.LocalTime"
                       "java.time.temporal.TemporalUnit"]))}
-  (^boolean [this arg0] (.isSupported ^js/JSJoda.LocalTime this arg0)))
+  (^boolean [^js/JSJoda.LocalTime this arg0]
+   (.isSupported ^js/JSJoda.LocalTime this arg0)))
 
 (defn parse
   {:arglists (quote (["java.lang.CharSequence"]

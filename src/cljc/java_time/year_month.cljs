@@ -362,7 +362,8 @@
   {:arglists (quote (["java.time.YearMonth" "java.time.temporal.TemporalField"]
                      ["java.time.YearMonth"
                       "java.time.temporal.TemporalUnit"]))}
-  (^boolean [this arg0] (.isSupported ^js/JSJoda.YearMonth this arg0)))
+  (^boolean [^js/JSJoda.YearMonth this arg0]
+   (.isSupported ^js/JSJoda.YearMonth this arg0)))
 
 (defn minus-years
   "Returns a copy of this {@code YearMonth} with the specified number of years subtracted.

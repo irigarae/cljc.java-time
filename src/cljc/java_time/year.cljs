@@ -193,7 +193,8 @@
 (defn at-month
   {:arglists (quote (["java.time.Year" "int"]
                      ["java.time.Year" "java.time.Month"]))}
-  (^js/JSJoda.YearMonth [this arg0] (.atMonth ^js/JSJoda.Year this arg0)))
+  (^js/JSJoda.YearMonth [^js/JSJoda.Year this arg0]
+   (.atMonth ^js/JSJoda.Year this arg0)))
 
 (defn until
   "Calculates the amount of time until another year in terms of the specified unit.
@@ -287,7 +288,8 @@
 (defn is-supported
   {:arglists (quote (["java.time.Year" "java.time.temporal.TemporalField"]
                      ["java.time.Year" "java.time.temporal.TemporalUnit"]))}
-  (^boolean [this arg0] (.isSupported ^js/JSJoda.Year this arg0)))
+  (^boolean [^js/JSJoda.Year this arg0]
+   (.isSupported ^js/JSJoda.Year this arg0)))
 
 (defn minus-years
   "Returns a copy of this {@code Year} with the specified number of years subtracted.

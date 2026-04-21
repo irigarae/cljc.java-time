@@ -533,7 +533,8 @@
   {:arglists (quote (["java.time.OffsetTime" "java.time.temporal.TemporalField"]
                      ["java.time.OffsetTime"
                       "java.time.temporal.TemporalUnit"]))}
-  (^boolean [this arg0] (.isSupported ^js/JSJoda.OffsetTime this arg0)))
+  (^boolean [^js/JSJoda.OffsetTime this arg0]
+   (.isSupported ^js/JSJoda.OffsetTime this arg0)))
 
 (defn parse
   {:arglists (quote (["java.lang.CharSequence"]

@@ -972,7 +972,8 @@
   {:arglists (quote
                (["java.time.ZonedDateTime" "java.time.temporal.TemporalField"]
                 ["java.time.ZonedDateTime" "java.time.temporal.TemporalUnit"]))}
-  (^boolean [this arg0] (.isSupported ^js/JSJoda.ZonedDateTime this arg0)))
+  (^boolean [^js/JSJoda.ZonedDateTime this arg0]
+   (.isSupported ^js/JSJoda.ZonedDateTime this arg0)))
 
 (defn minus-years
   "Returns a copy of this {@code ZonedDateTime} with the specified number of years subtracted.

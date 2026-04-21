@@ -377,7 +377,8 @@
 (defn is-supported
   {:arglists (quote (["java.time.Instant" "java.time.temporal.TemporalField"]
                      ["java.time.Instant" "java.time.temporal.TemporalUnit"]))}
-  (^boolean [this arg0] (.isSupported ^js/JSJoda.Instant this arg0)))
+  (^boolean [^js/JSJoda.Instant this arg0]
+   (.isSupported ^js/JSJoda.Instant this arg0)))
 
 (defn parse
   "Obtains an instance of {@code Instant} from a text string such as

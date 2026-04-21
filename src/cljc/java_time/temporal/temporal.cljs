@@ -246,7 +246,8 @@
                       "java.time.temporal.TemporalUnit"]
                      ["java.time.temporal.Temporal"
                       "java.time.temporal.TemporalField"]))}
-  (^boolean [this arg0] (.isSupported ^js/JSJoda.Temporal this arg0)))
+  (^boolean [^js/JSJoda.Temporal this arg0]
+   (.isSupported ^js/JSJoda.Temporal this arg0)))
 
 (defn with
   {:arglists (quote (["java.time.temporal.Temporal"

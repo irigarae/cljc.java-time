@@ -819,7 +819,8 @@
   {:arglists
      (quote (["java.time.OffsetDateTime" "java.time.temporal.TemporalField"]
              ["java.time.OffsetDateTime" "java.time.temporal.TemporalUnit"]))}
-  (^boolean [this arg0] (.isSupported ^js/JSJoda.OffsetDateTime this arg0)))
+  (^boolean [^js/JSJoda.OffsetDateTime this arg0]
+   (.isSupported ^js/JSJoda.OffsetDateTime this arg0)))
 
 (defn minus-years
   "Returns a copy of this {@code OffsetDateTime} with the specified number of years subtracted.

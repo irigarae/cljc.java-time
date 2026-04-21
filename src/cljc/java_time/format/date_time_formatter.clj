@@ -375,17 +375,17 @@
   (^java.time.temporal.TemporalAccessor
    [^java.time.format.DateTimeFormatter this ^java.lang.CharSequence text]
    (.parse this text))
-  (^java.lang.Object [this arg0 arg1]
+  (^java.lang.Object [^java.time.format.DateTimeFormatter this arg0 arg1]
    (cond (and (instance? java.lang.CharSequence arg0)
               (instance? java.text.ParsePosition arg1))
            (let [text ^"java.lang.CharSequence" arg0
                  position ^"java.text.ParsePosition" arg1]
-             (.parse ^java.time.format.DateTimeFormatter this text position))
+             (.parse this text position))
          (and (instance? java.lang.CharSequence arg0)
               (instance? java.time.temporal.TemporalQuery arg1))
            (let [text ^"java.lang.CharSequence" arg0
                  query ^"java.time.temporal.TemporalQuery" arg1]
-             (.parse ^java.time.format.DateTimeFormatter this text query))
+             (.parse this text query))
          :else (throw (java.lang.IllegalArgumentException.
                         "no corresponding java.time method with these args")))))
 
@@ -409,15 +409,14 @@
   {:arglists (quote (["java.time.format.DateTimeFormatter"
                       "[Ljava.time.temporal.TemporalField;"]
                      ["java.time.format.DateTimeFormatter" "java.util.Set"]))}
-  (^java.time.format.DateTimeFormatter [this arg0]
+  (^java.time.format.DateTimeFormatter
+   [^java.time.format.DateTimeFormatter this arg0]
    (cond (= java.time.temporal.TemporalField (.getComponentType (class arg0)))
            (let [resolver-fields ^"[Ljava.time.temporal.TemporalField;" arg0]
-             (.withResolverFields ^java.time.format.DateTimeFormatter this
-                                  resolver-fields))
+             (.withResolverFields this resolver-fields))
          (instance? java.util.Set arg0)
            (let [resolver-fields ^"java.util.Set" arg0]
-             (.withResolverFields ^java.time.format.DateTimeFormatter this
-                                  resolver-fields))
+             (.withResolverFields this resolver-fields))
          :else (throw (java.lang.IllegalArgumentException.
                         "no corresponding java.time method with these args")))))
 

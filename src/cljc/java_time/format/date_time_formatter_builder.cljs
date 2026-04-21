@@ -279,7 +279,8 @@
   {:arglists (quote (["java.time.format.DateTimeFormatterBuilder" "char"]
                      ["java.time.format.DateTimeFormatterBuilder"
                       "java.lang.String"]))}
-  (^js/JSJoda.DateTimeFormatterBuilder [this arg0]
+  (^js/JSJoda.DateTimeFormatterBuilder
+   [^js/JSJoda.DateTimeFormatterBuilder this arg0]
    (.appendLiteral ^js/JSJoda.DateTimeFormatterBuilder this arg0)))
 
 (defn optional-start
@@ -806,7 +807,8 @@
   (^js/JSJoda.DateTimeFormatterBuilder
    [^js/JSJoda.DateTimeFormatterBuilder this ^js/JSJoda.TemporalField field]
    (.appendText this field))
-  (^js/JSJoda.DateTimeFormatterBuilder [this arg0 arg1]
+  (^js/JSJoda.DateTimeFormatterBuilder
+   [^js/JSJoda.DateTimeFormatterBuilder this arg0 arg1]
    (.appendText ^js/JSJoda.DateTimeFormatterBuilder this arg0 arg1)))
 
 (defn append-localized
@@ -894,7 +896,8 @@
                      ["java.time.format.DateTimeFormatterBuilder"
                       "java.time.temporal.TemporalField" "int" "int"
                       "java.time.chrono.ChronoLocalDate"]))}
-  (^js/JSJoda.DateTimeFormatterBuilder [this arg0 arg1 arg2 arg3]
+  (^js/JSJoda.DateTimeFormatterBuilder
+   [^js/JSJoda.DateTimeFormatterBuilder this arg0 arg1 arg2 arg3]
    (.appendValueReduced ^js/JSJoda.DateTimeFormatterBuilder this
                         arg0
                         arg1

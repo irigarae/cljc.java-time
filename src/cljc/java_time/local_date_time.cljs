@@ -774,7 +774,8 @@
   {:arglists (quote
                (["java.time.LocalDateTime" "java.time.temporal.TemporalField"]
                 ["java.time.LocalDateTime" "java.time.temporal.TemporalUnit"]))}
-  (^boolean [this arg0] (.isSupported ^js/JSJoda.LocalDateTime this arg0)))
+  (^boolean [^js/JSJoda.LocalDateTime this arg0]
+   (.isSupported ^js/JSJoda.LocalDateTime this arg0)))
 
 (defn minus-years
   "Returns a copy of this {@code LocalDateTime} with the specified number of years subtracted.

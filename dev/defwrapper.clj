@@ -134,6 +134,9 @@
       (= 'java.lang.Integer tag)
       `(~(symbol 'int) ~value)
 
+      (= 'java.lang.Character tag)
+      `(~(symbol 'char) ~value)
+
       :else
       (vary-meta value assoc :tag (.getName tag)))))
 

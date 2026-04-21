@@ -6,6 +6,7 @@
             [clojure.string :as string]
             [camel-snake-kebab.core :as csk]
             [clojure.java.io :as io]
+            [metadata]
             [zprint.core :as zprint])
   (:import [java.time Period
                       LocalDate
@@ -82,13 +83,20 @@
   (println (header (.getSimpleName c) (csk/->kebab-case (.getSimpleName c))
              sub-p ext))
   ;; fields
-  (doseq [m (:members (rf/reflect c))]
+  (doseq [m (:members (rf/reflect c))
+          :let [fqn (str (.getName c) \. (:name m))
+                doc (some->> fqn
+                             (get metadata/java-time-metadata)
+                             (:doc)
+                             (string/trim)
+                             (#(string/escape % {\newline df/newline-placeholder})))]]
     (when (and (not (:parameter-types m)) (not-empty (set/intersection #{:public} (:flags m))))
-      (println
-        (list 'def (csk/->kebab-case (:name m))
-          (if (= :clj ext)
+      (prn
+       `(~(symbol 'def) ~(csk/->kebab-case (:name m))
+         ~@(when doc [doc])
+         ~(if (= :clj ext)
             (symbol (str (.getName c) "/" (:name m)))
-            (list 'goog.object/get c (str "\"" (:name m) "\"")))))))
+            (list 'goog.object/get c (str (:name m))))))))
   ;; constructors
   (when (= java.time.format.DateTimeFormatterBuilder c)
     (prn (remove-line-column-meta

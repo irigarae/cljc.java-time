@@ -61,6 +61,13 @@
             trees (Trees/instance task)
             doc-trees (DocTrees/instance task)
             ^TreePathScanner scanner (proxy [TreePathScanner] []
+                                       (visitVariable [^VariableTree node ctx]
+                                         (let [{:keys [result package cname]} ctx
+                                               path (.getCurrentPath ^TreePathScanner this)
+                                               ;; re-use method-fqn even if a var
+                                               fqn (method-fqn package cname (str (.getName node)))
+                                               doc (.getDocComment doc-trees path)]
+                                           (swap! result assoc fqn {:doc doc, :params nil})))
                                        (visitMethod [^MethodTree node ctx]
                                          (let [{:keys [result package cname]} ctx
                                                path (.getCurrentPath ^TreePathScanner this)

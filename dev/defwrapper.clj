@@ -164,15 +164,18 @@
                     (let [param-names (->> (method-fqn method)
                                            (get metadata/java-time-metadata)
                                            (:params)
-                                           (mapv (comp symbol camel->kebab)))]
-                      (assert (= (count arg-vec) (count param-names)) (method-fqn method))
-                      `[(~(symbol 'and) ~@(map (fn [sym ^Class klz]
-                                                 (if (.isArray klz)
-                                                   `(~(symbol '=) ~(.getComponentType klz)
-                                                     (.getComponentType (~(symbol 'class) ~sym)))
-                                                   `(~(symbol 'instance?) ~(ensure-boxed (class-name klz)) ~sym)))
-                                               arg-vec
-                                               (parameter-types method)))
+                                           (mapv (comp symbol camel->kebab)))
+                          _ (assert (= (count arg-vec) (count param-names)) (method-fqn method))
+                          conds (map (fn [sym ^Class klz]
+                                       (if (.isArray klz)
+                                         `(~(symbol '=) ~(.getComponentType klz)
+                                           (.getComponentType (~(symbol 'class) ~sym)))
+                                         `(~(symbol 'instance?) ~(ensure-boxed (class-name klz)) ~sym)))
+                                     arg-vec
+                                     (parameter-types method))]
+                      `[~@(if (= 1 (count conds))
+                            conds
+                            [(apply list 'and conds)])
                         (~(symbol 'let) [~@(mapcat (fn [pn sym ^Class klz]
                                                      [pn (tagged-local sym klz)])
                                                    param-names

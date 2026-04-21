@@ -376,20 +376,18 @@
    [^java.time.format.DateTimeFormatter this ^java.lang.CharSequence text]
    (.parse this text))
   (^java.lang.Object [this arg0 arg1]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.lang.CharSequence arg0)
-                       (clojure.core/instance? java.text.ParsePosition arg1))
-       (clojure.core/let [text ^"java.lang.CharSequence" arg0
-                          position ^"java.text.ParsePosition" arg1]
-         (.parse ^java.time.format.DateTimeFormatter this text position))
-     (clojure.core/and (clojure.core/instance? java.lang.CharSequence arg0)
-                       (clojure.core/instance? java.time.temporal.TemporalQuery
-                                               arg1))
-       (clojure.core/let [text ^"java.lang.CharSequence" arg0
-                          query ^"java.time.temporal.TemporalQuery" arg1]
-         (.parse ^java.time.format.DateTimeFormatter this text query))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.lang.CharSequence arg0)
+              (instance? java.text.ParsePosition arg1))
+           (let [text ^"java.lang.CharSequence" arg0
+                 position ^"java.text.ParsePosition" arg1]
+             (.parse ^java.time.format.DateTimeFormatter this text position))
+         (and (instance? java.lang.CharSequence arg0)
+              (instance? java.time.temporal.TemporalQuery arg1))
+           (let [text ^"java.lang.CharSequence" arg0
+                 query ^"java.time.temporal.TemporalQuery" arg1]
+             (.parse ^java.time.format.DateTimeFormatter this text query))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn with-locale
   "Returns a copy of this formatter with a new locale.
@@ -412,20 +410,17 @@
                       "[Ljava.time.temporal.TemporalField;"]
                      ["java.time.format.DateTimeFormatter" "java.util.Set"]))}
   (^java.time.format.DateTimeFormatter [this arg0]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/= java.time.temporal.TemporalField
-                                       (.getComponentType (clojure.core/class
-                                                            arg0))))
-       (clojure.core/let [resolver-fields ^"[Ljava.time.temporal.TemporalField;"
-                                          arg0]
-         (.withResolverFields ^java.time.format.DateTimeFormatter this
-                              resolver-fields))
-     (clojure.core/and (clojure.core/instance? java.util.Set arg0))
-       (clojure.core/let [resolver-fields ^"java.util.Set" arg0]
-         (.withResolverFields ^java.time.format.DateTimeFormatter this
-                              resolver-fields))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (= java.time.temporal.TemporalField
+                 (.getComponentType (class arg0))))
+           (let [resolver-fields ^"[Ljava.time.temporal.TemporalField;" arg0]
+             (.withResolverFields ^java.time.format.DateTimeFormatter this
+                                  resolver-fields))
+         (and (instance? java.util.Set arg0))
+           (let [resolver-fields ^"java.util.Set" arg0]
+             (.withResolverFields ^java.time.format.DateTimeFormatter this
+                                  resolver-fields))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn parse-unresolved
   "Parses the text using this formatter, without resolving the result, intended

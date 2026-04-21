@@ -249,17 +249,14 @@
                      ["java.time.temporal.Temporal"
                       "java.time.temporal.TemporalField"]))}
   (^java.lang.Boolean [this arg0]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.time.temporal.ChronoUnit
-                                               arg0))
-       (clojure.core/let [unit ^"java.time.temporal.ChronoUnit" arg0]
-         (.isSupported ^java.time.temporal.Temporal this unit))
-     (clojure.core/and (clojure.core/instance? java.time.temporal.TemporalField
-                                               arg0))
-       (clojure.core/let [field ^"java.time.temporal.TemporalField" arg0]
-         (.isSupported ^java.time.temporal.Temporal this field))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.time.temporal.ChronoUnit arg0))
+           (let [unit ^"java.time.temporal.ChronoUnit" arg0]
+             (.isSupported ^java.time.temporal.Temporal this unit))
+         (and (instance? java.time.temporal.TemporalField arg0))
+           (let [field ^"java.time.temporal.TemporalField" arg0]
+             (.isSupported ^java.time.temporal.Temporal this field))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn with
   {:arglists (quote (["java.time.temporal.Temporal"

@@ -189,117 +189,114 @@
    [^java.time.LocalDate date ^java.time.LocalTime time]
    (java.time.LocalDateTime/of date time))
   (^java.time.LocalDateTime [arg0 arg1 arg2 arg3 arg4]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.lang.Number arg0)
-                       (clojure.core/instance? java.lang.Number arg1)
-                       (clojure.core/instance? java.lang.Number arg2)
-                       (clojure.core/instance? java.lang.Number arg3)
-                       (clojure.core/instance? java.lang.Number arg4))
-       (clojure.core/let [year (clojure.core/int arg0)
-                          month (clojure.core/int arg1)
-                          day-of-month (clojure.core/int arg2)
-                          hour (clojure.core/int arg3)
-                          minute (clojure.core/int arg4)]
-         (java.time.LocalDateTime/of year month day-of-month hour minute))
-     (clojure.core/and (clojure.core/instance? java.lang.Number arg0)
-                       (clojure.core/instance? java.time.Month arg1)
-                       (clojure.core/instance? java.lang.Number arg2)
-                       (clojure.core/instance? java.lang.Number arg3)
-                       (clojure.core/instance? java.lang.Number arg4))
-       (clojure.core/let [year (clojure.core/int arg0)
-                          month ^"java.time.Month" arg1
-                          day-of-month (clojure.core/int arg2)
-                          hour (clojure.core/int arg3)
-                          minute (clojure.core/int arg4)]
-         (java.time.LocalDateTime/of year month day-of-month hour minute))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args"))))
+   (cond (and (instance? java.lang.Number arg0)
+              (instance? java.lang.Number arg1)
+              (instance? java.lang.Number arg2)
+              (instance? java.lang.Number arg3)
+              (instance? java.lang.Number arg4))
+           (let [year (int arg0)
+                 month (int arg1)
+                 day-of-month (int arg2)
+                 hour (int arg3)
+                 minute (int arg4)]
+             (java.time.LocalDateTime/of year month day-of-month hour minute))
+         (and (instance? java.lang.Number arg0)
+              (instance? java.time.Month arg1)
+              (instance? java.lang.Number arg2)
+              (instance? java.lang.Number arg3)
+              (instance? java.lang.Number arg4))
+           (let [year (int arg0)
+                 month ^"java.time.Month" arg1
+                 day-of-month (int arg2)
+                 hour (int arg3)
+                 minute (int arg4)]
+             (java.time.LocalDateTime/of year month day-of-month hour minute))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args"))))
   (^java.time.LocalDateTime [arg0 arg1 arg2 arg3 arg4 arg5]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.lang.Number arg0)
-                       (clojure.core/instance? java.lang.Number arg1)
-                       (clojure.core/instance? java.lang.Number arg2)
-                       (clojure.core/instance? java.lang.Number arg3)
-                       (clojure.core/instance? java.lang.Number arg4)
-                       (clojure.core/instance? java.lang.Number arg5))
-       (clojure.core/let [year (clojure.core/int arg0)
-                          month (clojure.core/int arg1)
-                          day-of-month (clojure.core/int arg2)
-                          hour (clojure.core/int arg3)
-                          minute (clojure.core/int arg4)
-                          second (clojure.core/int arg5)]
-         (java.time.LocalDateTime/of year
-                                     month
-                                     day-of-month
-                                     hour
-                                     minute
-                                     second))
-     (clojure.core/and (clojure.core/instance? java.lang.Number arg0)
-                       (clojure.core/instance? java.time.Month arg1)
-                       (clojure.core/instance? java.lang.Number arg2)
-                       (clojure.core/instance? java.lang.Number arg3)
-                       (clojure.core/instance? java.lang.Number arg4)
-                       (clojure.core/instance? java.lang.Number arg5))
-       (clojure.core/let [year (clojure.core/int arg0)
-                          month ^"java.time.Month" arg1
-                          day-of-month (clojure.core/int arg2)
-                          hour (clojure.core/int arg3)
-                          minute (clojure.core/int arg4)
-                          second (clojure.core/int arg5)]
-         (java.time.LocalDateTime/of year
-                                     month
-                                     day-of-month
-                                     hour
-                                     minute
-                                     second))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args"))))
+   (cond (and (instance? java.lang.Number arg0)
+              (instance? java.lang.Number arg1)
+              (instance? java.lang.Number arg2)
+              (instance? java.lang.Number arg3)
+              (instance? java.lang.Number arg4)
+              (instance? java.lang.Number arg5))
+           (let [year (int arg0)
+                 month (int arg1)
+                 day-of-month (int arg2)
+                 hour (int arg3)
+                 minute (int arg4)
+                 second (int arg5)]
+             (java.time.LocalDateTime/of year
+                                         month
+                                         day-of-month
+                                         hour
+                                         minute
+                                         second))
+         (and (instance? java.lang.Number arg0)
+              (instance? java.time.Month arg1)
+              (instance? java.lang.Number arg2)
+              (instance? java.lang.Number arg3)
+              (instance? java.lang.Number arg4)
+              (instance? java.lang.Number arg5))
+           (let [year (int arg0)
+                 month ^"java.time.Month" arg1
+                 day-of-month (int arg2)
+                 hour (int arg3)
+                 minute (int arg4)
+                 second (int arg5)]
+             (java.time.LocalDateTime/of year
+                                         month
+                                         day-of-month
+                                         hour
+                                         minute
+                                         second))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args"))))
   (^java.time.LocalDateTime [arg0 arg1 arg2 arg3 arg4 arg5 arg6]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.lang.Number arg0)
-                       (clojure.core/instance? java.lang.Number arg1)
-                       (clojure.core/instance? java.lang.Number arg2)
-                       (clojure.core/instance? java.lang.Number arg3)
-                       (clojure.core/instance? java.lang.Number arg4)
-                       (clojure.core/instance? java.lang.Number arg5)
-                       (clojure.core/instance? java.lang.Number arg6))
-       (clojure.core/let [year (clojure.core/int arg0)
-                          month (clojure.core/int arg1)
-                          day-of-month (clojure.core/int arg2)
-                          hour (clojure.core/int arg3)
-                          minute (clojure.core/int arg4)
-                          second (clojure.core/int arg5)
-                          nano-of-second (clojure.core/int arg6)]
-         (java.time.LocalDateTime/of year
-                                     month
-                                     day-of-month
-                                     hour
-                                     minute
-                                     second
-                                     nano-of-second))
-     (clojure.core/and (clojure.core/instance? java.lang.Number arg0)
-                       (clojure.core/instance? java.time.Month arg1)
-                       (clojure.core/instance? java.lang.Number arg2)
-                       (clojure.core/instance? java.lang.Number arg3)
-                       (clojure.core/instance? java.lang.Number arg4)
-                       (clojure.core/instance? java.lang.Number arg5)
-                       (clojure.core/instance? java.lang.Number arg6))
-       (clojure.core/let [year (clojure.core/int arg0)
-                          month ^"java.time.Month" arg1
-                          day-of-month (clojure.core/int arg2)
-                          hour (clojure.core/int arg3)
-                          minute (clojure.core/int arg4)
-                          second (clojure.core/int arg5)
-                          nano-of-second (clojure.core/int arg6)]
-         (java.time.LocalDateTime/of year
-                                     month
-                                     day-of-month
-                                     hour
-                                     minute
-                                     second
-                                     nano-of-second))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.lang.Number arg0)
+              (instance? java.lang.Number arg1)
+              (instance? java.lang.Number arg2)
+              (instance? java.lang.Number arg3)
+              (instance? java.lang.Number arg4)
+              (instance? java.lang.Number arg5)
+              (instance? java.lang.Number arg6))
+           (let [year (int arg0)
+                 month (int arg1)
+                 day-of-month (int arg2)
+                 hour (int arg3)
+                 minute (int arg4)
+                 second (int arg5)
+                 nano-of-second (int arg6)]
+             (java.time.LocalDateTime/of year
+                                         month
+                                         day-of-month
+                                         hour
+                                         minute
+                                         second
+                                         nano-of-second))
+         (and (instance? java.lang.Number arg0)
+              (instance? java.time.Month arg1)
+              (instance? java.lang.Number arg2)
+              (instance? java.lang.Number arg3)
+              (instance? java.lang.Number arg4)
+              (instance? java.lang.Number arg5)
+              (instance? java.lang.Number arg6))
+           (let [year (int arg0)
+                 month ^"java.time.Month" arg1
+                 day-of-month (int arg2)
+                 hour (int arg3)
+                 minute (int arg4)
+                 second (int arg5)
+                 nano-of-second (int arg6)]
+             (java.time.LocalDateTime/of year
+                                         month
+                                         day-of-month
+                                         hour
+                                         minute
+                                         second
+                                         nano-of-second))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn with-month
   "Returns a copy of this {@code LocalDateTime} with the month-of-year altered.
@@ -888,17 +885,14 @@
                (["java.time.LocalDateTime" "java.time.temporal.TemporalField"]
                 ["java.time.LocalDateTime" "java.time.temporal.TemporalUnit"]))}
   (^java.lang.Boolean [this arg0]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.time.temporal.TemporalField
-                                               arg0))
-       (clojure.core/let [field ^"java.time.temporal.TemporalField" arg0]
-         (.isSupported ^java.time.LocalDateTime this field))
-     (clojure.core/and (clojure.core/instance? java.time.temporal.ChronoUnit
-                                               arg0))
-       (clojure.core/let [unit ^"java.time.temporal.ChronoUnit" arg0]
-         (.isSupported ^java.time.LocalDateTime this unit))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.time.temporal.TemporalField arg0))
+           (let [field ^"java.time.temporal.TemporalField" arg0]
+             (.isSupported ^java.time.LocalDateTime this field))
+         (and (instance? java.time.temporal.ChronoUnit arg0))
+           (let [unit ^"java.time.temporal.ChronoUnit" arg0]
+             (.isSupported ^java.time.LocalDateTime this unit))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn minus-years
   "Returns a copy of this {@code LocalDateTime} with the specified number of years subtracted.
@@ -1028,15 +1022,14 @@
   {:arglists (quote ([] ["java.time.Clock"] ["java.time.ZoneId"]))}
   (^java.time.LocalDateTime [] (java.time.LocalDateTime/now))
   (^java.time.LocalDateTime [arg0]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.time.Clock arg0))
-       (clojure.core/let [clock ^"java.time.Clock" arg0]
-         (java.time.LocalDateTime/now clock))
-     (clojure.core/and (clojure.core/instance? java.time.ZoneId arg0))
-       (clojure.core/let [zone ^"java.time.ZoneId" arg0]
-         (java.time.LocalDateTime/now zone))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.time.Clock arg0))
+           (let [clock ^"java.time.Clock" arg0]
+             (java.time.LocalDateTime/now clock))
+         (and (instance? java.time.ZoneId arg0))
+           (let [zone ^"java.time.ZoneId" arg0]
+             (java.time.LocalDateTime/now zone))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn get-month-value
   "Gets the month-of-year field from 1 to 12.

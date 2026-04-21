@@ -381,17 +381,14 @@
   {:arglists (quote (["java.time.Instant" "java.time.temporal.TemporalField"]
                      ["java.time.Instant" "java.time.temporal.TemporalUnit"]))}
   (^java.lang.Boolean [this arg0]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.time.temporal.TemporalField
-                                               arg0))
-       (clojure.core/let [field ^"java.time.temporal.TemporalField" arg0]
-         (.isSupported ^java.time.Instant this field))
-     (clojure.core/and (clojure.core/instance? java.time.temporal.ChronoUnit
-                                               arg0))
-       (clojure.core/let [unit ^"java.time.temporal.ChronoUnit" arg0]
-         (.isSupported ^java.time.Instant this unit))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.time.temporal.TemporalField arg0))
+           (let [field ^"java.time.temporal.TemporalField" arg0]
+             (.isSupported ^java.time.Instant this field))
+         (and (instance? java.time.temporal.ChronoUnit arg0))
+           (let [unit ^"java.time.temporal.ChronoUnit" arg0]
+             (.isSupported ^java.time.Instant this unit))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn parse
   "Obtains an instance of {@code Instant} from a text string such as

@@ -52,19 +52,18 @@
 (defn of
   {:arglists (quote (["int" "int"] ["java.time.Month" "int"]))}
   (^java.time.MonthDay [arg0 arg1]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.lang.Number arg0)
-                       (clojure.core/instance? java.lang.Number arg1))
-       (clojure.core/let [month (clojure.core/int arg0)
-                          day-of-month (clojure.core/int arg1)]
-         (java.time.MonthDay/of month day-of-month))
-     (clojure.core/and (clojure.core/instance? java.time.Month arg0)
-                       (clojure.core/instance? java.lang.Number arg1))
-       (clojure.core/let [month ^"java.time.Month" arg0
-                          day-of-month (clojure.core/int arg1)]
-         (java.time.MonthDay/of month day-of-month))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.lang.Number arg0)
+              (instance? java.lang.Number arg1))
+           (let [month (int arg0)
+                 day-of-month (int arg1)]
+             (java.time.MonthDay/of month day-of-month))
+         (and (instance? java.time.Month arg0)
+              (instance? java.lang.Number arg1))
+           (let [month ^"java.time.Month" arg0
+                 day-of-month (int arg1)]
+             (java.time.MonthDay/of month day-of-month))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn with-month
   "Returns a copy of this {@code MonthDay} with the month-of-year altered.
@@ -315,15 +314,12 @@
   {:arglists (quote ([] ["java.time.Clock"] ["java.time.ZoneId"]))}
   (^java.time.MonthDay [] (java.time.MonthDay/now))
   (^java.time.MonthDay [arg0]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.time.Clock arg0))
-       (clojure.core/let [clock ^"java.time.Clock" arg0]
-         (java.time.MonthDay/now clock))
-     (clojure.core/and (clojure.core/instance? java.time.ZoneId arg0))
-       (clojure.core/let [zone ^"java.time.ZoneId" arg0]
-         (java.time.MonthDay/now zone))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.time.Clock arg0))
+           (let [clock ^"java.time.Clock" arg0] (java.time.MonthDay/now clock))
+         (and (instance? java.time.ZoneId arg0))
+           (let [zone ^"java.time.ZoneId" arg0] (java.time.MonthDay/now zone))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn get-month-value
   "Gets the month-of-year field from 1 to 12.

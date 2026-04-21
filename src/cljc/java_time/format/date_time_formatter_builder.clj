@@ -283,17 +283,16 @@
                      ["java.time.format.DateTimeFormatterBuilder"
                       "java.lang.String"]))}
   (^java.time.format.DateTimeFormatterBuilder [this arg0]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.lang.Character arg0))
-       (clojure.core/let [literal ^"java.lang.Character" arg0]
-         (.appendLiteral ^java.time.format.DateTimeFormatterBuilder this
-                         literal))
-     (clojure.core/and (clojure.core/instance? java.lang.String arg0))
-       (clojure.core/let [literal ^"java.lang.String" arg0]
-         (.appendLiteral ^java.time.format.DateTimeFormatterBuilder this
-                         literal))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.lang.Character arg0))
+           (let [literal ^"java.lang.Character" arg0]
+             (.appendLiteral ^java.time.format.DateTimeFormatterBuilder this
+                             literal))
+         (and (instance? java.lang.String arg0))
+           (let [literal ^"java.lang.String" arg0]
+             (.appendLiteral ^java.time.format.DateTimeFormatterBuilder this
+                             literal))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn optional-start
   "Mark the start of an optional section.
@@ -826,25 +825,22 @@
     ^java.time.temporal.TemporalField field]
    (.appendText this field))
   (^java.time.format.DateTimeFormatterBuilder [this arg0 arg1]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.time.temporal.TemporalField
-                                               arg0)
-                       (clojure.core/instance? java.time.format.TextStyle arg1))
-       (clojure.core/let [field ^"java.time.temporal.TemporalField" arg0
-                          text-style ^"java.time.format.TextStyle" arg1]
-         (.appendText ^java.time.format.DateTimeFormatterBuilder this
-                      field
-                      text-style))
-     (clojure.core/and (clojure.core/instance? java.time.temporal.TemporalField
-                                               arg0)
-                       (clojure.core/instance? java.util.Map arg1))
-       (clojure.core/let [field ^"java.time.temporal.TemporalField" arg0
-                          text-lookup ^"java.util.Map" arg1]
-         (.appendText ^java.time.format.DateTimeFormatterBuilder this
-                      field
-                      text-lookup))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.time.temporal.TemporalField arg0)
+              (instance? java.time.format.TextStyle arg1))
+           (let [field ^"java.time.temporal.TemporalField" arg0
+                 text-style ^"java.time.format.TextStyle" arg1]
+             (.appendText ^java.time.format.DateTimeFormatterBuilder this
+                          field
+                          text-style))
+         (and (instance? java.time.temporal.TemporalField arg0)
+              (instance? java.util.Map arg1))
+           (let [field ^"java.time.temporal.TemporalField" arg0
+                 text-lookup ^"java.util.Map" arg1]
+             (.appendText ^java.time.format.DateTimeFormatterBuilder this
+                          field
+                          text-lookup))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn append-localized
   "Appends a localized date-time pattern to the formatter.
@@ -933,38 +929,36 @@
                       "java.time.temporal.TemporalField" "int" "int"
                       "java.time.chrono.ChronoLocalDate"]))}
   (^java.time.format.DateTimeFormatterBuilder [this arg0 arg1 arg2 arg3]
-   (clojure.core/cond
-     (clojure.core/and (clojure.core/instance? java.time.temporal.TemporalField
-                                               arg0)
-                       (clojure.core/instance? java.lang.Number arg1)
-                       (clojure.core/instance? java.lang.Number arg2)
-                       (clojure.core/instance? java.lang.Number arg3))
-       (clojure.core/let [field ^"java.time.temporal.TemporalField" arg0
-                          width (clojure.core/int arg1)
-                          max-width (clojure.core/int arg2)
-                          base-value (clojure.core/int arg3)]
-         (.appendValueReduced ^java.time.format.DateTimeFormatterBuilder this
-                              field
-                              width
-                              max-width
-                              base-value))
-     (clojure.core/and (clojure.core/instance? java.time.temporal.TemporalField
-                                               arg0)
-                       (clojure.core/instance? java.lang.Number arg1)
-                       (clojure.core/instance? java.lang.Number arg2)
-                       (clojure.core/instance? java.time.chrono.ChronoLocalDate
-                                               arg3))
-       (clojure.core/let [field ^"java.time.temporal.TemporalField" arg0
-                          width (clojure.core/int arg1)
-                          max-width (clojure.core/int arg2)
-                          base-date ^"java.time.chrono.ChronoLocalDate" arg3]
-         (.appendValueReduced ^java.time.format.DateTimeFormatterBuilder this
-                              field
-                              width
-                              max-width
-                              base-date))
-     :else (throw (java.lang.IllegalArgumentException.
-                    "no corresponding java.time method with these args")))))
+   (cond (and (instance? java.time.temporal.TemporalField arg0)
+              (instance? java.lang.Number arg1)
+              (instance? java.lang.Number arg2)
+              (instance? java.lang.Number arg3))
+           (let [field ^"java.time.temporal.TemporalField" arg0
+                 width (int arg1)
+                 max-width (int arg2)
+                 base-value (int arg3)]
+             (.appendValueReduced ^java.time.format.DateTimeFormatterBuilder
+                                  this
+                                  field
+                                  width
+                                  max-width
+                                  base-value))
+         (and (instance? java.time.temporal.TemporalField arg0)
+              (instance? java.lang.Number arg1)
+              (instance? java.lang.Number arg2)
+              (instance? java.time.chrono.ChronoLocalDate arg3))
+           (let [field ^"java.time.temporal.TemporalField" arg0
+                 width (int arg1)
+                 max-width (int arg2)
+                 base-date ^"java.time.chrono.ChronoLocalDate" arg3]
+             (.appendValueReduced ^java.time.format.DateTimeFormatterBuilder
+                                  this
+                                  field
+                                  width
+                                  max-width
+                                  base-date))
+         :else (throw (java.lang.IllegalArgumentException.
+                        "no corresponding java.time method with these args")))))
 
 (defn append-zone-text
   {:arglists (quote (["java.time.format.DateTimeFormatterBuilder"

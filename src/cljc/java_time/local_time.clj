@@ -475,10 +475,10 @@
                      ["java.time.LocalTime"
                       "java.time.temporal.TemporalUnit"]))}
   (^java.lang.Boolean [this arg0]
-   (cond (and (instance? java.time.temporal.TemporalField arg0))
+   (cond (instance? java.time.temporal.TemporalField arg0)
            (let [field ^"java.time.temporal.TemporalField" arg0]
              (.isSupported ^java.time.LocalTime this field))
-         (and (instance? java.time.temporal.ChronoUnit arg0))
+         (instance? java.time.temporal.ChronoUnit arg0)
            (let [unit ^"java.time.temporal.ChronoUnit" arg0]
              (.isSupported ^java.time.LocalTime this unit))
          :else (throw (java.lang.IllegalArgumentException.
@@ -565,10 +565,10 @@
   {:arglists (quote ([] ["java.time.Clock"] ["java.time.ZoneId"]))}
   (^java.time.LocalTime [] (java.time.LocalTime/now))
   (^java.time.LocalTime [arg0]
-   (cond (and (instance? java.time.Clock arg0))
-           (let [clock ^"java.time.Clock" arg0] (java.time.LocalTime/now clock))
-         (and (instance? java.time.ZoneId arg0))
-           (let [zone ^"java.time.ZoneId" arg0] (java.time.LocalTime/now zone))
+   (cond (instance? java.time.Clock arg0) (let [clock ^"java.time.Clock" arg0]
+                                            (java.time.LocalTime/now clock))
+         (instance? java.time.ZoneId arg0) (let [zone ^"java.time.ZoneId" arg0]
+                                             (java.time.LocalTime/now zone))
          :else (throw (java.lang.IllegalArgumentException.
                         "no corresponding java.time method with these args")))))
 

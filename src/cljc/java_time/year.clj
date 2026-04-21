@@ -197,11 +197,11 @@
   {:arglists (quote (["java.time.Year" "int"]
                      ["java.time.Year" "java.time.Month"]))}
   (^java.time.YearMonth [this arg0]
-   (cond (and (instance? java.lang.Number arg0))
+   (cond (instance? java.lang.Number arg0)
            (let [month (int arg0)] (.atMonth ^java.time.Year this month))
-         (and (instance? java.time.Month arg0))
-           (let [month ^"java.time.Month" arg0]
-             (.atMonth ^java.time.Year this month))
+         (instance? java.time.Month arg0) (let [month ^"java.time.Month" arg0]
+                                            (.atMonth ^java.time.Year this
+                                                      month))
          :else (throw (java.lang.IllegalArgumentException.
                         "no corresponding java.time method with these args")))))
 
@@ -299,10 +299,10 @@
   {:arglists (quote (["java.time.Year" "java.time.temporal.TemporalField"]
                      ["java.time.Year" "java.time.temporal.TemporalUnit"]))}
   (^java.lang.Boolean [this arg0]
-   (cond (and (instance? java.time.temporal.TemporalField arg0))
+   (cond (instance? java.time.temporal.TemporalField arg0)
            (let [field ^"java.time.temporal.TemporalField" arg0]
              (.isSupported ^java.time.Year this field))
-         (and (instance? java.time.temporal.ChronoUnit arg0))
+         (instance? java.time.temporal.ChronoUnit arg0)
            (let [unit ^"java.time.temporal.ChronoUnit" arg0]
              (.isSupported ^java.time.Year this unit))
          :else (throw (java.lang.IllegalArgumentException.
@@ -382,10 +382,10 @@
   {:arglists (quote ([] ["java.time.Clock"] ["java.time.ZoneId"]))}
   (^java.time.Year [] (java.time.Year/now))
   (^java.time.Year [arg0]
-   (cond (and (instance? java.time.Clock arg0))
-           (let [clock ^"java.time.Clock" arg0] (java.time.Year/now clock))
-         (and (instance? java.time.ZoneId arg0))
-           (let [zone ^"java.time.ZoneId" arg0] (java.time.Year/now zone))
+   (cond (instance? java.time.Clock arg0) (let [clock ^"java.time.Clock" arg0]
+                                            (java.time.Year/now clock))
+         (instance? java.time.ZoneId arg0) (let [zone ^"java.time.ZoneId" arg0]
+                                             (java.time.Year/now zone))
          :else (throw (java.lang.IllegalArgumentException.
                         "no corresponding java.time method with these args")))))
 

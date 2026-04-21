@@ -283,11 +283,11 @@
                      ["java.time.format.DateTimeFormatterBuilder"
                       "java.lang.String"]))}
   (^java.time.format.DateTimeFormatterBuilder [this arg0]
-   (cond (and (instance? java.lang.Character arg0))
+   (cond (instance? java.lang.Character arg0)
            (let [literal ^"java.lang.Character" arg0]
              (.appendLiteral ^java.time.format.DateTimeFormatterBuilder this
                              literal))
-         (and (instance? java.lang.String arg0))
+         (instance? java.lang.String arg0)
            (let [literal ^"java.lang.String" arg0]
              (.appendLiteral ^java.time.format.DateTimeFormatterBuilder this
                              literal))

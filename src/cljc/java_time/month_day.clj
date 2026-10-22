@@ -12,7 +12,7 @@
    (.range this field)))
 
 (defn of
-  {:arglists '(["int" "int"] ["java.time.Month" "int"])}
+  {:arglists '([int int] [java.time.Month int])}
   (^java.time.MonthDay [arg0 arg1]
    (cond (and (instance? java.lang.Number arg0)
               (instance? java.lang.Number arg1))
@@ -89,7 +89,7 @@
    (.with this month)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^java.time.MonthDay []
    (java.time.MonthDay/now))
   (^java.time.MonthDay [arg0]

@@ -17,7 +17,7 @@
    (.isValidDay this day-of-month)))
 
 (defn of
-  {:arglists '(["int" "int"] ["int" "java.time.Month"])}
+  {:arglists '([int int] [int java.time.Month])}
   (^js/JSJoda.YearMonth [arg0 arg1]
    (js-invoke java.time.YearMonth "of" arg0 arg1)))
 
@@ -98,8 +98,8 @@
    (.isAfter this other)))
 
 (defn is-supported
-  {:arglists '(["java.time.YearMonth" "java.time.temporal.TemporalField"]
-               ["java.time.YearMonth" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.YearMonth java.time.temporal.TemporalField]
+               [java.time.YearMonth java.time.temporal.TemporalUnit])}
   (^boolean [^js/JSJoda.YearMonth this arg0]
    (.isSupported this arg0)))
 
@@ -128,7 +128,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^js/JSJoda.YearMonth []
    (js-invoke java.time.YearMonth "now"))
   (^js/JSJoda.YearMonth [arg0]

@@ -215,8 +215,8 @@
    (.minusNanos this nanos)))
 
 (defn is-supported
-  {:arglists '(["java.time.ZonedDateTime" "java.time.temporal.TemporalField"]
-               ["java.time.ZonedDateTime" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.ZonedDateTime java.time.temporal.TemporalField]
+               [java.time.ZonedDateTime java.time.temporal.TemporalUnit])}
   (^java.lang.Boolean [^java.time.ZonedDateTime this arg0]
    (cond (instance? java.time.temporal.TemporalField arg0) (let [^java.time.temporal.TemporalField field arg0]
                                                              (.isSupported this field))
@@ -261,7 +261,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^java.time.ZonedDateTime []
    (java.time.ZonedDateTime/now))
   (^java.time.ZonedDateTime [arg0]

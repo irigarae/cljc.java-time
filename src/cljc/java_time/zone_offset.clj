@@ -22,7 +22,7 @@
    (java.time.ZoneOffset/ofTotalSeconds total-seconds)))
 
 (defn of
-  {:arglists '(["java.lang.String"] ["java.lang.String"] ["java.lang.String" "java.util.Map"])}
+  {:arglists '([java.lang.String] [java.lang.String] [java.lang.String java.util.Map])}
   (^java.lang.Object [arg0]
    (cond (instance? java.lang.String arg0) (let [^java.lang.String zone-id arg0]
                                              (java.time.ZoneOffset/of zone-id))
@@ -73,7 +73,7 @@
    (java.time.ZoneOffset/systemDefault)))
 
 (defn from
-  {:arglists '(["java.time.temporal.TemporalAccessor"] ["java.time.temporal.TemporalAccessor"])}
+  {:arglists '([java.time.temporal.TemporalAccessor] [java.time.temporal.TemporalAccessor])}
   (^java.lang.Object [arg0]
    (cond (instance? java.time.temporal.TemporalAccessor arg0) (let [^java.time.temporal.TemporalAccessor temporal arg0]
                                                                 (java.time.ZoneOffset/from temporal))

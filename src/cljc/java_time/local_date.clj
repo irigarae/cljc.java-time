@@ -28,7 +28,7 @@
    (.getEra this)))
 
 (defn of
-  {:arglists '(["int" "int" "int"] ["int" "java.time.Month" "int"])}
+  {:arglists '([int int int] [int java.time.Month int])}
   (^java.time.LocalDate [arg0 arg1 arg2]
    (cond (and (instance? java.lang.Number arg0)
               (instance? java.lang.Number arg1)
@@ -149,8 +149,8 @@
    (.isAfter this other)))
 
 (defn is-supported
-  {:arglists '(["java.time.LocalDate" "java.time.temporal.TemporalField"]
-               ["java.time.LocalDate" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.LocalDate java.time.temporal.TemporalField]
+               [java.time.LocalDate java.time.temporal.TemporalUnit])}
   (^java.lang.Boolean [^java.time.LocalDate this arg0]
    (cond (instance? java.time.temporal.TemporalField arg0) (let [^java.time.temporal.TemporalField field arg0]
                                                              (.isSupported this field))
@@ -187,7 +187,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^java.time.LocalDate []
    (java.time.LocalDate/now))
   (^java.time.LocalDate [arg0]
@@ -232,11 +232,11 @@
    (.equals this obj)))
 
 (defn at-time
-  {:arglists '(["java.time.LocalDate" "java.time.LocalTime"]
-               ["java.time.LocalDate" "java.time.OffsetTime"]
-               ["java.time.LocalDate" "int" "int"]
-               ["java.time.LocalDate" "int" "int" "int"]
-               ["java.time.LocalDate" "int" "int" "int" "int"])}
+  {:arglists '([java.time.LocalDate java.time.LocalTime]
+               [java.time.LocalDate java.time.OffsetTime]
+               [java.time.LocalDate int int]
+               [java.time.LocalDate int int int]
+               [java.time.LocalDate int int int int])}
   (^java.lang.Object [^java.time.LocalDate this arg0]
    (cond (instance? java.time.LocalTime arg0) (let [^java.time.LocalTime time arg0]
                                                 (.atTime this time))

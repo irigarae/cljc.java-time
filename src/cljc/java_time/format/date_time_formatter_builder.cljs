@@ -36,8 +36,8 @@
    (.appendInstant this fractional-digits)))
 
 (defn append-literal
-  {:arglists '(["java.time.format.DateTimeFormatterBuilder" "char"]
-               ["java.time.format.DateTimeFormatterBuilder" "java.lang.String"])}
+  {:arglists '([java.time.format.DateTimeFormatterBuilder char]
+               [java.time.format.DateTimeFormatterBuilder java.lang.String])}
   (^js/JSJoda.DateTimeFormatterBuilder [^js/JSJoda.DateTimeFormatterBuilder this arg0]
    (.appendLiteral this arg0)))
 
@@ -130,10 +130,9 @@
    (.append this formatter)))
 
 (defn append-text
-  {:arglists '(["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField"]
-               ["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField"
-                "java.time.format.TextStyle"]
-               ["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField" "java.util.Map"])}
+  {:arglists '([java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField]
+               [java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField java.time.format.TextStyle]
+               [java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField java.util.Map])}
   (^js/JSJoda.DateTimeFormatterBuilder [^js/JSJoda.DateTimeFormatterBuilder this ^js/JSJoda.TemporalField field]
    (.appendText this field))
   (^js/JSJoda.DateTimeFormatterBuilder [^js/JSJoda.DateTimeFormatterBuilder this arg0 arg1]
@@ -150,9 +149,9 @@
    (.appendOffset this pattern no-offset-text)))
 
 (defn append-value-reduced
-  {:arglists '(["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField" "int" "int" "int"]
-               ["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField" "int" "int"
-                "java.time.chrono.ChronoLocalDate"])}
+  {:arglists '([java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField int int int]
+               [java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField int int
+                java.time.chrono.ChronoLocalDate])}
   (^js/JSJoda.DateTimeFormatterBuilder [^js/JSJoda.DateTimeFormatterBuilder this arg0 arg1 arg2 arg3]
    (.appendValueReduced this arg0 arg1 arg2 arg3)))
 

@@ -38,8 +38,8 @@
    (.appendInstant this fractional-digits)))
 
 (defn append-literal
-  {:arglists '(["java.time.format.DateTimeFormatterBuilder" "char"]
-               ["java.time.format.DateTimeFormatterBuilder" "java.lang.String"])}
+  {:arglists '([java.time.format.DateTimeFormatterBuilder char]
+               [java.time.format.DateTimeFormatterBuilder java.lang.String])}
   (^java.time.format.DateTimeFormatterBuilder [^java.time.format.DateTimeFormatterBuilder this arg0]
    (cond (instance? java.lang.Character arg0) (let [literal (char arg0)]
                                                 (.appendLiteral this literal))
@@ -137,10 +137,9 @@
    (.append this formatter)))
 
 (defn append-text
-  {:arglists '(["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField"]
-               ["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField"
-                "java.time.format.TextStyle"]
-               ["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField" "java.util.Map"])}
+  {:arglists '([java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField]
+               [java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField java.time.format.TextStyle]
+               [java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField java.util.Map])}
   (^java.time.format.DateTimeFormatterBuilder
    [^java.time.format.DateTimeFormatterBuilder this ^java.time.temporal.TemporalField field]
    (.appendText this field))
@@ -169,9 +168,9 @@
    (.appendOffset this pattern no-offset-text)))
 
 (defn append-value-reduced
-  {:arglists '(["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField" "int" "int" "int"]
-               ["java.time.format.DateTimeFormatterBuilder" "java.time.temporal.TemporalField" "int" "int"
-                "java.time.chrono.ChronoLocalDate"])}
+  {:arglists '([java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField int int int]
+               [java.time.format.DateTimeFormatterBuilder java.time.temporal.TemporalField int int
+                java.time.chrono.ChronoLocalDate])}
   (^java.time.format.DateTimeFormatterBuilder [^java.time.format.DateTimeFormatterBuilder this arg0 arg1 arg2 arg3]
    (cond (and (instance? java.time.temporal.TemporalField arg0)
               (instance? java.lang.Number arg1)

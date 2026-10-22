@@ -132,11 +132,7 @@
 
       :else
       [(vary-meta param-name assoc :tag (if (.isArray klazz)
-                                          ;; Clojure 1.12:
-                                          ;; klazz would lead to ^java.time.temporal.TemporalField/1
-                                          ;; Clojure 1.11
-                                          ;; (.getName klazz) leads to ^"[Ljava.time.temporal.TemporalField;"
-                                          (.getName klazz)
+                                          klazz
                                           tag)) value])))
 
 (defn method-call [static? ^Class klazz nam ext]
@@ -224,9 +220,7 @@
     `(~'defn ~fname
       ;; print arglists when multiple methods with same arity
       ~@(when (some (fn [[_arity meths]] (< 1 (count meths))) arities)
-          `[{:arglists '~(map (comp (partial into (if static? [] [(.getName klazz)]))
-                                    ;; with Clojure 1.12 we could use x directly instead of (.getName x)
-                                    #(map (fn [^Class x] (.getName x)) %)
+          `[{:arglists '~(map (comp (partial into (if static? [] [klazz]))
                                     parameter-types)
                               (mapcat val arities))}])
       ~@(map (fn [[_arity meths]]

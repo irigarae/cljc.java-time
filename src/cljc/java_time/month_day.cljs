@@ -13,7 +13,7 @@
    (.range this field)))
 
 (defn of
-  {:arglists '(["int" "int"] ["java.time.Month" "int"])}
+  {:arglists '([int int] [java.time.Month int])}
   (^js/JSJoda.MonthDay [arg0 arg1]
    (js-invoke java.time.MonthDay "of" arg0 arg1)))
 
@@ -80,7 +80,7 @@
    (.with this month)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^js/JSJoda.MonthDay []
    (js-invoke java.time.MonthDay "now"))
   (^js/JSJoda.MonthDay [arg0]

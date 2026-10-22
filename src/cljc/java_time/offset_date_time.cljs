@@ -215,8 +215,8 @@
    (.minusNanos this nanos)))
 
 (defn is-supported
-  {:arglists '(["java.time.OffsetDateTime" "java.time.temporal.TemporalField"]
-               ["java.time.OffsetDateTime" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.OffsetDateTime java.time.temporal.TemporalField]
+               [java.time.OffsetDateTime java.time.temporal.TemporalUnit])}
   (^boolean [^js/JSJoda.OffsetDateTime this arg0]
    (.isSupported this arg0)))
 
@@ -257,7 +257,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^js/JSJoda.OffsetDateTime []
    (js-invoke java.time.OffsetDateTime "now"))
   (^js/JSJoda.OffsetDateTime [arg0]

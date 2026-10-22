@@ -49,13 +49,13 @@
    (.minusHours this hours)))
 
 (defn of
-  {:arglists '(["java.time.LocalDate" "java.time.LocalTime"]
-               ["int" "int" "int" "int" "int"]
-               ["int" "java.time.Month" "int" "int" "int"]
-               ["int" "int" "int" "int" "int" "int"]
-               ["int" "java.time.Month" "int" "int" "int" "int"]
-               ["int" "int" "int" "int" "int" "int" "int"]
-               ["int" "java.time.Month" "int" "int" "int" "int" "int"])}
+  {:arglists '([java.time.LocalDate java.time.LocalTime]
+               [int int int int int]
+               [int java.time.Month int int int]
+               [int int int int int int]
+               [int java.time.Month int int int int]
+               [int int int int int int int]
+               [int java.time.Month int int int int int])}
   (^js/JSJoda.LocalDateTime [^js/JSJoda.LocalDate date ^js/JSJoda.LocalTime time]
    (js-invoke java.time.LocalDateTime "of" date time))
   (^js/JSJoda.LocalDateTime [arg0 arg1 arg2 arg3 arg4]
@@ -202,8 +202,8 @@
    (.minusNanos this nanos)))
 
 (defn is-supported
-  {:arglists '(["java.time.LocalDateTime" "java.time.temporal.TemporalField"]
-               ["java.time.LocalDateTime" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.LocalDateTime java.time.temporal.TemporalField]
+               [java.time.LocalDateTime java.time.temporal.TemporalUnit])}
   (^boolean [^js/JSJoda.LocalDateTime this arg0]
    (.isSupported this arg0)))
 
@@ -248,7 +248,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^js/JSJoda.LocalDateTime []
    (js-invoke java.time.LocalDateTime "now"))
   (^js/JSJoda.LocalDateTime [arg0]

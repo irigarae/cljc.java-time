@@ -48,13 +48,13 @@
    (.minusHours this hours)))
 
 (defn of
-  {:arglists '(["java.time.LocalDate" "java.time.LocalTime"]
-               ["int" "int" "int" "int" "int"]
-               ["int" "java.time.Month" "int" "int" "int"]
-               ["int" "int" "int" "int" "int" "int"]
-               ["int" "java.time.Month" "int" "int" "int" "int"]
-               ["int" "int" "int" "int" "int" "int" "int"]
-               ["int" "java.time.Month" "int" "int" "int" "int" "int"])}
+  {:arglists '([java.time.LocalDate java.time.LocalTime]
+               [int int int int int]
+               [int java.time.Month int int int]
+               [int int int int int int]
+               [int java.time.Month int int int int]
+               [int int int int int int int]
+               [int java.time.Month int int int int int])}
   (^java.time.LocalDateTime [^java.time.LocalDate date ^java.time.LocalTime time]
    (java.time.LocalDateTime/of date time))
   (^java.time.LocalDateTime [arg0 arg1 arg2 arg3 arg4]
@@ -279,8 +279,8 @@
    (.minusNanos this nanos)))
 
 (defn is-supported
-  {:arglists '(["java.time.LocalDateTime" "java.time.temporal.TemporalField"]
-               ["java.time.LocalDateTime" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.LocalDateTime java.time.temporal.TemporalField]
+               [java.time.LocalDateTime java.time.temporal.TemporalUnit])}
   (^java.lang.Boolean [^java.time.LocalDateTime this arg0]
    (cond (instance? java.time.temporal.TemporalField arg0) (let [^java.time.temporal.TemporalField field arg0]
                                                              (.isSupported this field))
@@ -329,7 +329,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^java.time.LocalDateTime []
    (java.time.LocalDateTime/now))
   (^java.time.LocalDateTime [arg0]

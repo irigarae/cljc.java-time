@@ -249,8 +249,6 @@
                        (contains?
                         ;; specific cases where we are interested in enriching a namespace with ancestors' methods
                         #{[java.time.LocalDateTime java.time.chrono.ChronoLocalDateTime]
-                          [java.time.ZoneOffset java.time.ZoneId]
-                          [java.time.ZoneOffset java.time.temporal.TemporalAccessor]
                           [java.time.ZonedDateTime java.time.chrono.ChronoZonedDateTime]
                           [java.time.temporal.ChronoField java.time.temporal.TemporalField]
                           [java.time.temporal.Temporal java.time.temporal.TemporalAccessor]

@@ -4,19 +4,9 @@
             [goog.object]
             [java.time.temporal :refer [Temporal]]))
 
-(defn range
-  (^js/JSJoda.ValueRange [^js/JSJoda.Temporal this ^js/JSJoda.TemporalField field]
-   (.range this field)))
-
-(defn plus
-  (^js/JSJoda.Temporal [^js/JSJoda.Temporal this ^js/JSJoda.TemporalAmount amount]
-   (.plus this amount))
-  (^js/JSJoda.Temporal [^js/JSJoda.Temporal this ^long amount-to-add ^js/JSJoda.TemporalUnit unit]
-   (.plus this amount-to-add unit)))
-
-(defn query
-  (^java.lang.Object [^js/JSJoda.Temporal this ^js/JSJoda.TemporalQuery query]
-   (.query this query)))
+(defn is-supported
+  (^boolean [^js/JSJoda.Temporal this ^js/JSJoda.TemporalUnit unit]
+   (.isSupported this unit)))
 
 (defn minus
   (^js/JSJoda.Temporal [^js/JSJoda.Temporal this ^js/JSJoda.TemporalAmount amount]
@@ -24,26 +14,18 @@
   (^js/JSJoda.Temporal [^js/JSJoda.Temporal this ^long amount-to-subtract ^js/JSJoda.TemporalUnit unit]
    (.minus this amount-to-subtract unit)))
 
-(defn get-long
-  (^long [^js/JSJoda.Temporal this ^js/JSJoda.TemporalField field]
-   (.getLong this field)))
+(defn plus
+  (^js/JSJoda.Temporal [^js/JSJoda.Temporal this ^js/JSJoda.TemporalAmount amount]
+   (.plus this amount))
+  (^js/JSJoda.Temporal [^js/JSJoda.Temporal this ^long amount-to-add ^js/JSJoda.TemporalUnit unit]
+   (.plus this amount-to-add unit)))
 
 (defn until
   (^long [^js/JSJoda.Temporal this ^js/JSJoda.Temporal end-exclusive ^js/JSJoda.TemporalUnit unit]
    (.until this end-exclusive unit)))
-
-(defn is-supported
-  {:arglists '(["java.time.temporal.Temporal" "java.time.temporal.TemporalUnit"]
-               ["java.time.temporal.Temporal" "java.time.temporal.TemporalField"])}
-  (^boolean [^js/JSJoda.Temporal this arg0]
-   (.isSupported this arg0)))
 
 (defn with
   (^js/JSJoda.Temporal [^js/JSJoda.Temporal this ^js/JSJoda.TemporalAdjuster adjuster]
    (.with this adjuster))
   (^js/JSJoda.Temporal [^js/JSJoda.Temporal this ^js/JSJoda.TemporalField field ^long new-value]
    (.with this field new-value)))
-
-(defn get
-  (^int [^js/JSJoda.Temporal this ^js/JSJoda.TemporalField field]
-   (.get this field)))

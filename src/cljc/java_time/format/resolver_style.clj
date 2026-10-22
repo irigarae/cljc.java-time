@@ -9,40 +9,10 @@
 
 (def lenient java.time.format.ResolverStyle/LENIENT)
 
+(defn value-of
+  (^java.time.format.ResolverStyle [^java.lang.String name]
+   (java.time.format.ResolverStyle/valueOf name)))
+
 (defn values
   (^"java.lang.Class" []
    (java.time.format.ResolverStyle/values)))
-
-(defn value-of
-  (^java.time.format.ResolverStyle [^java.lang.String name]
-   (java.time.format.ResolverStyle/valueOf name))
-  (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
-   (java.time.format.ResolverStyle/valueOf enum-type name)))
-
-(defn ordinal
-  (^java.lang.Integer [^java.time.format.ResolverStyle this]
-   (.ordinal this)))
-
-(defn to-string
-  (^java.lang.String [^java.time.format.ResolverStyle this]
-   (.toString this)))
-
-(defn name
-  (^java.lang.String [^java.time.format.ResolverStyle this]
-   (.name this)))
-
-(defn get-declaring-class
-  (^java.lang.Class [^java.time.format.ResolverStyle this]
-   (.getDeclaringClass this)))
-
-(defn hash-code
-  (^java.lang.Integer [^java.time.format.ResolverStyle this]
-   (.hashCode this)))
-
-(defn compare-to
-  (^java.lang.Integer [^java.time.format.ResolverStyle this ^java.lang.Enum o]
-   (.compareTo this o)))
-
-(defn equals
-  (^java.lang.Boolean [^java.time.format.ResolverStyle this ^java.lang.Object other]
-   (.equals this other)))

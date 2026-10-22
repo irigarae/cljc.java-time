@@ -28,17 +28,11 @@
 
 (defn value-of
   (^js/JSJoda.DayOfWeek [^java.lang.String name]
-   (js-invoke java.time.DayOfWeek "valueOf" name))
-  (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
-   (js-invoke java.time.DayOfWeek "valueOf" enum-type name)))
+   (js-invoke java.time.DayOfWeek "valueOf" name)))
 
 (defn of
   (^js/JSJoda.DayOfWeek [^int day-of-week]
    (js-invoke java.time.DayOfWeek "of" day-of-week)))
-
-(defn ordinal
-  (^int [^js/JSJoda.DayOfWeek this]
-   (.ordinal this)))
 
 (defn plus
   (^js/JSJoda.DayOfWeek [^js/JSJoda.DayOfWeek this ^long days]
@@ -47,10 +41,6 @@
 (defn query
   (^java.lang.Object [^js/JSJoda.DayOfWeek this ^js/JSJoda.TemporalQuery query]
    (.query this query)))
-
-(defn to-string
-  (^java.lang.String [^js/JSJoda.DayOfWeek this]
-   (.toString this)))
 
 (defn minus
   (^js/JSJoda.DayOfWeek [^js/JSJoda.DayOfWeek this ^long days]
@@ -64,17 +54,9 @@
   (^int [^js/JSJoda.DayOfWeek this]
    (.value this)))
 
-(defn name
-  (^java.lang.String [^js/JSJoda.DayOfWeek this]
-   (.name this)))
-
 (defn get-long
   (^long [^js/JSJoda.DayOfWeek this ^js/JSJoda.TemporalField field]
    (.getLong this field)))
-
-(defn get-declaring-class
-  (^java.lang.Class [^js/JSJoda.DayOfWeek this]
-   (.declaringClass this)))
 
 (defn from
   (^js/JSJoda.DayOfWeek [^js/JSJoda.TemporalAccessor temporal]
@@ -84,22 +66,10 @@
   (^boolean [^js/JSJoda.DayOfWeek this ^js/JSJoda.TemporalField field]
    (.isSupported this field)))
 
-(defn hash-code
-  (^int [^js/JSJoda.DayOfWeek this]
-   (.hashCode this)))
-
 (defn adjust-into
   (^js/JSJoda.Temporal [^js/JSJoda.DayOfWeek this ^js/JSJoda.Temporal temporal]
    (.adjustInto this temporal)))
 
-(defn compare-to
-  (^int [^js/JSJoda.DayOfWeek this ^java.lang.Enum o]
-   (.compareTo this o)))
-
 (defn get
   (^int [^js/JSJoda.DayOfWeek this ^js/JSJoda.TemporalField field]
    (.get this field)))
-
-(defn equals
-  (^boolean [^js/JSJoda.DayOfWeek this ^java.lang.Object other]
-   (.equals this other)))

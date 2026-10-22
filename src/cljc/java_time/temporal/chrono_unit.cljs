@@ -42,13 +42,7 @@
 
 (defn value-of
   (^js/JSJoda.ChronoUnit [^java.lang.String name]
-   (js-invoke java.time.temporal.ChronoUnit "valueOf" name))
-  (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
-   (js-invoke java.time.temporal.ChronoUnit "valueOf" enum-type name)))
-
-(defn ordinal
-  (^int [^js/JSJoda.ChronoUnit this]
-   (.ordinal this)))
+   (js-invoke java.time.temporal.ChronoUnit "valueOf" name)))
 
 (defn is-duration-estimated
   (^boolean [^js/JSJoda.ChronoUnit this]
@@ -66,37 +60,17 @@
   (^js/JSJoda.Temporal [^js/JSJoda.ChronoUnit this ^js/JSJoda.Temporal temporal ^long amount]
    (.addTo this temporal amount)))
 
-(defn name
-  (^java.lang.String [^js/JSJoda.ChronoUnit this]
-   (.name this)))
-
 (defn is-supported-by
   (^boolean [^js/JSJoda.ChronoUnit this ^js/JSJoda.Temporal temporal]
    (.isSupportedBy this temporal)))
-
-(defn get-declaring-class
-  (^java.lang.Class [^js/JSJoda.ChronoUnit this]
-   (.declaringClass this)))
 
 (defn between
   (^long [^js/JSJoda.ChronoUnit this ^js/JSJoda.Temporal temporal-1-inclusive ^js/JSJoda.Temporal temporal-2-exclusive]
    (.between this temporal-1-inclusive temporal-2-exclusive)))
 
-(defn hash-code
-  (^int [^js/JSJoda.ChronoUnit this]
-   (.hashCode this)))
-
-(defn compare-to
-  (^int [^js/JSJoda.ChronoUnit this ^java.lang.Enum o]
-   (.compareTo this o)))
-
 (defn get-duration
   (^js/JSJoda.Duration [^js/JSJoda.ChronoUnit this]
    (.duration this)))
-
-(defn equals
-  (^boolean [^js/JSJoda.ChronoUnit this ^java.lang.Object other]
-   (.equals this other)))
 
 (defn is-time-based
   (^boolean [^js/JSJoda.ChronoUnit this]

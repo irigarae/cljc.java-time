@@ -37,17 +37,11 @@
 
 (defn value-of
   (^java.time.Month [^java.lang.String name]
-   (java.time.Month/valueOf name))
-  (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
-   (java.time.Month/valueOf enum-type name)))
+   (java.time.Month/valueOf name)))
 
 (defn of
   (^java.time.Month [^java.lang.Integer month]
    (java.time.Month/of month)))
-
-(defn ordinal
-  (^java.lang.Integer [^java.time.Month this]
-   (.ordinal this)))
 
 (defn first-month-of-quarter
   (^java.time.Month [^java.time.Month this]
@@ -64,10 +58,6 @@
 (defn query
   (^java.lang.Object [^java.time.Month this ^java.time.temporal.TemporalQuery query]
    (.query this query)))
-
-(defn to-string
-  (^java.lang.String [^java.time.Month this]
-   (.toString this)))
 
 (defn first-day-of-year
   (^java.lang.Integer [^java.time.Month this ^java.lang.Boolean leap-year]
@@ -89,10 +79,6 @@
   (^java.lang.Integer [^java.time.Month this]
    (.maxLength this)))
 
-(defn name
-  (^java.lang.String [^java.time.Month this]
-   (.name this)))
-
 (defn get-long
   (^long [^java.time.Month this ^java.time.temporal.TemporalField field]
    (.getLong this field)))
@@ -100,10 +86,6 @@
 (defn length
   (^java.lang.Integer [^java.time.Month this ^java.lang.Boolean leap-year]
    (.length this leap-year)))
-
-(defn get-declaring-class
-  (^java.lang.Class [^java.time.Month this]
-   (.getDeclaringClass this)))
 
 (defn from
   (^java.time.Month [^java.time.temporal.TemporalAccessor temporal]
@@ -113,22 +95,10 @@
   (^java.lang.Boolean [^java.time.Month this ^java.time.temporal.TemporalField field]
    (.isSupported this field)))
 
-(defn hash-code
-  (^java.lang.Integer [^java.time.Month this]
-   (.hashCode this)))
-
 (defn adjust-into
   (^java.time.temporal.Temporal [^java.time.Month this ^java.time.temporal.Temporal temporal]
    (.adjustInto this temporal)))
 
-(defn compare-to
-  (^java.lang.Integer [^java.time.Month this ^java.lang.Enum o]
-   (.compareTo this o)))
-
 (defn get
   (^java.lang.Integer [^java.time.Month this ^java.time.temporal.TemporalField field]
    (.get this field)))
-
-(defn equals
-  (^java.lang.Boolean [^java.time.Month this ^java.lang.Object other]
-   (.equals this other)))

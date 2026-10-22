@@ -38,17 +38,11 @@
 
 (defn value-of
   (^js/JSJoda.Month [^java.lang.String name]
-   (js-invoke java.time.Month "valueOf" name))
-  (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
-   (js-invoke java.time.Month "valueOf" enum-type name)))
+   (js-invoke java.time.Month "valueOf" name)))
 
 (defn of
   (^js/JSJoda.Month [^int month]
    (js-invoke java.time.Month "of" month)))
-
-(defn ordinal
-  (^int [^js/JSJoda.Month this]
-   (.ordinal this)))
 
 (defn first-month-of-quarter
   (^js/JSJoda.Month [^js/JSJoda.Month this]
@@ -65,10 +59,6 @@
 (defn query
   (^java.lang.Object [^js/JSJoda.Month this ^js/JSJoda.TemporalQuery query]
    (.query this query)))
-
-(defn to-string
-  (^java.lang.String [^js/JSJoda.Month this]
-   (.toString this)))
 
 (defn first-day-of-year
   (^int [^js/JSJoda.Month this ^boolean leap-year]
@@ -90,10 +80,6 @@
   (^int [^js/JSJoda.Month this]
    (.maxLength this)))
 
-(defn name
-  (^java.lang.String [^js/JSJoda.Month this]
-   (.name this)))
-
 (defn get-long
   (^long [^js/JSJoda.Month this ^js/JSJoda.TemporalField field]
    (.getLong this field)))
@@ -101,10 +87,6 @@
 (defn length
   (^int [^js/JSJoda.Month this ^boolean leap-year]
    (.length this leap-year)))
-
-(defn get-declaring-class
-  (^java.lang.Class [^js/JSJoda.Month this]
-   (.declaringClass this)))
 
 (defn from
   (^js/JSJoda.Month [^js/JSJoda.TemporalAccessor temporal]
@@ -114,22 +96,10 @@
   (^boolean [^js/JSJoda.Month this ^js/JSJoda.TemporalField field]
    (.isSupported this field)))
 
-(defn hash-code
-  (^int [^js/JSJoda.Month this]
-   (.hashCode this)))
-
 (defn adjust-into
   (^js/JSJoda.Temporal [^js/JSJoda.Month this ^js/JSJoda.Temporal temporal]
    (.adjustInto this temporal)))
 
-(defn compare-to
-  (^int [^js/JSJoda.Month this ^java.lang.Enum o]
-   (.compareTo this o)))
-
 (defn get
   (^int [^js/JSJoda.Month this ^js/JSJoda.TemporalField field]
    (.get this field)))
-
-(defn equals
-  (^boolean [^js/JSJoda.Month this ^java.lang.Object other]
-   (.equals this other)))

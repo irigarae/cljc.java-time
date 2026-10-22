@@ -9,10 +9,6 @@
 
 (def utc java.time.ZoneOffset/UTC)
 
-(defn get-available-zone-ids
-  (^java.util.Set []
-   (java.time.ZoneOffset/getAvailableZoneIds)))
-
 (defn range
   (^java.time.temporal.ValueRange [^java.time.ZoneOffset this ^java.time.temporal.TemporalField field]
    (.range this field)))
@@ -22,19 +18,8 @@
    (java.time.ZoneOffset/ofTotalSeconds total-seconds)))
 
 (defn of
-  {:arglists '(["java.lang.String"] ["java.lang.String"] ["java.lang.String" "java.util.Map"])}
-  (^java.lang.Object [arg0]
-   (cond (instance? java.lang.String arg0) (let [^java.lang.String zone-id arg0]
-                                             (java.time.ZoneOffset/of zone-id))
-         (instance? java.lang.String arg0) (let [^java.lang.String offset-id arg0]
-                                             (java.time.ZoneOffset/of offset-id))
-         :else (throw (java.lang.IllegalArgumentException. "no corresponding java.time method with these args"))))
-  (^java.time.ZoneId [^java.lang.String zone-id ^java.util.Map alias-map]
-   (java.time.ZoneOffset/of zone-id alias-map)))
-
-(defn of-offset
-  (^java.time.ZoneId [^java.lang.String prefix ^java.time.ZoneOffset offset]
-   (java.time.ZoneOffset/ofOffset prefix offset)))
+  (^java.time.ZoneOffset [^java.lang.String offset-id]
+   (java.time.ZoneOffset/of offset-id)))
 
 (defn query
   (^java.lang.Object [^java.time.ZoneOffset this ^java.time.temporal.TemporalQuery query]
@@ -43,10 +28,6 @@
 (defn to-string
   (^java.lang.String [^java.time.ZoneOffset this]
    (.toString this)))
-
-(defn get-display-name
-  (^java.lang.String [^java.time.ZoneOffset this ^java.time.format.TextStyle style ^java.util.Locale locale]
-   (.getDisplayName this style locale)))
 
 (defn get-long
   (^long [^java.time.ZoneOffset this ^java.time.temporal.TemporalField field]
@@ -64,22 +45,9 @@
   (^java.lang.String [^java.time.ZoneOffset this]
    (.getId this)))
 
-(defn normalized
-  (^java.time.ZoneId [^java.time.ZoneOffset this]
-   (.normalized this)))
-
-(defn system-default
-  (^java.time.ZoneId []
-   (java.time.ZoneOffset/systemDefault)))
-
 (defn from
-  {:arglists '(["java.time.temporal.TemporalAccessor"] ["java.time.temporal.TemporalAccessor"])}
-  (^java.lang.Object [arg0]
-   (cond (instance? java.time.temporal.TemporalAccessor arg0) (let [^java.time.temporal.TemporalAccessor temporal arg0]
-                                                                (java.time.ZoneOffset/from temporal))
-         (instance? java.time.temporal.TemporalAccessor arg0) (let [^java.time.temporal.TemporalAccessor temporal arg0]
-                                                                (java.time.ZoneOffset/from temporal))
-         :else (throw (java.lang.IllegalArgumentException. "no corresponding java.time method with these args")))))
+  (^java.time.ZoneOffset [^java.time.temporal.TemporalAccessor temporal]
+   (java.time.ZoneOffset/from temporal)))
 
 (defn of-hours-minutes-seconds
   (^java.time.ZoneOffset [^java.lang.Integer hours ^java.lang.Integer minutes ^java.lang.Integer seconds]

@@ -10,10 +10,6 @@
 
 (def utc (goog.object/get java.time.ZoneOffset "UTC"))
 
-(defn get-available-zone-ids
-  (^java.util.Set []
-   (js-invoke java.time.ZoneOffset "getAvailableZoneIds")))
-
 (defn range
   (^js/JSJoda.ValueRange [^js/JSJoda.ZoneOffset this ^js/JSJoda.TemporalField field]
    (.range this field)))
@@ -23,15 +19,8 @@
    (js-invoke java.time.ZoneOffset "ofTotalSeconds" total-seconds)))
 
 (defn of
-  {:arglists '(["java.lang.String"] ["java.lang.String"] ["java.lang.String" "java.util.Map"])}
-  (^java.lang.Object [arg0]
-   (js-invoke java.time.ZoneOffset "of" arg0))
-  (^js/JSJoda.ZoneId [^java.lang.String zone-id ^java.util.Map alias-map]
-   (js-invoke java.time.ZoneOffset "of" zone-id alias-map)))
-
-(defn of-offset
-  (^js/JSJoda.ZoneId [^java.lang.String prefix ^js/JSJoda.ZoneOffset offset]
-   (js-invoke java.time.ZoneOffset "ofOffset" prefix offset)))
+  (^js/JSJoda.ZoneOffset [^java.lang.String offset-id]
+   (js-invoke java.time.ZoneOffset "of" offset-id)))
 
 (defn query
   (^java.lang.Object [^js/JSJoda.ZoneOffset this ^js/JSJoda.TemporalQuery query]
@@ -40,10 +29,6 @@
 (defn to-string
   (^java.lang.String [^js/JSJoda.ZoneOffset this]
    (.toString this)))
-
-(defn get-display-name
-  (^java.lang.String [^js/JSJoda.ZoneOffset this ^js/JSJoda.TextStyle style ^java.util.Locale locale]
-   (.displayName this style locale)))
 
 (defn get-long
   (^long [^js/JSJoda.ZoneOffset this ^js/JSJoda.TemporalField field]
@@ -61,18 +46,9 @@
   (^java.lang.String [^js/JSJoda.ZoneOffset this]
    (.id this)))
 
-(defn normalized
-  (^js/JSJoda.ZoneId [^js/JSJoda.ZoneOffset this]
-   (.normalized this)))
-
-(defn system-default
-  (^js/JSJoda.ZoneId []
-   (js-invoke java.time.ZoneOffset "systemDefault")))
-
 (defn from
-  {:arglists '(["java.time.temporal.TemporalAccessor"] ["java.time.temporal.TemporalAccessor"])}
-  (^java.lang.Object [arg0]
-   (js-invoke java.time.ZoneOffset "from" arg0)))
+  (^js/JSJoda.ZoneOffset [^js/JSJoda.TemporalAccessor temporal]
+   (js-invoke java.time.ZoneOffset "from" temporal)))
 
 (defn of-hours-minutes-seconds
   (^js/JSJoda.ZoneOffset [^int hours ^int minutes ^int seconds]

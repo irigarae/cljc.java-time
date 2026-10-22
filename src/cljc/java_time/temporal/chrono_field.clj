@@ -77,19 +77,7 @@
 
 (defn value-of
   (^java.time.temporal.ChronoField [^java.lang.String name]
-   (java.time.temporal.ChronoField/valueOf name))
-  (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
-   (java.time.temporal.ChronoField/valueOf enum-type name)))
-
-(defn resolve
-  (^java.time.temporal.TemporalAccessor
-   [^java.time.temporal.ChronoField this ^java.util.Map field-values
-    ^java.time.temporal.TemporalAccessor partial-temporal ^java.time.format.ResolverStyle resolver-style]
-   (.resolve this field-values partial-temporal resolver-style)))
-
-(defn ordinal
-  (^java.lang.Integer [^java.time.temporal.ChronoField this]
-   (.ordinal this)))
+   (java.time.temporal.ChronoField/valueOf name)))
 
 (defn check-valid-int-value
   (^java.lang.Integer [^java.time.temporal.ChronoField this ^long value]
@@ -111,10 +99,6 @@
   (^java.lang.String [^java.time.temporal.ChronoField this ^java.util.Locale locale]
    (.getDisplayName this locale)))
 
-(defn name
-  (^java.lang.String [^java.time.temporal.ChronoField this]
-   (.name this)))
-
 (defn is-supported-by
   (^java.lang.Boolean [^java.time.temporal.ChronoField this ^java.time.temporal.TemporalAccessor temporal]
    (.isSupportedBy this temporal)))
@@ -122,14 +106,6 @@
 (defn range-refined-by
   (^java.time.temporal.ValueRange [^java.time.temporal.ChronoField this ^java.time.temporal.TemporalAccessor temporal]
    (.rangeRefinedBy this temporal)))
-
-(defn get-declaring-class
-  (^java.lang.Class [^java.time.temporal.ChronoField this]
-   (.getDeclaringClass this)))
-
-(defn hash-code
-  (^java.lang.Integer [^java.time.temporal.ChronoField this]
-   (.hashCode this)))
 
 (defn adjust-into
   (^java.time.temporal.Temporal
@@ -139,14 +115,6 @@
 (defn get-from
   (^long [^java.time.temporal.ChronoField this ^java.time.temporal.TemporalAccessor temporal]
    (.getFrom this temporal)))
-
-(defn compare-to
-  (^java.lang.Integer [^java.time.temporal.ChronoField this ^java.lang.Enum o]
-   (.compareTo this o)))
-
-(defn equals
-  (^java.lang.Boolean [^java.time.temporal.ChronoField this ^java.lang.Object other]
-   (.equals this other)))
 
 (defn is-time-based
   (^java.lang.Boolean [^java.time.temporal.ChronoField this]

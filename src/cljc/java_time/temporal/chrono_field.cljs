@@ -78,19 +78,7 @@
 
 (defn value-of
   (^js/JSJoda.ChronoField [^java.lang.String name]
-   (js-invoke java.time.temporal.ChronoField "valueOf" name))
-  (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
-   (js-invoke java.time.temporal.ChronoField "valueOf" enum-type name)))
-
-(defn resolve
-  (^js/JSJoda.TemporalAccessor
-   [^js/JSJoda.ChronoField this ^java.util.Map field-values ^js/JSJoda.TemporalAccessor partial-temporal
-    ^js/JSJoda.ResolverStyle resolver-style]
-   (.resolve this field-values partial-temporal resolver-style)))
-
-(defn ordinal
-  (^int [^js/JSJoda.ChronoField this]
-   (.ordinal this)))
+   (js-invoke java.time.temporal.ChronoField "valueOf" name)))
 
 (defn check-valid-int-value
   (^int [^js/JSJoda.ChronoField this ^long value]
@@ -112,10 +100,6 @@
   (^java.lang.String [^js/JSJoda.ChronoField this ^java.util.Locale locale]
    (.displayName this locale)))
 
-(defn name
-  (^java.lang.String [^js/JSJoda.ChronoField this]
-   (.name this)))
-
 (defn is-supported-by
   (^boolean [^js/JSJoda.ChronoField this ^js/JSJoda.TemporalAccessor temporal]
    (.isSupportedBy this temporal)))
@@ -124,14 +108,6 @@
   (^js/JSJoda.ValueRange [^js/JSJoda.ChronoField this ^js/JSJoda.TemporalAccessor temporal]
    (.rangeRefinedBy this temporal)))
 
-(defn get-declaring-class
-  (^java.lang.Class [^js/JSJoda.ChronoField this]
-   (.declaringClass this)))
-
-(defn hash-code
-  (^int [^js/JSJoda.ChronoField this]
-   (.hashCode this)))
-
 (defn adjust-into
   (^js/JSJoda.Temporal [^js/JSJoda.ChronoField this ^js/JSJoda.Temporal temporal ^long new-value]
    (.adjustInto this temporal new-value)))
@@ -139,14 +115,6 @@
 (defn get-from
   (^long [^js/JSJoda.ChronoField this ^js/JSJoda.TemporalAccessor temporal]
    (.from this temporal)))
-
-(defn compare-to
-  (^int [^js/JSJoda.ChronoField this ^java.lang.Enum o]
-   (.compareTo this o)))
-
-(defn equals
-  (^boolean [^js/JSJoda.ChronoField this ^java.lang.Object other]
-   (.equals this other)))
 
 (defn is-time-based
   (^boolean [^js/JSJoda.ChronoField this]

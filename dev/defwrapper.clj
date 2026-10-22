@@ -243,7 +243,14 @@
        class-methods
        (filter method-public?)
        (filter concrete?)
-       (remove (set (class-methods Object)))
+       (filter (fn [^Method m]
+                 (let [klz (.getDeclaringClass m)]
+                   (or (= klazz klz)
+                       (contains?
+                        ;; specific cases where we are interested in enriching a namespace with ancestors' methods
+                        #{[java.time.LocalDateTime java.time.chrono.ChronoLocalDateTime]
+                          [java.time.ZonedDateTime java.time.chrono.ChronoZonedDateTime]}
+                        [klazz klz])))))
        (sort-by method-fqn)
        (group-by method-name)))
 

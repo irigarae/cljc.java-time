@@ -16,9 +16,9 @@ jobs:
           java-version: '17'
 
       - name: Install clojure tools
-        uses: DeLaGuardo/setup-clojure@4.0
+        uses: DeLaGuardo/setup-clojure@13.7.0
         with:
-          cli: 1.10.1.693 # Clojure CLI based on tools.deps
+          cli: 1.12.6.1673 # Clojure CLI based on tools.deps
 
       - name: Run Clj Unit tests
         run: make test-clj

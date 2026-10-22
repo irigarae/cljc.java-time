@@ -250,7 +250,6 @@
                         ;; specific cases where we are interested in enriching a namespace with ancestors' methods
                         #{[java.time.LocalDateTime java.time.chrono.ChronoLocalDateTime]
                           [java.time.ZonedDateTime java.time.chrono.ChronoZonedDateTime]
-                          [java.time.temporal.ChronoField java.time.temporal.TemporalField]
                           ;; Enums for backwards compatibility
                           [java.time.DayOfWeek java.lang.Enum]
                           [java.time.Month java.lang.Enum]

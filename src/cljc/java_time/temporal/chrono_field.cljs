@@ -82,12 +82,6 @@
   (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
    (js-invoke java.time.temporal.ChronoField "valueOf" enum-type name)))
 
-(defn resolve
-  (^js/JSJoda.TemporalAccessor
-   [^js/JSJoda.ChronoField this ^java.util.Map field-values ^js/JSJoda.TemporalAccessor partial-temporal
-    ^js/JSJoda.ResolverStyle resolver-style]
-   (.resolve this field-values partial-temporal resolver-style)))
-
 (defn ordinal
   (^int [^js/JSJoda.ChronoField this]
    (.ordinal this)))

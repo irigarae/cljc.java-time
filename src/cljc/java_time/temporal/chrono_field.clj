@@ -81,12 +81,6 @@
   (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
    (java.time.temporal.ChronoField/valueOf enum-type name)))
 
-(defn resolve
-  (^java.time.temporal.TemporalAccessor
-   [^java.time.temporal.ChronoField this ^java.util.Map field-values
-    ^java.time.temporal.TemporalAccessor partial-temporal ^java.time.format.ResolverStyle resolver-style]
-   (.resolve this field-values partial-temporal resolver-style)))
-
 (defn ordinal
   (^java.lang.Integer [^java.time.temporal.ChronoField this]
    (.ordinal this)))

@@ -243,7 +243,26 @@
        class-methods
        (filter method-public?)
        (filter concrete?)
-       (remove (set (class-methods Object)))
+       (filter (fn [^Method m]
+                 (let [klz (.getDeclaringClass m)]
+                   (or (= klazz klz)
+                       (contains?
+                        ;; specific cases where we are interested in enriching a namespace with ancestors' methods
+                        #{[java.time.LocalDateTime java.time.chrono.ChronoLocalDateTime]
+                          [java.time.ZoneOffset java.time.ZoneId]
+                          [java.time.ZoneOffset java.time.temporal.TemporalAccessor]
+                          [java.time.ZonedDateTime java.time.chrono.ChronoZonedDateTime]
+                          [java.time.temporal.ChronoField java.time.temporal.TemporalField]
+                          [java.time.temporal.Temporal java.time.temporal.TemporalAccessor]
+                          ;; Enums for backwards compatibility
+                          [java.time.DayOfWeek java.lang.Enum]
+                          [java.time.Month java.lang.Enum]
+                          [java.time.format.ResolverStyle java.lang.Enum]
+                          [java.time.format.SignStyle java.lang.Enum]
+                          [java.time.format.TextStyle java.lang.Enum]
+                          [java.time.temporal.ChronoField java.lang.Enum]
+                          [java.time.temporal.ChronoUnit java.lang.Enum]}
+                        [klazz klz])))))
        (sort-by method-fqn)
        (group-by method-name)))
 

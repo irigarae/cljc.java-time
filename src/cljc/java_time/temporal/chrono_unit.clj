@@ -41,13 +41,7 @@
 
 (defn value-of
   (^java.time.temporal.ChronoUnit [^java.lang.String name]
-   (java.time.temporal.ChronoUnit/valueOf name))
-  (^java.lang.Enum [^java.lang.Class enum-type ^java.lang.String name]
-   (java.time.temporal.ChronoUnit/valueOf enum-type name)))
-
-(defn ordinal
-  (^java.lang.Integer [^java.time.temporal.ChronoUnit this]
-   (.ordinal this)))
+   (java.time.temporal.ChronoUnit/valueOf name)))
 
 (defn is-duration-estimated
   (^java.lang.Boolean [^java.time.temporal.ChronoUnit this]
@@ -65,17 +59,9 @@
   (^java.time.temporal.Temporal [^java.time.temporal.ChronoUnit this ^java.time.temporal.Temporal temporal ^long amount]
    (.addTo this temporal amount)))
 
-(defn name
-  (^java.lang.String [^java.time.temporal.ChronoUnit this]
-   (.name this)))
-
 (defn is-supported-by
   (^java.lang.Boolean [^java.time.temporal.ChronoUnit this ^java.time.temporal.Temporal temporal]
    (.isSupportedBy this temporal)))
-
-(defn get-declaring-class
-  (^java.lang.Class [^java.time.temporal.ChronoUnit this]
-   (.getDeclaringClass this)))
 
 (defn between
   (^long
@@ -83,21 +69,9 @@
     ^java.time.temporal.Temporal temporal-2-exclusive]
    (.between this temporal-1-inclusive temporal-2-exclusive)))
 
-(defn hash-code
-  (^java.lang.Integer [^java.time.temporal.ChronoUnit this]
-   (.hashCode this)))
-
-(defn compare-to
-  (^java.lang.Integer [^java.time.temporal.ChronoUnit this ^java.lang.Enum o]
-   (.compareTo this o)))
-
 (defn get-duration
   (^java.time.Duration [^java.time.temporal.ChronoUnit this]
    (.getDuration this)))
-
-(defn equals
-  (^java.lang.Boolean [^java.time.temporal.ChronoUnit this ^java.lang.Object other]
-   (.equals this other)))
 
 (defn is-time-based
   (^java.lang.Boolean [^java.time.temporal.ChronoUnit this]

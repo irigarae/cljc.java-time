@@ -249,15 +249,7 @@
                        (contains?
                         ;; specific cases where we are interested in enriching a namespace with ancestors' methods
                         #{[java.time.LocalDateTime java.time.chrono.ChronoLocalDateTime]
-                          [java.time.ZonedDateTime java.time.chrono.ChronoZonedDateTime]
-                          ;; Enums for backwards compatibility
-                          [java.time.DayOfWeek java.lang.Enum]
-                          [java.time.Month java.lang.Enum]
-                          [java.time.format.ResolverStyle java.lang.Enum]
-                          [java.time.format.SignStyle java.lang.Enum]
-                          [java.time.format.TextStyle java.lang.Enum]
-                          [java.time.temporal.ChronoField java.lang.Enum]
-                          [java.time.temporal.ChronoUnit java.lang.Enum]}
+                          [java.time.ZonedDateTime java.time.chrono.ChronoZonedDateTime]}
                         [klazz klz])))))
        (sort-by method-fqn)
        (group-by method-name)))

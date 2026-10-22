@@ -33,8 +33,8 @@
    (.until this end-exclusive unit)))
 
 (defn is-supported
-  {:arglists '(["java.time.temporal.Temporal" "java.time.temporal.TemporalUnit"]
-               ["java.time.temporal.Temporal" "java.time.temporal.TemporalField"])}
+  {:arglists '([java.time.temporal.Temporal java.time.temporal.TemporalUnit]
+               [java.time.temporal.Temporal java.time.temporal.TemporalField])}
   (^boolean [^js/JSJoda.Temporal this arg0]
    (.isSupported this arg0)))
 

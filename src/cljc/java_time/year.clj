@@ -64,7 +64,7 @@
    (.getLong this field)))
 
 (defn at-month
-  {:arglists '(["java.time.Year" "int"] ["java.time.Year" "java.time.Month"])}
+  {:arglists '([java.time.Year int] [java.time.Year java.time.Month])}
   (^java.time.YearMonth [^java.time.Year this arg0]
    (cond (instance? java.lang.Number arg0) (let [month (int arg0)]
                                              (.atMonth this month))
@@ -89,8 +89,7 @@
    (.isAfter this other)))
 
 (defn is-supported
-  {:arglists '(["java.time.Year" "java.time.temporal.TemporalField"]
-               ["java.time.Year" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.Year java.time.temporal.TemporalField] [java.time.Year java.time.temporal.TemporalUnit])}
   (^java.lang.Boolean [^java.time.Year this arg0]
    (cond (instance? java.time.temporal.TemporalField arg0) (let [^java.time.temporal.TemporalField field arg0]
                                                              (.isSupported this field))
@@ -123,7 +122,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^java.time.Year []
    (java.time.Year/now))
   (^java.time.Year [arg0]

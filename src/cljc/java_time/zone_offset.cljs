@@ -23,7 +23,7 @@
    (js-invoke java.time.ZoneOffset "ofTotalSeconds" total-seconds)))
 
 (defn of
-  {:arglists '(["java.lang.String"] ["java.lang.String"] ["java.lang.String" "java.util.Map"])}
+  {:arglists '([java.lang.String] [java.lang.String] [java.lang.String java.util.Map])}
   (^java.lang.Object [arg0]
    (js-invoke java.time.ZoneOffset "of" arg0))
   (^js/JSJoda.ZoneId [^java.lang.String zone-id ^java.util.Map alias-map]
@@ -70,7 +70,7 @@
    (js-invoke java.time.ZoneOffset "systemDefault")))
 
 (defn from
-  {:arglists '(["java.time.temporal.TemporalAccessor"] ["java.time.temporal.TemporalAccessor"])}
+  {:arglists '([java.time.temporal.TemporalAccessor] [java.time.temporal.TemporalAccessor])}
   (^java.lang.Object [arg0]
    (js-invoke java.time.ZoneOffset "from" arg0)))
 

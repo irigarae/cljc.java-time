@@ -29,7 +29,7 @@
    (.era this)))
 
 (defn of
-  {:arglists '(["int" "int" "int"] ["int" "java.time.Month" "int"])}
+  {:arglists '([int int int] [int java.time.Month int])}
   (^js/JSJoda.LocalDate [arg0 arg1 arg2]
    (js-invoke java.time.LocalDate "of" arg0 arg1 arg2)))
 
@@ -136,8 +136,8 @@
    (.isAfter this other)))
 
 (defn is-supported
-  {:arglists '(["java.time.LocalDate" "java.time.temporal.TemporalField"]
-               ["java.time.LocalDate" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.LocalDate java.time.temporal.TemporalField]
+               [java.time.LocalDate java.time.temporal.TemporalUnit])}
   (^boolean [^js/JSJoda.LocalDate this arg0]
    (.isSupported this arg0)))
 
@@ -170,7 +170,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^js/JSJoda.LocalDate []
    (js-invoke java.time.LocalDate "now"))
   (^js/JSJoda.LocalDate [arg0]
@@ -211,11 +211,11 @@
    (.equals this obj)))
 
 (defn at-time
-  {:arglists '(["java.time.LocalDate" "java.time.LocalTime"]
-               ["java.time.LocalDate" "java.time.OffsetTime"]
-               ["java.time.LocalDate" "int" "int"]
-               ["java.time.LocalDate" "int" "int" "int"]
-               ["java.time.LocalDate" "int" "int" "int" "int"])}
+  {:arglists '([java.time.LocalDate java.time.LocalTime]
+               [java.time.LocalDate java.time.OffsetTime]
+               [java.time.LocalDate int int]
+               [java.time.LocalDate int int int]
+               [java.time.LocalDate int int int int])}
   (^java.lang.Object [^js/JSJoda.LocalDate this arg0]
    (.atTime this arg0))
   (^js/JSJoda.LocalDateTime [^js/JSJoda.LocalDate this ^int hour ^int minute]

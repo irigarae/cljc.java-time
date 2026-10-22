@@ -65,7 +65,7 @@
    (.getLong this field)))
 
 (defn at-month
-  {:arglists '(["java.time.Year" "int"] ["java.time.Year" "java.time.Month"])}
+  {:arglists '([java.time.Year int] [java.time.Year java.time.Month])}
   (^js/JSJoda.YearMonth [^js/JSJoda.Year this arg0]
    (.atMonth this arg0)))
 
@@ -86,8 +86,7 @@
    (.isAfter this other)))
 
 (defn is-supported
-  {:arglists '(["java.time.Year" "java.time.temporal.TemporalField"]
-               ["java.time.Year" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.Year java.time.temporal.TemporalField] [java.time.Year java.time.temporal.TemporalUnit])}
   (^boolean [^js/JSJoda.Year this arg0]
    (.isSupported this arg0)))
 
@@ -116,7 +115,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^js/JSJoda.Year []
    (js-invoke java.time.Year "now"))
   (^js/JSJoda.Year [arg0]

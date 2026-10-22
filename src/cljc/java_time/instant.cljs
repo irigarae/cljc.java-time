@@ -101,8 +101,8 @@
    (.minusNanos this nanos-to-subtract)))
 
 (defn is-supported
-  {:arglists '(["java.time.Instant" "java.time.temporal.TemporalField"]
-               ["java.time.Instant" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.Instant java.time.temporal.TemporalField]
+               [java.time.Instant java.time.temporal.TemporalUnit])}
   (^boolean [^js/JSJoda.Instant this arg0]
    (.isSupported this arg0)))
 

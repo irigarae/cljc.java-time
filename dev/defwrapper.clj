@@ -220,9 +220,7 @@
     `(~'defn ~fname
       ;; print arglists when multiple methods with same arity
       ~@(when (some (fn [[_arity meths]] (< 1 (count meths))) arities)
-          `[{:arglists '~(map (comp (partial into (if static? [] [(.getName klazz)]))
-                                    ;; with Clojure 1.12 we could use x directly instead of (.getName x)
-                                    #(map (fn [^Class x] (.getName x)) %)
+          `[{:arglists '~(map (comp (partial into (if static? [] [klazz]))
                                     parameter-types)
                               (mapcat val arities))}])
       ~@(map (fn [[_arity meths]]

@@ -35,8 +35,8 @@
    (.until this end-exclusive unit)))
 
 (defn is-supported
-  {:arglists '(["java.time.temporal.Temporal" "java.time.temporal.TemporalUnit"]
-               ["java.time.temporal.Temporal" "java.time.temporal.TemporalField"])}
+  {:arglists '([java.time.temporal.Temporal java.time.temporal.TemporalUnit]
+               [java.time.temporal.Temporal java.time.temporal.TemporalField])}
   (^java.lang.Boolean [^java.time.temporal.Temporal this arg0]
    (cond (instance? java.time.temporal.ChronoUnit arg0) (let [^java.time.temporal.ChronoUnit unit arg0]
                                                           (.isSupported this unit))

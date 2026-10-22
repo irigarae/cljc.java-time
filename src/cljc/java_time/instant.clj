@@ -100,8 +100,8 @@
    (.minusNanos this nanos-to-subtract)))
 
 (defn is-supported
-  {:arglists '(["java.time.Instant" "java.time.temporal.TemporalField"]
-               ["java.time.Instant" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.Instant java.time.temporal.TemporalField]
+               [java.time.Instant java.time.temporal.TemporalUnit])}
   (^java.lang.Boolean [^java.time.Instant this arg0]
    (cond (instance? java.time.temporal.TemporalField arg0) (let [^java.time.temporal.TemporalField field arg0]
                                                              (.isSupported this field))

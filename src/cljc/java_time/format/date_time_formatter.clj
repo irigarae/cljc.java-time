@@ -107,9 +107,9 @@
    (.getChronology this)))
 
 (defn parse
-  {:arglists '(["java.time.format.DateTimeFormatter" "java.lang.CharSequence"]
-               ["java.time.format.DateTimeFormatter" "java.lang.CharSequence" "java.text.ParsePosition"]
-               ["java.time.format.DateTimeFormatter" "java.lang.CharSequence" "java.time.temporal.TemporalQuery"])}
+  {:arglists '([java.time.format.DateTimeFormatter java.lang.CharSequence]
+               [java.time.format.DateTimeFormatter java.lang.CharSequence java.text.ParsePosition]
+               [java.time.format.DateTimeFormatter java.lang.CharSequence java.time.temporal.TemporalQuery])}
   (^java.time.temporal.TemporalAccessor [^java.time.format.DateTimeFormatter this ^java.lang.CharSequence text]
    (.parse this text))
   (^java.lang.Object [^java.time.format.DateTimeFormatter this arg0 arg1]
@@ -130,8 +130,8 @@
    (.withLocale this locale)))
 
 (defn with-resolver-fields
-  {:arglists '(["java.time.format.DateTimeFormatter" "[Ljava.time.temporal.TemporalField;"]
-               ["java.time.format.DateTimeFormatter" "java.util.Set"])}
+  {:arglists '([java.time.format.DateTimeFormatter java.time.temporal.TemporalField/1]
+               [java.time.format.DateTimeFormatter java.util.Set])}
   (^java.time.format.DateTimeFormatter [^java.time.format.DateTimeFormatter this arg0]
    (cond (= java.time.temporal.TemporalField (.getComponentType (class arg0)))
            (let [^java.time.temporal.TemporalField/1 resolver-fields arg0]

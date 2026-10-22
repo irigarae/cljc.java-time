@@ -16,7 +16,7 @@
    (.isValidDay this day-of-month)))
 
 (defn of
-  {:arglists '(["int" "int"] ["int" "java.time.Month"])}
+  {:arglists '([int int] [int java.time.Month])}
   (^java.time.YearMonth [arg0 arg1]
    (cond (and (instance? java.lang.Number arg0)
               (instance? java.lang.Number arg1))
@@ -107,8 +107,8 @@
    (.isAfter this other)))
 
 (defn is-supported
-  {:arglists '(["java.time.YearMonth" "java.time.temporal.TemporalField"]
-               ["java.time.YearMonth" "java.time.temporal.TemporalUnit"])}
+  {:arglists '([java.time.YearMonth java.time.temporal.TemporalField]
+               [java.time.YearMonth java.time.temporal.TemporalUnit])}
   (^java.lang.Boolean [^java.time.YearMonth this arg0]
    (cond (instance? java.time.temporal.TemporalField arg0) (let [^java.time.temporal.TemporalField field arg0]
                                                              (.isSupported this field))
@@ -141,7 +141,7 @@
    (.with this field new-value)))
 
 (defn now
-  {:arglists '([] ["java.time.Clock"] ["java.time.ZoneId"])}
+  {:arglists '([] [java.time.Clock] [java.time.ZoneId])}
   (^java.time.YearMonth []
    (java.time.YearMonth/now))
   (^java.time.YearMonth [arg0]

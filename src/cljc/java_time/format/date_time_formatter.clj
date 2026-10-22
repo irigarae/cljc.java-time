@@ -134,7 +134,7 @@
                ["java.time.format.DateTimeFormatter" "java.util.Set"])}
   (^java.time.format.DateTimeFormatter [^java.time.format.DateTimeFormatter this arg0]
    (cond (= java.time.temporal.TemporalField (.getComponentType (class arg0)))
-           (let [^"[Ljava.time.temporal.TemporalField;" resolver-fields arg0]
+           (let [^java.time.temporal.TemporalField/1 resolver-fields arg0]
              (.withResolverFields this resolver-fields))
          (instance? java.util.Set arg0) (let [^java.util.Set resolver-fields arg0]
                                           (.withResolverFields this resolver-fields))

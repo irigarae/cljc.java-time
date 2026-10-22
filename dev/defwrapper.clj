@@ -132,11 +132,7 @@
 
       :else
       [(vary-meta param-name assoc :tag (if (.isArray klazz)
-                                          ;; Clojure 1.12:
-                                          ;; klazz would lead to ^java.time.temporal.TemporalField/1
-                                          ;; Clojure 1.11
-                                          ;; (.getName klazz) leads to ^"[Ljava.time.temporal.TemporalField;"
-                                          (.getName klazz)
+                                          klazz
                                           tag)) value])))
 
 (defn method-call [static? ^Class klazz nam ext]

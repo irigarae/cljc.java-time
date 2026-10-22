@@ -251,7 +251,6 @@
                         #{[java.time.LocalDateTime java.time.chrono.ChronoLocalDateTime]
                           [java.time.ZonedDateTime java.time.chrono.ChronoZonedDateTime]
                           [java.time.temporal.ChronoField java.time.temporal.TemporalField]
-                          [java.time.temporal.Temporal java.time.temporal.TemporalAccessor]
                           ;; Enums for backwards compatibility
                           [java.time.DayOfWeek java.lang.Enum]
                           [java.time.Month java.lang.Enum]
